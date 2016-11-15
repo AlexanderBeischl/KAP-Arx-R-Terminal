@@ -33,7 +33,7 @@ public class Test {
         System.out.println("'"+buffer1.toString()+"'");
         
         // Test 3: R integration
-        final RBuffer buffer = new RBuffer(100);
+        final RBuffer buffer = new RBuffer(1000);
         final RListener listener = new RListener(10) {
 
             @Override public void bufferUpdated() {
@@ -52,8 +52,6 @@ public class Test {
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
         while (line != null) {
-            System.out.println("Execute: " + line);
-            System.out.println("Alive: " + r.isAlive());
             r.execute(line);
             line = scanner.nextLine();
         }

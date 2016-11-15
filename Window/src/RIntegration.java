@@ -7,7 +7,7 @@ import java.io.Reader;
 public class RIntegration {
 
     /** Debug flag*/
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
     
 	/** Process*/
 	private Process process;
@@ -90,13 +90,11 @@ public class RIntegration {
 	}
 
 	/**
-	 * Debug helper
-	 * @param exception
-	 */
-	private void debug(Exception exception) {
-        if (DEBUG) {
-            exception.printStackTrace();
-        }
+     * Returns whether R is alive
+     * @return
+     */
+    public boolean isAlive() {
+        return this.process != null;
     }
 
     /**
@@ -111,10 +109,12 @@ public class RIntegration {
     }
 
     /**
-     * Returns whether R is alive
-     * @return
-     */
-    public boolean isAlive() {
-        return this.process != null;
+	 * Debug helper
+	 * @param exception
+	 */
+	private void debug(Exception exception) {
+        if (DEBUG) {
+            exception.printStackTrace();
+        }
     }
 }
