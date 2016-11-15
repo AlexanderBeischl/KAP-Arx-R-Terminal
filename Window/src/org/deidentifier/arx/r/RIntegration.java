@@ -1,9 +1,15 @@
+package org.deidentifier.arx.r;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 
+/**
+ * Java integration with R. 
+ * 
+ * @author Fabian Prasser
+ */
 public class RIntegration {
 
     /** Debug flag*/

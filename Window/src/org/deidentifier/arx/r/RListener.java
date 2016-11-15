@@ -1,22 +1,23 @@
+package org.deidentifier.arx.r;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * A listener for the R process. All notification events will come from the main SWT thread.
+ * A listener for the R process. If a display is present, all notification 
+ * events will come from the SWT event dispatch thread.
  * 
  * @author Fabian Prasser
  */
 public abstract class RListener {
-    
-    /** Delay in millis*/
+
+    /** Delay in milliseconds */
     private final int delay;
-    
-    /** Should an event be fired*/
-    private boolean fire = false;
-    
-    /** Time*/
-    private long time = 0;
-    
-    
+
+    /** Should an event be fired */
+    private boolean   fire = false;
+
+    /** Timestamp of the last event */
+    private long      time = 0;
+
     /**
      * Creates a new instance
      * 

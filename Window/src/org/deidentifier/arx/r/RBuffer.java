@@ -1,3 +1,5 @@
+package org.deidentifier.arx.r;
+
 /**
  * A simple ring buffer for characters
  * 

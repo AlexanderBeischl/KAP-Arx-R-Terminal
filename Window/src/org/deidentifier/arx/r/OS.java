@@ -1,11 +1,19 @@
+package org.deidentifier.arx.r;
 import java.io.File;
 
+/**
+ * OS-specific functions for finding the R executable
+ * 
+ * @author Fabian Prasser
+ * @author Alexander Beischl
+ * @author Thuy Tran
+ */
 public class OS {
 
     /**
      * Enum for the OS type
+     * 
      * @author Fabian Prasser
-     *
      */
     public static enum OSType {
         WINDOWS,
@@ -89,23 +97,35 @@ public class OS {
      * @return
      */
     private static String getPath(String[] locations, String[] executables) {
+        
+        // For each location
         for (String location : locations) {
             if (!location.endsWith(File.separator)) {
                 location += File.separator;
             }
+            
+            // For each name of the executable
             for (String executable : executables) {
                 try {
+                    
+                    // Check whether the file exists
                     File file = new File(location + executable);
                     if (file.exists()) {
+                        
+                        // Check if we have the permissions to run the file
                         ProcessBuilder builder = new ProcessBuilder(file.getCanonicalPath(), "--vanilla");
                         builder.start().destroy();
+                        
+                        // Return
                         return file.getCanonicalPath();
                     }
                 } catch (Exception e) {
-                    // Ignore
+                    // Ignore: try the next location
                 }
             }
         }
+        
+        // We haven't found anything
         return null;
     }
 }

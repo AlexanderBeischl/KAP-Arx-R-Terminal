@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+import org.deidentifier.arx.r.OS;
+import org.deidentifier.arx.r.RBuffer;
+import org.deidentifier.arx.r.RIntegration;
+import org.deidentifier.arx.r.RListener;
+
 
 public class Test {
 
@@ -8,7 +13,7 @@ public class Test {
         // Test 1: environment
         System.out.println(OS.getR());
         
-        // Test 2: buffer
+        // Test 2: ring buffer
         RBuffer buffer1 = new RBuffer(4);
         System.out.println("'"+buffer1.toString()+"'");
         buffer1.append('0');
