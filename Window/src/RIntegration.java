@@ -6,6 +6,9 @@ import java.io.Reader;
 
 public class RIntegration {
 
+    /** Debug flag*/
+    public static final boolean DEBUG = true;
+    
 	/** Process*/
 	private Process process;
 	/** Listener*/
@@ -29,7 +32,7 @@ public class RIntegration {
 	    this.listener = listener;
 	    
 	    // Create process
-	    ProcessBuilder builder = new ProcessBuilder(path, "--vanilla")
+	    ProcessBuilder builder = new ProcessBuilder(path, "--vanilla", "--quiet", "--interactive")
 	                                 .redirectErrorStream(true); // Redirect stderr to stdout
 	    
 	    // Try
@@ -51,6 +54,7 @@ public class RIntegration {
                         }
                         shutdown();
                     } catch (IOException e) {
+                        debug(e);
                         shutdown();
                     }
                 }
@@ -59,6 +63,7 @@ public class RIntegration {
             t.start();
             
         } catch (IOException e) {
+            debug(e);
             shutdown();
         }
 	}
@@ -79,11 +84,22 @@ public class RIntegration {
             writer.newLine();
             writer.flush();
         } catch (Exception e) {
+            debug(e);
             shutdown();
         }
 	}
 
 	/**
+	 * Debug helper
+	 * @param exception
+	 */
+	private void debug(Exception exception) {
+        if (DEBUG) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
 	 * Closes R
 	 */
     public void shutdown() {
