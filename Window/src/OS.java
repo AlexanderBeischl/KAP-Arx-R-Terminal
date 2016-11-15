@@ -17,7 +17,9 @@ public class OS {
 	/** Locations*/
 	private static final String[] locationsMac = {"/Applications/R.app/Contents/MacOS/R"};
 	/** Locations*/
-	private static final String[] locationsUnix = {"/usr/lib/R/bin"};
+	private static final String[] locationsUnix = {"/usr/lib/R/bin",
+	                                               "/usr/bin/",
+	                                               "/usr/share/R/share"};
 
 	/** Locations*/
 	private static final String[] locationsWindows = {"C:\\Program Files\\R\\R-3.3.2\\bin",
@@ -25,7 +27,7 @@ public class OS {
 	/** Executables*/
 	private static final String[] executablesMac = {"R.app"};
 	/** Executables*/
-	private static final String[] executablesUnix = {"exec"};
+	private static final String[] executablesUnix = {"R","exec"};
     /** Executables*/
 	private static final String[] executablesWindows = {"R.exe"};
 	
@@ -96,9 +98,11 @@ public class OS {
                 try {
                     File file = new File(location + executable);
                     if (file.exists()) {
+                        ProcessBuilder builder = new ProcessBuilder(file.getCanonicalPath(), "--vanilla");
+                        builder.start().destroy();
                         return file.getCanonicalPath();
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     // Ignore
                 }
             }
