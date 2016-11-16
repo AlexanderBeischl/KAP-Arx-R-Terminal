@@ -34,6 +34,16 @@ public class RBuffer {
         offset = (offset == buffer.length - 1) ? 0 : offset + 1;
     }
     
+    /**
+     * Appends all chars from the buffer
+     * @param buffer
+     */
+    public void append(char[] buffer) {
+        for (char c : buffer) {
+            this.append(c);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

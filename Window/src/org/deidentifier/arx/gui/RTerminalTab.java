@@ -1,6 +1,7 @@
 package org.deidentifier.arx.gui;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.widgets.Composite;
@@ -14,11 +15,11 @@ import org.eclipse.swt.widgets.Text;
  * @author Fabian Prasser
  */
 public class RTerminalTab {
-    
+
     /** Widget */
     private final Text       input;
     /** Widget */
-    private final Text       output;
+    private final StyledText output;
     /** Widget */
     private final Composite  root;
     /** Listener */
@@ -41,7 +42,7 @@ public class RTerminalTab {
             @Override
             public void keyTraversed(TraverseEvent event) {
                 if (event.detail == SWT.TRAVERSE_RETURN) {
-                    if (input.getText() != null) {
+                    if (input.getText() != null && !input.getText().isEmpty()) {
                         String command = input.getText();
                         input.setText("");
                         if (listener != null) {
@@ -53,7 +54,7 @@ public class RTerminalTab {
         });
 
         // User output
-        output = new Text(root, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+        output = new StyledText(root, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         output.setLayoutData(RLayout.createFillGridData());
     }
 

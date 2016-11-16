@@ -12,14 +12,18 @@ import java.io.Reader;
  */
 public class RIntegration {
 
-    /** Debug flag*/
-    public static final boolean DEBUG = false;
-    
-	/** Process*/
-	private Process process;
-	/** Listener*/
-    private RListener listener;
-	
+    /** Debug flag */
+    private static final boolean DEBUG   = false;
+    /** Newline */
+    private static final char[]  NEWLINE = System.getProperty("line.separator").toCharArray();
+
+    /** Process */
+    private Process              process;
+    /** Listener */
+    private RListener            listener;
+    /** Buffer */
+    private final RBuffer        buffer;
+
 	/**
 	 * Creates a new instance
 	 * @param path
@@ -36,6 +40,7 @@ public class RIntegration {
 	    
 	    // Store
 	    this.listener = listener;
+	    this.buffer = buffer;
 	    
 	    // Create process
 	    ProcessBuilder builder = new ProcessBuilder(OS.getParameters(path))
@@ -85,6 +90,8 @@ public class RIntegration {
 	    }
 
         try {
+            this.buffer.append(command.toCharArray());
+            this.buffer.append(NEWLINE);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
             writer.write(command);
             writer.newLine();
