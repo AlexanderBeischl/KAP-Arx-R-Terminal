@@ -128,4 +128,23 @@ public class OS {
         // We haven't found anything
         return null;
     }
+
+    /**
+     * Returns the parameters for the R process
+     * @param path 
+     * @return
+     */
+    public static String[] getParameters(String path) {
+        switch (getOS()) {
+        case MAC:
+            return new String[]{path, "--vanilla", "--quiet", "--interactive"};
+        case UNIX:
+            return new String[]{path, "--vanilla", "--quiet", "--interactive"};
+        case WINDOWS:
+            return new String[]{path, "--vanilla", "--quiet", "--ess"};
+        default:
+            throw new IllegalStateException("Unknown operating system");
+        }
+       
+    }
 }

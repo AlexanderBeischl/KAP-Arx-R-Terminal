@@ -38,7 +38,7 @@ public class RIntegration {
 	    this.listener = listener;
 	    
 	    // Create process
-	    ProcessBuilder builder = new ProcessBuilder(path, "--vanilla", "--quiet", "--interactive")
+	    ProcessBuilder builder = new ProcessBuilder(OS.getParameters(path))
 	                                 .redirectErrorStream(true); // Redirect stderr to stdout
 	    
 	    // Try
