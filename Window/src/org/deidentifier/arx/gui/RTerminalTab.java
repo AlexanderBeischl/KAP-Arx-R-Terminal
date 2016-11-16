@@ -38,6 +38,8 @@ public class RTerminalTab {
         // User input
         input = new Text(root, SWT.BORDER);
         input.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+        
+        // Listen for enter key
         input.addTraverseListener(new TraverseListener() {
             @Override
             public void keyTraversed(TraverseEvent event) {
