@@ -1,11 +1,15 @@
 package org.deidentifier.arx.gui;
 
 import org.deidentifier.arx.r.OS;
+import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 
 /**
@@ -33,13 +37,22 @@ public class RSetupTab {
         root = new Composite(folder, SWT.NONE);
         root.setLayout(RLayout.createGridLayout(2));
         
+        /*
         //To open the manuell Search...
         manuellSearch = new Button(root,SWT.PUSH);
         manuellSearch.setText("Select R-File");
         manuellSearch.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         
         //Listener for the manuellSearch
-        
+        manuellSearch.addMouseListener(new MouseAdapter()
+		{
+			public void mouseUp(MouseEvent e)
+			{
+				String pathToR = RBrowserWindow.openBrowser(new Shell());
+				RTerminal.startRIntegration(pathToR);
+			}
+		});
+        */
         Label label1 = new Label(root, SWT.NONE);
         label1.setText("Location: ");
         

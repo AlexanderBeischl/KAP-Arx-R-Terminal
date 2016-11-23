@@ -1,6 +1,6 @@
 package org.deidentifier.arx.gui;
 
-import org.deidentifier.arx.r.RScriptFinder;
+import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.MouseAdapter;
@@ -73,7 +73,7 @@ public class RTerminalTab {
 			//Writes the text 
 			public void mouseUp(MouseEvent e)
 			{
-				String path = RScriptFinder.openScriptBrowser(new Shell());
+				String path = RBrowserWindow.openBrowser(new Shell());
 				if (listener != null) {
 					listener.command("source(\""+path+"\")");
                 }

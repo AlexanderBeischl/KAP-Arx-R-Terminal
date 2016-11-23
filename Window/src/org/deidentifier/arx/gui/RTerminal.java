@@ -20,6 +20,10 @@ public class RTerminal {
     /** Event delay*/
     private static final int EVENT_DELAY = 10;
     
+    static RTerminalTab tabTerminal;
+    static RBuffer buffer;
+    static RListener listener;
+    
     /**
      * Creates a new shell within the given control
      * @param shell
@@ -30,7 +34,7 @@ public class RTerminal {
         TabFolder folder = new TabFolder(parent, SWT.NULL);
 
         // Tabs
-        final RTerminalTab tabTerminal = new RTerminalTab(folder);
+        tabTerminal = new RTerminalTab(folder);
         final RSetupTab tabSetup = new RSetupTab(folder);
         
         // Item 1
@@ -44,8 +48,8 @@ public class RTerminal {
         item2.setControl(tabSetup.getControl());
         
         // R integration
-        final RBuffer buffer = new RBuffer(BUFFER_SIZE);
-        final RListener listener = new RListener(EVENT_DELAY) {
+        buffer = new RBuffer(BUFFER_SIZE);
+        listener = new RListener(EVENT_DELAY) {
 
             @Override
             public void bufferUpdated() {
@@ -58,14 +62,18 @@ public class RTerminal {
             }
         };
         
-        
-        //TODO
+        startRIntegration(OS.getR());
+    }
+    
+    public static void startRIntegration(final String path)
+    {
+    	//TODO
         // Start integration
-        String pathToR = OS.getR();
+       
         
-        if(pathToR != null)
+        if(path != null)
         {
-        	final RIntegration r = new RIntegration(pathToR, buffer, listener);
+        	final RIntegration r = new RIntegration(path, buffer, listener);
         
         	// Redirect user input
         	tabTerminal.setCommandListener(new RCommandListener() {

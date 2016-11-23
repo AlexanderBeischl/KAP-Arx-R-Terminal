@@ -33,7 +33,7 @@ public class OS {
 	private static final String[] locationsWindows = {"C:\\Program Files\\R\\R-3.3.2\\bin",
 	                                                  "C:\\Program Files\\R\\R-2.1.5.1\\bin"};
 	/** Executables*/
-	private static final String[] executablesMac = {"R","R.app"};
+	private static final String[] executablesMac = {"R"};
 	/** Executables*/
 	private static final String[] executablesUnix = {"R","exec"};
     /** Executables*/
@@ -140,7 +140,7 @@ public class OS {
     public static String[] getParameters(String path) {
         switch (getOS()) {
         case MAC:
-            return new String[]{"/usr/local/bin/r", "--vanilla", "--quiet", "--interactive"};
+        	return new String[]{"/usr/local/bin/r", "--vanilla", "--quiet", "--interactive"};
         case UNIX:
             return new String[]{path, "--vanilla", "--quiet", "--interactive"};
         case WINDOWS:
