@@ -58,15 +58,26 @@ public class RTerminal {
             }
         };
         
-        // Start integration
-        final RIntegration r = new RIntegration(OS.getR(), buffer, listener);
         
-        // Redirect user input
-        tabTerminal.setCommandListener(new RCommandListener() {
-            @Override
-            public void command(String command) {
-                r.execute(command);
-            }
-        });
+        //TODO
+        // Start integration
+        String pathToR = OS.getR();
+        
+        if(pathToR != null)
+        {
+        	final RIntegration r = new RIntegration(pathToR, buffer, listener);
+        
+        	// Redirect user input
+        	tabTerminal.setCommandListener(new RCommandListener() {
+        		@Override
+        		public void command(String command) {
+        			r.execute(command);
+        		}
+        	});
+        }
+        else
+        {
+        	System.out.print("R wasn't found!");
+        }
     }
 }

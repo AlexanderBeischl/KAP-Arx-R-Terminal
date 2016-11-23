@@ -54,6 +54,7 @@ public class Test {
                                                 buffer,
                                                 listener);
         
+       
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
         while (line != null) {

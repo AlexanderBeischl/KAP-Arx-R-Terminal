@@ -1,11 +1,17 @@
 package org.deidentifier.arx.gui;
 
+import org.deidentifier.arx.r.RScriptFinder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.Text;
 
@@ -24,6 +30,8 @@ public class RTerminalTab {
     private final Composite  root;
     /** Listener */
     private RCommandListener listener;
+    /** Button for searching Scripts*/
+    private final Button scriptButton;
 
     /**
      * Creates a new instance
@@ -54,7 +62,24 @@ public class RTerminalTab {
                 }
             }
         });
-
+        
+        scriptButton = new Button(root, SWT.PUSH);
+        scriptButton.setText("Select Script");
+        scriptButton.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+       
+        //Listener for the mouseButton, opens a File-Browser
+        scriptButton.addMouseListener(new MouseAdapter()
+		{
+			//Writes the text 
+			public void mouseUp(MouseEvent e)
+			{
+				String path = RScriptFinder.openScriptBrowser(new Shell());
+				if (listener != null) {
+					listener.command("source(\""+path+"\")");
+                }
+			}
+		});
+        
         // User output
         output = new StyledText(root, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         output.setLayoutData(RLayout.createFillGridData());

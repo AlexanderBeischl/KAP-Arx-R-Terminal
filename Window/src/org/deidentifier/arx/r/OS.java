@@ -1,5 +1,6 @@
 package org.deidentifier.arx.r;
 import java.io.File;
+import java.nio.file.Files;
 
 /**
  * OS-specific functions for finding the R executable
@@ -22,7 +23,7 @@ public class OS {
     }
     
 	/** Locations*/
-	private static final String[] locationsMac = {"/Applications/R.app/Contents/MacOS/R"};
+	private static final String[] locationsMac = {"/Applications/R.app/Contents/MacOS/"};
 	/** Locations*/
 	private static final String[] locationsUnix = {"/usr/lib/R/bin",
 	                                               "/usr/bin/",
@@ -32,7 +33,7 @@ public class OS {
 	private static final String[] locationsWindows = {"C:\\Program Files\\R\\R-3.3.2\\bin",
 	                                                  "C:\\Program Files\\R\\R-2.1.5.1\\bin"};
 	/** Executables*/
-	private static final String[] executablesMac = {"R.app"};
+	private static final String[] executablesMac = {"R","R.app"};
 	/** Executables*/
 	private static final String[] executablesUnix = {"R","exec"};
     /** Executables*/
@@ -109,9 +110,10 @@ public class OS {
                 try {
                     
                     // Check whether the file exists
-                    File file = new File(location + executable);
-                    if (file.exists()) {
-                        
+                    File file = new File(location + executable).getAbsoluteFile();
+                   
+                    if (file.getAbsoluteFile().exists()) 
+                    {
                         // Check if we have the permissions to run the file
                         ProcessBuilder builder = new ProcessBuilder(file.getCanonicalPath(), "--vanilla");
                         builder.start().destroy();
@@ -134,10 +136,11 @@ public class OS {
      * @param path 
      * @return
      */
+    //TODO fix finding the path!
     public static String[] getParameters(String path) {
         switch (getOS()) {
         case MAC:
-            return new String[]{path, "--vanilla", "--quiet", "--interactive"};
+            return new String[]{"/usr/local/bin/r", "--vanilla", "--quiet", "--interactive"};
         case UNIX:
             return new String[]{path, "--vanilla", "--quiet", "--interactive"};
         case WINDOWS:
