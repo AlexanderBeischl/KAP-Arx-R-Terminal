@@ -23,7 +23,7 @@ public class OS {
     }
     
 	/** Locations*/
-	private static final String[] locationsMac = {"/Applications/R.app/Contents/MacOS/"};
+	private static final String[] locationsMac = {"/usr/local/bin/"};
 	/** Locations*/
 	private static final String[] locationsUnix = {"/usr/lib/R/bin",
 	                                               "/usr/bin/",
@@ -110,10 +110,11 @@ public class OS {
                 try {
                     
                     // Check whether the file exists
-                    File file = new File(location + executable).getAbsoluteFile();
+                    File file = new File(location + executable);
                    
-                    if (file.getAbsoluteFile().exists()) 
+                    if (file.exists()) 
                     {
+           
                         // Check if we have the permissions to run the file
                         ProcessBuilder builder = new ProcessBuilder(file.getCanonicalPath(), "--vanilla");
                         builder.start().destroy();
@@ -140,7 +141,7 @@ public class OS {
     public static String[] getParameters(String path) {
         switch (getOS()) {
         case MAC:
-        	return new String[]{"/usr/local/bin/r", "--vanilla", "--quiet", "--interactive"};
+        	return new String[]{path, "--vanilla", "--quiet", "--interactive"};
         case UNIX:
             return new String[]{path, "--vanilla", "--quiet", "--interactive"};
         case WINDOWS:

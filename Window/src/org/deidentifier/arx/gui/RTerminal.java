@@ -21,6 +21,7 @@ public class RTerminal {
     private static final int EVENT_DELAY = 10;
     
     static RTerminalTab tabTerminal;
+    static RSetupTab tabSetup;
     static RBuffer buffer;
     static RListener listener;
     
@@ -35,7 +36,7 @@ public class RTerminal {
 
         // Tabs
         tabTerminal = new RTerminalTab(folder);
-        final RSetupTab tabSetup = new RSetupTab(folder);
+        tabSetup = new RSetupTab(folder);
         
         // Item 1
         TabItem item1 = new TabItem(folder, SWT.NULL);
@@ -82,6 +83,8 @@ public class RTerminal {
         			r.execute(command);
         		}
         	});
+        	
+        	tabTerminal.enableTab();
         }
         else
         {

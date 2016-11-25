@@ -43,8 +43,11 @@ public class RTerminalTab {
         root = new Composite(folder, SWT.NONE);
         root.setLayout(RLayout.createGridLayout(1));
         
+        Composite topline = new Composite(root, SWT.NONE);
+        topline.setLayout(RLayout.createGridLayout(2));
+        topline.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         // User input
-        input = new Text(root, SWT.BORDER);
+        input = new Text(topline, SWT.BORDER);
         input.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         
         // Listen for enter key
@@ -63,7 +66,7 @@ public class RTerminalTab {
             }
         });
         
-        scriptButton = new Button(root, SWT.PUSH);
+        scriptButton = new Button(topline, SWT.PUSH);
         scriptButton.setText("Select Script");
         scriptButton.setLayoutData(RLayout.createFillHorizontallyGridData(true));
        
@@ -83,6 +86,9 @@ public class RTerminalTab {
         // User output
         output = new StyledText(root, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         output.setLayoutData(RLayout.createFillGridData());
+        
+        //Disables the usage of the tab, is enabled after R was found
+        disableTab();
     }
 
     /**
@@ -110,5 +116,15 @@ public class RTerminalTab {
      */
     public void setCommandListener(RCommandListener listener) {
         this.listener = listener;
+    }
+    
+    public void disableTab()
+    {
+    	root.setEnabled(false);
+    }
+    
+    public void enableTab()
+    {
+    	root.setEnabled(true);
     }
 }
