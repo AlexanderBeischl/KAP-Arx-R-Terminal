@@ -48,7 +48,7 @@ public class RTerminalTab {
         topline.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         // User input
         input = new Text(topline, SWT.BORDER);
-        input.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+        input.setLayoutData(RLayout.createFillHorizontallyGridData(false));
         
         // Listen for enter key
         input.addTraverseListener(new TraverseListener() {
@@ -68,8 +68,7 @@ public class RTerminalTab {
         
         scriptButton = new Button(topline, SWT.PUSH);
         scriptButton.setText("Select Script");
-        scriptButton.setLayoutData(RLayout.createFillHorizontallyGridData(true));
-       
+        
         //Listener for the mouseButton, opens a File-Browser
         scriptButton.addMouseListener(new MouseAdapter()
 		{
