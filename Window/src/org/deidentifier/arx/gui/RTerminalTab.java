@@ -76,7 +76,7 @@ public class RTerminalTab {
 			public void mouseUp(MouseEvent e)
 			{
 				String path = RBrowserWindow.openBrowser(new Shell());
-				if (listener != null) {
+				if (path != null && listener != null) {
 					listener.command("source(\""+path+"\")");
                 }
 			}
@@ -85,6 +85,9 @@ public class RTerminalTab {
         // User output
         output = new StyledText(root, SWT.BORDER | SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         output.setLayoutData(RLayout.createFillGridData());
+        output.setEditable(false);
+       
+        
         
         //Disables the usage of the tab, is enabled after R was found
         disableTab();

@@ -12,7 +12,7 @@ public class RBrowserWindow {
 		{
 			FileDialog dialogFile = new FileDialog(shell);		 
 			String path = dialogFile.open();
-			System.out.print(path);
+			//System.out.println(path);
 			return path;
 		}
 	}
