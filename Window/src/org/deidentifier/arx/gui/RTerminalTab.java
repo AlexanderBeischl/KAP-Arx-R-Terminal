@@ -9,6 +9,7 @@ import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
@@ -23,7 +24,7 @@ import org.eclipse.swt.widgets.Text;
 public class RTerminalTab {
 
     /** Widget */
-    private final Text       input;
+    private final Combo       input;
     /** Widget */
     private final StyledText output;
     /** Widget */
@@ -47,17 +48,33 @@ public class RTerminalTab {
         topline.setLayout(RLayout.createGridLayout(2));
         topline.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         // User input
-        input = new Text(topline, SWT.BORDER);
+        input = new Combo(topline, SWT.DROP_DOWN);
         input.setLayoutData(RLayout.createFillHorizontallyGridData(false));
+        
+        //Dropdown
+//        final Integer itemPos = 9;
+        // final String[] items = {"Das", "ist", "ein", "Test", "5", "6", "7", "8", "9", "10"};
+        final String[] items = {};
+        input.setItems(items);
+        input.setVisibleItemCount(10);
         
         // Listen for enter key
         input.addTraverseListener(new TraverseListener() {
             @Override
             public void keyTraversed(TraverseEvent event) {
+            	
                 if (event.detail == SWT.TRAVERSE_RETURN) {
                     if (input.getText() != null && !input.getText().isEmpty()) {
                         String command = input.getText();
                         input.setText("");
+                        String[] tmp = input.getItems();
+                        int newLength = tmp.length >= 10 ? 10 : tmp.length + 1;
+                        String[] scheissJava = new String[newLength];
+                        scheissJava[0] = command;
+                        if(newLength > 1)
+                        	System.arraycopy(tmp, 0, scheissJava, 1, newLength-1);
+                        //input.add(command);
+                        input.setItems(scheissJava);
                         if (listener != null) {
                             listener.command(command);
                         }
