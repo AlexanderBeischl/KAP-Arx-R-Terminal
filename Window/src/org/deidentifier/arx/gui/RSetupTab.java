@@ -121,7 +121,7 @@ public class RSetupTab {
 				String pathToR = RBrowserWindow.openBrowser(new Shell());
 				RTerminal.endR();
 				//RTerminal.showNewR();
-				RTerminal.startRIntegration(pathToR);
+				RTerminal.startManuellRIntegration(pathToR);
 			}
 		});
     }
@@ -146,10 +146,43 @@ public class RSetupTab {
                          
                          RTerminal.endR();
                          System.out.println("Done!");
-                         RTerminal.startRIntegration(directory);
+                         RTerminal.startManuellRIntegration(directory);
                      }
                  }
              }
          });
     }
+    /*
+    public void manageBufferSize()
+    {
+    	Label buffSize = new Label(root, SWT.NONE);
+    	buffSize.setText("Size of the Output-Buffer:");
+        
+   	 	final Text bufferSize = new Text(root, SWT.BORDER);
+   	 	bufferSize.setText("");
+   	 	bufferSize.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+        
+        // Listen for enter key
+   	 	bufferSize.addTraverseListener(new TraverseListener() {
+            @Override
+            public void keyTraversed(TraverseEvent event) {
+                if (event.detail == SWT.TRAVERSE_RETURN) {
+                	
+                    if (bufferSize.getText() != null && !bufferSize.getText().isEmpty()) {
+                    	int size = Integer.parseInt(bufferSize.getText());
+                    	if(size < 0)
+                    	{
+                    		bufferSize.setText(RTerminal.buffer);
+                    	}
+                    	else
+                    	{
+                    		
+                    	}
+                        
+                    }
+                }
+            }
+        });
+    }*/
+    
 }

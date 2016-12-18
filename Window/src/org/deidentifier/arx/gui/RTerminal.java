@@ -101,5 +101,33 @@ public class RTerminal {
     	buffer.append(text);
     	r.appendNewLines(3);
     }
+    
+    public static void showEndDialog()
+    {
+    	r.appendNewLines(2);
+    	char[] text = "R was shut down!".toCharArray();
+    	buffer.append(text);
+    }
+    
+    public static void startManuellRIntegration(final String path)
+    {  
+    	endR();
+    	showEndDialog();
+    	showNewR();
+    	
+        if(path != null)
+        {
+        	r = new RIntegration(path, buffer, listener);
+        	// Redirect user input
+        	tabTerminal.setCommandListener(new RCommandListener() {
+        		@Override
+        		public void command(String command) {
+        			r.execute(command);
+        		}
+        	});
+        	
+        	tabTerminal.enableTab();
+        }
+    }
    
 }
