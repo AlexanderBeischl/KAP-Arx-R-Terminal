@@ -130,4 +130,10 @@ public class RIntegration {
             exception.printStackTrace();
         }
     }
+	
+	public void appendNewLines(int n)
+	{
+		for(int i=0; i<n;i++)
+		this.buffer.append(NEWLINE);
+	}
 }

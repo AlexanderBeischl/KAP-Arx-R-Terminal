@@ -151,4 +151,18 @@ public class OS {
         }
        
     }
+    
+    public static String printOS()
+    {
+    	switch (getOS()) {
+        case MAC:
+            return "macOS";
+        case UNIX:
+            return "Unix";
+        case WINDOWS:
+            return "Windows";
+        default:
+            throw new IllegalStateException("Unknown operating system");
+        }
+    }
 }

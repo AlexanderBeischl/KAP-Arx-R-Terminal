@@ -25,6 +25,8 @@ public class RTerminal {
     static RBuffer buffer;
     static RListener listener;
     
+    static RIntegration r;
+    
     /**
      * Creates a new shell within the given control
      * @param shell
@@ -71,11 +73,9 @@ public class RTerminal {
     	//TODO
         // Start integration
        
-        
         if(path != null)
         {
-        	final RIntegration r = new RIntegration(path, buffer, listener);
-        
+        	r = new RIntegration(path, buffer, listener);
         	// Redirect user input
         	tabTerminal.setCommandListener(new RCommandListener() {
         		@Override
@@ -86,9 +86,20 @@ public class RTerminal {
         	
         	tabTerminal.enableTab();
         }
-        else
-        {
-        	System.out.print("R wasn't found!");
-        }
     }
+    
+    public static void endR()
+    {
+    	r.shutdown();
+    	tabTerminal.disableTab();
+    }
+    
+    public static void showNewR()
+    {
+    	r.appendNewLines(2);
+    	char[] text = "New R was started!".toCharArray();
+    	buffer.append(text);
+    	r.appendNewLines(3);
+    }
+   
 }
