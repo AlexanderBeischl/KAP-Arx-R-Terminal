@@ -1,5 +1,7 @@
 package org.deidentifier.arx.gui;
 
+import java.nio.Buffer;
+
 import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -104,8 +106,6 @@ public class RTerminalTab {
         output.setLayoutData(RLayout.createFillGridData());
         output.setEditable(false);
        
-        
-        
         //Disables the usage of the tab, is enabled after R was found
         disableTab();
     }

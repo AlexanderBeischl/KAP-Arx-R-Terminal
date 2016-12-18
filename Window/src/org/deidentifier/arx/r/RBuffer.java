@@ -55,4 +55,9 @@ public class RBuffer {
         }
         return builder.toString();
     }
+    
+    public void emptyBuffer()
+    {
+    	//TODO
+    }
 }
