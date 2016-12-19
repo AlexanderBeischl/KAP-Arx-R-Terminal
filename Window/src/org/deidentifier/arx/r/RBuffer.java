@@ -8,7 +8,7 @@ package org.deidentifier.arx.r;
 public class RBuffer {
 
     /** The buffer*/
-    private final char[] buffer;
+    private char[] buffer;
     
     /** Start*/
     private int offset = 0;
@@ -32,6 +32,7 @@ public class RBuffer {
         buffer[offset] = c;
         length = (length == buffer.length) ? length : length + 1;
         offset = (offset == buffer.length - 1) ? 0 : offset + 1;
+        //System.out.println("Offest: " + offset + " Length: " + length);
     }
     
     /**
@@ -54,10 +55,5 @@ public class RBuffer {
             builder.append(buffer, 0, offset);
         }
         return builder.toString();
-    }
-    
-    public void emptyBuffer()
-    {
-    	//TODO
     }
 }

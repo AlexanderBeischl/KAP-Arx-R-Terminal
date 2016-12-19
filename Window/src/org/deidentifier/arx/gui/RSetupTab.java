@@ -32,6 +32,10 @@ public class RSetupTab {
     
     private Button manuellSearch;
     
+    private Text dirtext;
+    
+    private Text vers;
+    
     /**
      * Creates a new instance
      * @param folder
@@ -76,32 +80,46 @@ public class RSetupTab {
     	Label location = new Label(root, SWT.NONE);
         location.setText("Location: ");
         
-        //Label label2 = new Label(root, SWT.BORDER);
-        Text dirtext = new Text(root, SWT.BORDER);
+        dirtext = new Text(root, SWT.BORDER);
+        
         if(OS.getR() != null)
         {
-        	//label2.setText(OS.getR());
-        	dirtext.setText(OS.getR());
+    		dirtext.setText(OS.getR());
         }
+    	else
+    	{
+    		dirtext.setText("No falid R-exec found!");
+    	}		
+        
         dirtext.setLayoutData(RLayout.createFillHorizontallyGridData(true));
-        //label2.setLayoutData(RLayout.createFillHorizontallyGridData(true));
     }
     
     private void showRVersion()
     {
-    	String path = OS.getR();
-    	String dirs[] = path.split(File.separator);
-    	int pos = Arrays.asList(dirs).indexOf("Versions");
-    	
     	Label version = new Label(root, SWT.NONE);
         version.setText("Version: ");
         
-        Text vers = new Text(root, SWT.BORDER);
-        if(pos >= 0)
+        vers = new Text(root, SWT.BORDER);
+        
+        getRVersion(OS.getR());
+        
+        vers.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+    }
+    
+    private void getRVersion(String path)
+    {
+    	String dirs[] = path.split(File.separator);
+    	int pos = Arrays.asList(dirs).indexOf("Versions");
+    	
+    	if(pos >= 0)
         {
         	vers.setText(dirs[++pos]);
         }
-        vers.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+    	else
+    	{
+    		vers.setText("No falid R-Version selected!");
+    	}
+    		
     }
     
     private void createManuellSearch()
@@ -119,9 +137,9 @@ public class RSetupTab {
 			public void mouseUp(MouseEvent e)
 			{
 				String pathToR = RBrowserWindow.openBrowser(new Shell());
-				RTerminal.endR();
-				//RTerminal.showNewR();
-				RTerminal.startManuellRIntegration(pathToR);
+				
+				updateSetup(pathToR);
+				
 			}
 		});
     }
@@ -144,45 +162,26 @@ public class RSetupTab {
                          String directory = manuellDirText.getText();
                          manuellDirText.setText("");
                          
-                         RTerminal.endR();
-                         System.out.println("Done!");
-                         RTerminal.startManuellRIntegration(directory);
+                         updateSetup(directory);
                      }
                  }
              }
          });
     }
-    /*
-    public void manageBufferSize()
-    {
-    	Label buffSize = new Label(root, SWT.NONE);
-    	buffSize.setText("Size of the Output-Buffer:");
-        
-   	 	final Text bufferSize = new Text(root, SWT.BORDER);
-   	 	bufferSize.setText("");
-   	 	bufferSize.setLayoutData(RLayout.createFillHorizontallyGridData(true));
-        
-        // Listen for enter key
-   	 	bufferSize.addTraverseListener(new TraverseListener() {
-            @Override
-            public void keyTraversed(TraverseEvent event) {
-                if (event.detail == SWT.TRAVERSE_RETURN) {
-                	
-                    if (bufferSize.getText() != null && !bufferSize.getText().isEmpty()) {
-                    	int size = Integer.parseInt(bufferSize.getText());
-                    	if(size < 0)
-                    	{
-                    		bufferSize.setText(RTerminal.buffer);
-                    	}
-                    	else
-                    	{
-                    		
-                    	}
-                        
-                    }
-                }
-            }
-        });
-    }*/
     
+    private void updateSetup(String path)
+    {
+    	boolean success = RTerminal.startManuellRIntegration(path);
+    	
+    	if(success)
+    	{
+    		dirtext.setText(path);
+    		getRVersion(path);
+    	}
+    	else
+    	{
+    		dirtext.setText("No falid R-exec found!");
+    		vers.setText("No falid R-Version selected!");
+    	}
+    }
 }

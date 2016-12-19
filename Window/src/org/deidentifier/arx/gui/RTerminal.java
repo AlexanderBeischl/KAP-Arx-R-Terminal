@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.TabItem;
  * R terminal
  * 
  * @author Fabian Prasser
+ * @author Alexander Beischl
  */
 public class RTerminal {
 
@@ -91,6 +92,7 @@ public class RTerminal {
     public static void endR()
     {
     	r.shutdown();
+    	showEndDialog();
     	tabTerminal.disableTab();
     }
     
@@ -109,13 +111,11 @@ public class RTerminal {
     	buffer.append(text);
     }
     
-    public static void startManuellRIntegration(final String path)
+    public static boolean startManuellRIntegration(final String path)
     {  
     	endR();
-    	showEndDialog();
-    	showNewR();
     	
-        if(path != null)
+        if(path != null && OS.isR_Exec(path))
         {
         	r = new RIntegration(path, buffer, listener);
         	// Redirect user input
@@ -126,8 +126,15 @@ public class RTerminal {
         		}
         	});
         	
-        	tabTerminal.enableTab();
+        	if(r.isAlive())
+        	{
+        		showNewR();
+        		tabTerminal.enableTab();
+        	}
+        	
+        	return r.isAlive();
         }
+        return false;
     }
    
 }

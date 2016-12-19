@@ -165,4 +165,32 @@ public class OS {
             throw new IllegalStateException("Unknown operating system");
         }
     }
+    
+    public static boolean isR_Exec(String path)
+    {
+    	String[] exec;
+    	
+    	switch (getOS()) {
+        case MAC:
+            exec = executablesMac;
+            break;
+        case UNIX:
+        	exec = executablesUnix;
+            break;
+        case WINDOWS:
+        	exec = executablesWindows;
+            break;
+        default:
+            throw new IllegalStateException("Unknown operating system");
+        }
+    	
+    	for(int i = 0; i < exec.length; i++)
+    	{
+    		if(path.endsWith(exec[i]))
+    		{
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }

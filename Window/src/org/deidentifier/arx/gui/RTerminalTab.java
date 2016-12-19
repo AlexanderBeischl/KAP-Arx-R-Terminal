@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Text;
  * Terminal tab
  * 
  * @author Fabian Prasser
+ * @author Alexander Beischl
  */
 public class RTerminalTab {
 
