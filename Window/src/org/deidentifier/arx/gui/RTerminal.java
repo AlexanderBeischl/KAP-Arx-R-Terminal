@@ -25,6 +25,7 @@ public class RTerminal {
     static RSetupTab tabSetup;
     static RBuffer buffer;
     static RListener listener;
+    static String rPath;
     
     static RIntegration r;
     
@@ -64,6 +65,11 @@ public class RTerminal {
             public void closed() {
                 // TODO: Handle
             }
+            
+            @Override
+            public void setupUpdate() {
+                tabSetup.update(r.getVersion());
+            }
         };
         
         startRIntegration(OS.getR());
@@ -71,9 +77,7 @@ public class RTerminal {
     
     public static void startRIntegration(final String path)
     {
-    	//TODO
-        // Start integration
-       
+    	
         if(path != null)
         {
         	r = new RIntegration(path, buffer, listener);
@@ -84,7 +88,8 @@ public class RTerminal {
         			r.execute(command);
         		}
         	});
-        	
+        	//r.getVersion();
+        	rPath = path;
         	tabTerminal.enableTab();
         }
     }
@@ -128,10 +133,10 @@ public class RTerminal {
         	
         	if(r.isAlive())
         	{
+        		rPath = path;
         		showNewR();
-        		tabTerminal.enableTab();
+        		tabTerminal.enableTab();	
         	}
-        	
         	return r.isAlive();
         }
         return false;

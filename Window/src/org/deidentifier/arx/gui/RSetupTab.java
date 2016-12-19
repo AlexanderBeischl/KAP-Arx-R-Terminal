@@ -32,17 +32,18 @@ public class RSetupTab {
     
     private Button manuellSearch;
     
-    private Text dirtext;
+    public Text dirtext;
     
-    private Text vers;
+    public Text vers;
+    
+    /** Listener */
     
     /**
      * Creates a new instance
      * @param folder
      */
-    public RSetupTab(TabFolder folder) {
-
-    	
+    public RSetupTab(TabFolder folder) 
+    {
         // Root
         root = new Composite(folder, SWT.NONE);
         root.setLayout(RLayout.createGridLayout(1));
@@ -50,11 +51,9 @@ public class RSetupTab {
         showOS();
         showRLocation();
         showRVersion();
-        
-        //TODO add manuell Search via directory
+       
         createManuellSearch();
-        createDirSearchLine();
-        
+        createDirSearchLine();        
     }
 
     /**
@@ -82,12 +81,8 @@ public class RSetupTab {
         
         dirtext = new Text(root, SWT.BORDER);
         
-        if(OS.getR() != null)
+        if(OS.getR() == null)
         {
-    		dirtext.setText(OS.getR());
-        }
-    	else
-    	{
     		dirtext.setText("No falid R-exec found!");
     	}		
         
@@ -100,12 +95,13 @@ public class RSetupTab {
         version.setText("Version: ");
         
         vers = new Text(root, SWT.BORDER);
+        vers.setText("No falid R-Version selected!");
         
-        getRVersion(OS.getR());
+        //getRVersion(OS.getR());
         
         vers.setLayoutData(RLayout.createFillHorizontallyGridData(true));
     }
-    
+    /*
     private void getRVersion(String path)
     {
     	String dirs[] = path.split(File.separator);
@@ -118,10 +114,10 @@ public class RSetupTab {
     	else
     	{
     		vers.setText("No falid R-Version selected!");
-    	}
-    		
-    }
-    
+    	}	
+    	
+    }   
+    */
     private void createManuellSearch()
     {
     	//To open the manuell Search...
@@ -169,14 +165,18 @@ public class RSetupTab {
          });
     }
     
-    private void updateSetup(String path)
+    
+    public void update(String input)
     {
-    	boolean success = RTerminal.startManuellRIntegration(path);
-    	
-    	if(success)
+    	this.dirtext.setText(RTerminal.rPath);
+    	this.vers.setText(updateVersion());
+    }
+    
+    public void updateSetup(String path)
+    {
+    	if(RTerminal.startManuellRIntegration(path))
     	{
     		dirtext.setText(path);
-    		getRVersion(path);
     	}
     	else
     	{
@@ -184,4 +184,23 @@ public class RSetupTab {
     		vers.setText("No falid R-Version selected!");
     	}
     }
+    
+    public String updateVersion()
+    {
+    	String output = RTerminal.r.getVersion();
+    	String searchString = "R version ";
+    	int startVersion = output.indexOf(searchString);
+    	String part = output.substring(startVersion + searchString.length());
+    	
+    	String[] parts = part.split(" ");
+    	String version = parts[0];
+    	
+    	int startNickname = output.indexOf("nickname ");
+    	String nickname = output.substring(startNickname + "nickname ".length());
+    	nickname = nickname.trim();
+
+    	return version + " (Nickname: " + nickname +")";
+    	
+    }
+    
 }

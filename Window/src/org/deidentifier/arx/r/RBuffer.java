@@ -32,7 +32,6 @@ public class RBuffer {
         buffer[offset] = c;
         length = (length == buffer.length) ? length : length + 1;
         offset = (offset == buffer.length - 1) ? 0 : offset + 1;
-        //System.out.println("Offest: " + offset + " Length: " + length);
     }
     
     /**

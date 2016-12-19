@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Text;
  * 
  * @author Fabian Prasser
  * @author Alexander Beischl
+ * @author Thuy Tran
  */
 public class RTerminalTab {
 
@@ -72,14 +73,14 @@ public class RTerminalTab {
                         input.setText("");
                         String[] tmp = input.getItems();
                         int newLength = tmp.length >= 10 ? 10 : tmp.length + 1;
-                        String[] scheissJava = new String[newLength];
-                        scheissJava[0] = command;
+                        String[] commArray = new String[newLength];
+                        commArray[0] = command;
                         if(newLength > 1)
-                        	System.arraycopy(tmp, 0, scheissJava, 1, newLength-1);
+                        	System.arraycopy(tmp, 0, commArray, 1, newLength-1);
                         //input.add(command);
-                        input.setItems(scheissJava);
+                        input.setItems(commArray);
                         if (listener != null) {
-                            listener.command(command);
+                            listener.command(command);  
                         }
                     }
                 }

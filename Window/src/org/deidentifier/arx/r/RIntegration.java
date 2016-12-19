@@ -23,6 +23,8 @@ public class RIntegration {
     private RListener            listener;
     /** Buffer */
     private final RBuffer        buffer;
+    
+    private String 				 version;
 
 	/**
 	 * Creates a new instance
@@ -59,6 +61,11 @@ public class RIntegration {
                     try {
                         Reader reader = new InputStreamReader(RIntegration.this.process.getInputStream());
                         int character;
+                        
+                        getVersion(reader);
+                        listener.fireBufferUpdatedEvent();
+                        buffer.append('>');
+                        
                         while ((character = reader.read()) != -1) {
                             buffer.append((char) character);
                             listener.fireBufferUpdatedEvent();
@@ -90,8 +97,10 @@ public class RIntegration {
 	    }
 
         try {
+            /*
             this.buffer.append(command.toCharArray());
             this.buffer.append(NEWLINE);
+            */
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
             writer.write(command);
             writer.newLine();
@@ -136,4 +145,34 @@ public class RIntegration {
 		for(int i=0; i<n;i++)
 		this.buffer.append(NEWLINE);
 	}
+	
+	private void getVersion(Reader reader) 
+	{
+		 execute("version");
+		 int character;
+		 RBuffer versBuffer = new RBuffer(1000);
+		 
+         try {
+        	 while ((character = reader.read()) != '>') {
+			   //Verwirft das erst '>'
+			 }
+        	 
+			while ((character = reader.read()) != '>') {
+			     
+				 versBuffer.append((char) character);  
+			 }
+			this.version = versBuffer.toString();
+			
+			listener.fireSetupUpdatedEvent();
+			
+		} catch (IOException e) {
+		}	
+         
+	}
+
+	public String getVersion()
+	{
+		return version;	
+	}
+	
 }
