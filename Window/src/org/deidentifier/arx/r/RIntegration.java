@@ -97,6 +97,12 @@ public class RIntegration {
 	    }
 
         try {
+        	if(OS.getOS() == OS.OSType.WINDOWS)
+        	{
+        		this.buffer.append(command.toCharArray());
+        		this.buffer.append(NEWLINE);
+        	}
+        	
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
             writer.write(command);
             writer.newLine();
@@ -106,6 +112,24 @@ public class RIntegration {
             shutdown();
         }
 	}
+	
+	public void executeVersion() {
+	    if (this.process == null) {
+	        return;
+	    }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
+            writer.write("Version");
+            writer.newLine();
+            writer.flush();
+        } catch (Exception e) {
+            debug(e);
+            shutdown();
+        }
+	}
+	
+	
 
 	/**
      * Returns whether R is alive

@@ -106,8 +106,11 @@ public class RTerminal {
      */
     public static void endR()
     {
-    	r.shutdown();
-    	showEndDialog();
+    	if(r != null)
+    	{
+    		r.shutdown();
+    		showEndDialog();
+    	}
     	tabTerminal.disableTab();
     }
     
@@ -143,11 +146,16 @@ public class RTerminal {
      * @return Status of the R-process: true -> running, false -> no valid R-exec
      */
     public static boolean startManuellRIntegration(final String path)
-    {  
-    	endR();
-    	
-        if(path != null && OS.isR_Exec(path))
+    {      	
+        if(path == null)
         {
+        	return true;
+        }
+        		
+        if(OS.isR_Exec(path))
+        {
+        	endR();
+        	
         	r = new RIntegration(path, buffer, listener);
         	// Redirect user input
         	tabTerminal.setCommandListener(new RCommandListener() {

@@ -97,6 +97,7 @@ public class RSetupTab {
     		dirtext.setText("No falid R-exec found!");
     	}		
         dirtext.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+        dirtext.setEditable(false);
     }
     
     /**
@@ -114,6 +115,7 @@ public class RSetupTab {
         	vers.setText("No falid R-Version selected!");
         }
         vers.setLayoutData(RLayout.createFillHorizontallyGridData(true));
+        vers.setEditable(false);
     }
    
     /**
