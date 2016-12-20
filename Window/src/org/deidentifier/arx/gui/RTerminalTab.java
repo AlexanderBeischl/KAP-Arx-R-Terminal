@@ -1,13 +1,13 @@
 package org.deidentifier.arx.gui;
 
-import java.nio.Buffer;
+//import java.nio.Buffer;
 
 import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.ShellEvent;
+//import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.widgets.Button;
@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.Text;
+//import org.eclipse.swt.widgets.Text;
 
 /**
  * Terminal tab
@@ -55,9 +55,7 @@ public class RTerminalTab {
         input = new Combo(topline, SWT.DROP_DOWN);
         input.setLayoutData(RLayout.createFillHorizontallyGridData(false));
         
-        //Dropdown
-//        final Integer itemPos = 9;
-        // final String[] items = {"Das", "ist", "ein", "Test", "5", "6", "7", "8", "9", "10"};
+        //Dropdown-Menu
         final String[] items = {};
         input.setItems(items);
         input.setVisibleItemCount(10);
@@ -87,6 +85,7 @@ public class RTerminalTab {
             }
         });
         
+        //Button to search for r-scripts an execute them
         scriptButton = new Button(topline, SWT.PUSH);
         scriptButton.setText("Select Script");
         
@@ -97,7 +96,7 @@ public class RTerminalTab {
 			public void mouseUp(MouseEvent e)
 			{
 				String path = RBrowserWindow.openBrowser(new Shell());
-				if (path != null && listener != null) {
+				if (path != null && path.endsWith(".r") && listener != null) {
 					listener.command("source(\""+path+"\")");
                 }
 			}

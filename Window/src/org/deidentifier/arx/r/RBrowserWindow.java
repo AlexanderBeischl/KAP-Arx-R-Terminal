@@ -1,5 +1,9 @@
 package org.deidentifier.arx.r;
 
+/*
+ * @author Alexander Beischl
+ */
+
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 
@@ -12,7 +16,6 @@ public class RBrowserWindow {
 		{
 			FileDialog dialogFile = new FileDialog(shell);		 
 			String path = dialogFile.open();
-			//System.out.println(path);
 			return path;
 		}
 	}

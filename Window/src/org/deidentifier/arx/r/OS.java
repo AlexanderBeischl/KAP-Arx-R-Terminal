@@ -1,6 +1,6 @@
 package org.deidentifier.arx.r;
 import java.io.File;
-import java.nio.file.Files;
+
 
 /**
  * OS-specific functions for finding the R executable
@@ -137,7 +137,6 @@ public class OS {
      * @param path 
      * @return
      */
-    //TODO fix finding the path!
     public static String[] getParameters(String path) {
         switch (getOS()) {
         case MAC:
@@ -149,7 +148,6 @@ public class OS {
         default:
             throw new IllegalStateException("Unknown operating system");
         }
-       
     }
     
     public static String printOS()
@@ -166,6 +164,12 @@ public class OS {
         }
     }
     
+    /**
+     * Check if the chosen File is a R-Exec by comparing it to the OS-specific 
+     * executables
+     * @param path
+     * @return 
+     */
     public static boolean isR_Exec(String path)
     {
     	String[] exec;

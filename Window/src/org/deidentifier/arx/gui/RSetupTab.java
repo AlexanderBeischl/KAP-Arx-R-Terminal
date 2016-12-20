@@ -1,8 +1,8 @@
 package org.deidentifier.arx.gui;
-
+/*
 import java.io.File;
 import java.util.Arrays;
-
+*/
 import org.deidentifier.arx.r.OS;
 import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
@@ -47,12 +47,12 @@ public class RSetupTab {
         // Root
         root = new Composite(folder, SWT.NONE);
         root.setLayout(RLayout.createGridLayout(1));
-        
+        //Create the GUI-Elements of the SetupTab
         showOS();
         showRLocation();
         showRVersion();
        
-        createManuellSearch();
+        createManuellSearchWindow();
         createDirSearchLine();        
     }
 
@@ -64,6 +64,10 @@ public class RSetupTab {
         return this.root;
     }
     
+    
+    /**
+     * Creates a Label and Textbox showing the OS
+     */
     private void showOS()
     {
     	 Label os = new Label(root, SWT.NONE);
@@ -74,6 +78,13 @@ public class RSetupTab {
          osText.setEditable(false);
     }
     
+    /**
+     * Creates a Label and Textbox for the Location of the R-Version
+     * It checks if R was found
+     * If not it prints the Text seen above
+     * If R was found it will be added by the method update(), which is triggered by 
+     * starting the R-process
+     */
     private void showRLocation()
     {
     	Label location = new Label(root, SWT.NONE);
@@ -85,42 +96,31 @@ public class RSetupTab {
         {
     		dirtext.setText("No falid R-exec found!");
     	}		
-        
         dirtext.setLayoutData(RLayout.createFillHorizontallyGridData(true));
     }
     
+    /**
+     * Creates a Label and Textbox showing the Version
+     * After the R-Process started, the Text vers is updated by update()
+     */
     private void showRVersion()
     {
     	Label version = new Label(root, SWT.NONE);
         version.setText("Version: ");
         
         vers = new Text(root, SWT.BORDER);
-        vers.setText("No falid R-Version selected!");
-        
-        //getRVersion(OS.getR());
-        
+        if(OS.getR() == null)
+        {
+        	vers.setText("No falid R-Version selected!");
+        }
         vers.setLayoutData(RLayout.createFillHorizontallyGridData(true));
     }
-    /*
-    private void getRVersion(String path)
+   
+    /**
+     * Creates a Button for the manuell search of R via a Window
+     */
+    private void createManuellSearchWindow()
     {
-    	String dirs[] = path.split(File.separator);
-    	int pos = Arrays.asList(dirs).indexOf("Versions");
-    	
-    	if(pos >= 0)
-        {
-        	vers.setText(dirs[++pos]);
-        }
-    	else
-    	{
-    		vers.setText("No falid R-Version selected!");
-    	}	
-    	
-    }   
-    */
-    private void createManuellSearch()
-    {
-    	//To open the manuell Search...
         Label searchLabel = new Label(root, SWT.NONE);
         searchLabel.setText("Select the R-Exec manuelly: ");
         manuellSearch = new Button(root,SWT.PUSH);
@@ -140,6 +140,9 @@ public class RSetupTab {
 		});
     }
     
+    /**
+     * Creates a textline for the manuell search of R via typing in the path to the executive
+     */
     private void createDirSearchLine()
     {
     	 Label manuellDir = new Label(root, SWT.NONE);
@@ -164,43 +167,35 @@ public class RSetupTab {
              }
          });
     }
-    
-    
-    public void update(String input)
-    {
-    	this.dirtext.setText(RTerminal.rPath);
-    	this.vers.setText(updateVersion());
-    }
-    
+     
+    /**
+     * This method is called by the two manuell-searches 
+     * It takes the chosen path to the R-exec, calls the 
+     * startManuellRIntegration(path) Method in RTerminal
+     * and checks if it was successful.
+     * If it was, the Std-Tab is updated by update()
+     * otherwise updateSetup(path) shows the attempt failed
+     * and updates the StdTab
+     * @param path
+     */
     public void updateSetup(String path)
     {
-    	if(RTerminal.startManuellRIntegration(path))
+    	if(!RTerminal.startManuellRIntegration(path))
     	{
-    		dirtext.setText(path);
-    	}
-    	else
-    	{
-    		dirtext.setText("No falid R-exec found!");
-    		vers.setText("No falid R-Version selected!");
+    		dirtext.setText("No valid R-exec found!");
+    		vers.setText("No valid R-Version selected!");
     	}
     }
     
-    public String updateVersion()
+    /**
+     * This method is is triggered by the RListener in RTerminal.
+     * It's called after each successful start of R in RIntegration
+     * to update the shown Version and Directory in the Std-Tab
+     */
+    public void update()
     {
-    	String output = RTerminal.r.getVersion();
-    	String searchString = "R version ";
-    	int startVersion = output.indexOf(searchString);
-    	String part = output.substring(startVersion + searchString.length());
-    	
-    	String[] parts = part.split(" ");
-    	String version = parts[0];
-    	
-    	int startNickname = output.indexOf("nickname ");
-    	String nickname = output.substring(startNickname + "nickname ".length());
-    	nickname = nickname.trim();
-
-    	return version + " (Nickname: " + nickname +")";
-    	
+    	this.dirtext.setText(RTerminal.rPath);
+    	this.vers.setText(RTerminal.r.getVersion());
     }
     
 }

@@ -9,6 +9,8 @@ import java.io.Reader;
  * Java integration with R. 
  * 
  * @author Fabian Prasser
+ * @author Alexander Beischl
+ * @author Thuy Tran
  */
 public class RIntegration {
 
@@ -61,10 +63,8 @@ public class RIntegration {
                     try {
                         Reader reader = new InputStreamReader(RIntegration.this.process.getInputStream());
                         int character;
-                        
+                        //Reads out the current version whenever a new R is started
                         getVersion(reader);
-                        listener.fireBufferUpdatedEvent();
-                        buffer.append('>');
                         
                         while ((character = reader.read()) != -1) {
                             buffer.append((char) character);
@@ -97,10 +97,6 @@ public class RIntegration {
 	    }
 
         try {
-            /*
-            this.buffer.append(command.toCharArray());
-            this.buffer.append(NEWLINE);
-            */
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
             writer.write(command);
             writer.newLine();
@@ -146,6 +142,11 @@ public class RIntegration {
 		this.buffer.append(NEWLINE);
 	}
 	
+	/**
+	 * Executes the "version" command to fetch the version output of R
+	 * and store the current version+nickname in the variable version
+	 * @param reader
+	 */
 	private void getVersion(Reader reader) 
 	{
 		 execute("version");
@@ -157,13 +158,29 @@ public class RIntegration {
 			   //Verwirft das erst '>'
 			 }
         	 
+        	//Store the whole output of command "version"
 			while ((character = reader.read()) != '>') {
 			     
 				 versBuffer.append((char) character);  
 			 }
-			this.version = versBuffer.toString();
+			String output = versBuffer.toString();
 			
+			//Extract version and nickname from the output
+			String searchString = "R version ";
+	    	int startVersion = output.indexOf(searchString);
+	    	String part = output.substring(startVersion + searchString.length());
+	    	String[] parts = part.split(" ");
+	    	
+	    	int startNickname = output.indexOf("nickname ");
+	    	String nickname = output.substring(startNickname + "nickname ".length());
+	    	nickname = nickname.trim();
+	    	
+	    	this.version = parts[0] + " (Nickname: " + nickname +")";
+			
+	    	//Send update to the listener to notify it
 			listener.fireSetupUpdatedEvent();
+			//add missing '>'
+			buffer.append('>');
 			
 		} catch (IOException e) {
 		}	

@@ -25,6 +25,7 @@ public class RTerminal {
     static RSetupTab tabSetup;
     static RBuffer buffer;
     static RListener listener;
+    /** store the currently used path of the R-executive*/
     static String rPath;
     
     static RIntegration r;
@@ -66,18 +67,22 @@ public class RTerminal {
                 // TODO: Handle
             }
             
+            //Update the Std-Tab after a new R was started
             @Override
             public void setupUpdate() {
-                tabSetup.update(r.getVersion());
+                tabSetup.update();
             }
         };
         
         startRIntegration(OS.getR());
     }
     
+    /**
+     * This method is used for starting an R-Exec from the 
+     * default locations
+     */
     public static void startRIntegration(final String path)
     {
-    	
         if(path != null)
         {
         	r = new RIntegration(path, buffer, listener);
@@ -88,12 +93,17 @@ public class RTerminal {
         			r.execute(command);
         		}
         	});
-        	//r.getVersion();
+        	//Store the location of the currently used R-Exec
         	rPath = path;
         	tabTerminal.enableTab();
         }
     }
     
+    /**
+     * Before starting a new R-Exec the old one is shut down and 
+     * a Dialog in the RTerminalTab is shown to give the user feedback.
+     * Until a new R is running the Tab is disabled to prohibit any input.
+     */
     public static void endR()
     {
     	r.shutdown();
@@ -101,14 +111,21 @@ public class RTerminal {
     	tabTerminal.disableTab();
     }
     
+    /**
+     * When the new R-Exec is started, a Dialog is printed in the RTerminalTab 
+     * to feedback the user he can use R now. 
+     */
     public static void showNewR()
     {
     	r.appendNewLines(2);
     	char[] text = "New R was started!".toCharArray();
     	buffer.append(text);
-    	r.appendNewLines(3);
+    	r.appendNewLines(3);	
     }
     
+    /**
+     * Prints the endDialog in the RTabTerminal after R was shutdown.
+     */
     public static void showEndDialog()
     {
     	r.appendNewLines(2);
@@ -116,6 +133,15 @@ public class RTerminal {
     	buffer.append(text);
     }
     
+    /**
+     * This method manages starting a R-Exec, which is chosen manuelly by the user.
+     * Therefore, it shuts down the current R-Process at first.
+     * Then it checks if the chosen file is a R-Exec
+     * On success, it creates a new RIntegration to start R, enables the RTerminalTab,
+     * print the startup dialog (showNewR()) and stores the current path.
+     * @param path
+     * @return Status of the R-process: true -> running, false -> no valid R-exec
+     */
     public static boolean startManuellRIntegration(final String path)
     {  
     	endR();
@@ -135,7 +161,7 @@ public class RTerminal {
         	{
         		rPath = path;
         		showNewR();
-        		tabTerminal.enableTab();	
+        		tabTerminal.enableTab();
         	}
         	return r.isAlive();
         }
