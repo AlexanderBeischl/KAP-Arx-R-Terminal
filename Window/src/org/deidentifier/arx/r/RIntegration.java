@@ -9,6 +9,8 @@ import java.io.Reader;
  * Java integration with R. 
  * 
  * @author Fabian Prasser
+ * @author Alexander Beischl
+ * @author Thuy Tran
  */
 public class RIntegration {
 
@@ -23,6 +25,8 @@ public class RIntegration {
     private RListener            listener;
     /** Buffer */
     private final RBuffer        buffer;
+    
+    private String 				 version;
 
 	/**
 	 * Creates a new instance
@@ -59,6 +63,9 @@ public class RIntegration {
                     try {
                         Reader reader = new InputStreamReader(RIntegration.this.process.getInputStream());
                         int character;
+                        //Reads out the current version whenever a new R is started
+                        getVersion(reader);
+                        
                         while ((character = reader.read()) != -1) {
                             buffer.append((char) character);
                             listener.fireBufferUpdatedEvent();
@@ -90,8 +97,12 @@ public class RIntegration {
 	    }
 
         try {
-            this.buffer.append(command.toCharArray());
-            this.buffer.append(NEWLINE);
+        	if(OS.getOS() == OS.OSType.WINDOWS)
+        	{
+        		this.buffer.append(command.toCharArray());
+        		this.buffer.append(NEWLINE);
+        	}
+        	
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
             writer.write(command);
             writer.newLine();
@@ -101,6 +112,24 @@ public class RIntegration {
             shutdown();
         }
 	}
+	
+	public void executeVersion() {
+	    if (this.process == null) {
+	        return;
+	    }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
+            writer.write("Version");
+            writer.newLine();
+            writer.flush();
+        } catch (Exception e) {
+            debug(e);
+            shutdown();
+        }
+	}
+	
+	
 
 	/**
      * Returns whether R is alive
@@ -136,4 +165,55 @@ public class RIntegration {
 		for(int i=0; i<n;i++)
 		this.buffer.append(NEWLINE);
 	}
+	
+	/**
+	 * Executes the "version" command to fetch the version output of R
+	 * and store the current version+nickname in the variable version
+	 * @param reader
+	 */
+	private void getVersion(Reader reader) 
+	{
+		 execute("version");
+		 int character;
+		 RBuffer versBuffer = new RBuffer(1000);
+		 
+         try {
+        	 while ((character = reader.read()) != '>') {
+			   //Verwirft das erst '>'
+			 }
+        	 
+        	//Store the whole output of command "version"
+			while ((character = reader.read()) != '>') {
+			     
+				 versBuffer.append((char) character);  
+			 }
+			String output = versBuffer.toString();
+			
+			//Extract version and nickname from the output
+			String searchString = "R version ";
+	    	int startVersion = output.indexOf(searchString);
+	    	String part = output.substring(startVersion + searchString.length());
+	    	String[] parts = part.split(" ");
+	    	
+	    	int startNickname = output.indexOf("nickname ");
+	    	String nickname = output.substring(startNickname + "nickname ".length());
+	    	nickname = nickname.trim();
+	    	
+	    	this.version = parts[0] + " (Nickname: " + nickname +")";
+			
+	    	//Send update to the listener to notify it
+			listener.fireSetupUpdatedEvent();
+			//add missing '>'
+			buffer.append('>');
+			
+		} catch (IOException e) {
+		}	
+         
+	}
+
+	public String getVersion()
+	{
+		return version;	
+	}
+	
 }

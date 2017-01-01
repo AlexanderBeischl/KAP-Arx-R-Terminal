@@ -14,6 +14,7 @@ public abstract class RListener {
 
     /** Should an event be fired */
     private boolean   fire = false;
+    private boolean   update = false;
 
     /** Timestamp of the last event */
     private long      time = 0;
@@ -35,6 +36,10 @@ public abstract class RListener {
                 if (fire && System.currentTimeMillis() > time) {
                     bufferUpdated();
                     fire = false;
+                }
+                if (update && System.currentTimeMillis() > time) {
+                	setupUpdate();
+                    update = false;
                 }
             }
         });
@@ -84,6 +89,11 @@ public abstract class RListener {
      * Implement this to get notified when the R process dies
      */
     public abstract void closed();
+    
+    /**
+     * Implement this to get notified when the the version was loaded
+     */
+    public abstract void setupUpdate();
 
     /**
      * Internal method to fire an event
@@ -92,7 +102,13 @@ public abstract class RListener {
         this.fire = true;
         this.time = System.currentTimeMillis() + delay;
     }
+    
+    void fireSetupUpdatedEvent() {
+        this.update = true;
+        this.time = System.currentTimeMillis() + delay;
+    }
 
+    
     /**
      * Internal method to fire an event
      */

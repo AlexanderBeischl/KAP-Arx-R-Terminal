@@ -49,6 +49,12 @@ public class Test {
             @Override public void closed() {
                 System.out.println("R has terminated");
             }
+
+			@Override
+			public void setupUpdate() {
+				 System.out.println("Version updated");
+				
+			}
         };
         final RIntegration r = new RIntegration(OS.getR(),
                                                 buffer,
