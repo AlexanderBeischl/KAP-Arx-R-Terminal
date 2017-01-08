@@ -178,14 +178,6 @@ public class RIntegration {
 		 RBuffer versBuffer = new RBuffer(1000);
 		 
          try {
-        	 if(OS.printOS() == "Windows")
-        	 {
-        		 for(int i=0;i<7;i++)
-        		 {
-        			 character = reader.read();
-        		 }
-        	 }
-        	 
         	 while ((character = reader.read()) != '>') {
 			   //Verwirft das erst '>'
 			 }
