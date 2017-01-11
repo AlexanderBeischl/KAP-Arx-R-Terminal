@@ -85,7 +85,7 @@ Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris
 %	ESSAY BODY
 %----------------------------------------------------------------------------------------
 
-\chapter{Einführung}
+\chapter{Einführung}\label{einführung}
 
 This statement requires citation \cite{latexcompanion}; this one does too \cite{einstein}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum lacus sem, ut varius ante dignissim ac. Sed a mi quis lectus feugiat aliquam. Nunc sed vulputate velit. Sed commodo metus vel felis semper, quis rutrum odio vulputate. Donec a elit porttitor, facilisis nisl sit amet, dignissim arcu. Vivamus accumsan pellentesque nulla at euismod. Duis porta rutrum sem, eu facilisis mi varius sed. Suspendisse potenti. Mauris rhoncus neque nisi, ut laoreet augue pretium luctus. Vestibulum sit amet luctus sem, luctus ultrices leo. Aenean vitae sem leo.
 
@@ -93,26 +93,62 @@ Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus
 
 %------------------------------------------------
 
-\section*{R}
+\section*{R}\label{r}
 R ist eine Programmiersprache und eine Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein GNU-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. R weist große Ähnlichkeiten zu der Programmiersprache S auf, ein weiteres GNU-Projekt, welches weitgehend auch unter R läuft. \cite{rproject}
 
 R bietet standardmäßig alle Hauptfunktionen an für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit R einfach, statistische Funktionen auf große Datenmengen anzuwenden.  
 
 
-
-
 %------------------------------------------------
 
 \section*{ARX}
-ARX ist eine freie Software
+ARX ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde. 
 
 
 \chapter{Anwenderdokumentation}
+\section{Übersicht}
+Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus ARX einzuladen und Skripte auszuführen, und gleichzeitig die im Kapitel \ref{einführung} beschriebenen Probleme zu umgehen. Das R-Terminal ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
+
+\begin{itemize}
+\item Windows 10 Education (Version 1511)
+\item OS X El Capitan (Version 10.11.1)
+\item Ubuntu
+\end{itemize}
+
+%insert screenshot for linux and the correct ubuntu/opensuse version
+
+In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Features des R-Terminals beschrieben. 
+\section{}
+
 \begin{figure}[htpb]
-\includegraphics[width=\textwidth]{R-Terminal}
-\caption{R-Terminal unter OS X (Version 10.11.1)}
+\centering
+\includegraphics[width=0.8\textwidth]{R-TerminalWindows}
+\caption{R-Terminal: \textit{Terminal} unter Windows 10 Education (Version 1511)}
+\label{rterminalwindows}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{rterminalwindows}
+\caption{R-Terminal: \textit{Setup} unter Windows 10 Education (Version 1511)}
+\label{rterminalwindows}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{R-Terminal}
+\caption{R-Terminal: \textit{Terminal} unter OS X (Version 10.11.1)}
 \label{rterminalmac}
 \end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{rterminalsetup}
+\caption{R-Terminal: \textit{Setup} unter OS X (Version 10.11.1)}
+\label{macsetup}
+\end{figure}
+
+In Abbildung \ref{rterminalmac} ist das R-Terminal unter OS X (hier Version 10.11.1) zu sehen. Das Terminal verfügt über die beiden Tabs \textit{Terminal} und \textit{Setup} (s. \ref{macsetup)}. Unter \textit{Setup} wird entweder eine R-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten R-Version angegeben. 
 \chapter{Entwicklerdokumentation}
 \section{SWT}
 
@@ -135,10 +171,6 @@ Albert Einstein.
 \textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
 [\textit{On the electrodynamics of moving bodies}]. 
 Annalen der Physik, 322(10):891–921, 1905.
- 
-\bibitem{knuthwebsite} 
-Knuth: Computers and Typesetting,
-\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
 
  
 \bibitem{rproject}
