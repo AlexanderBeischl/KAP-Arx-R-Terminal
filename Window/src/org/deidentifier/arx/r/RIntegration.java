@@ -120,7 +120,7 @@ public class RIntegration {
 
         try {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.process.getOutputStream()));
-            writer.write("Version");
+            writer.write("version");
             writer.newLine();
             writer.flush();
         } catch (Exception e) {
@@ -173,7 +173,7 @@ public class RIntegration {
 	 */
 	private void getVersion(Reader reader) 
 	{
-		 execute("version");
+		 executeVersion();
 		 int character;
 		 RBuffer versBuffer = new RBuffer(1000);
 		 
