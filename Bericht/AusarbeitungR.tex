@@ -55,7 +55,7 @@
 %----------------------------------------------------------------------------------------
 
 \title{\textbf{}\\ % Title
-Focused and Deliciously Witty Subtitle} % Subtitle
+Terminal zur Bearbeitung von ARX-Daten mit R} % Subtitle
 
 \author{\textsc{Alexander Beischl und Thuy Tran} % Author
 \\{\textit{Technische Universität München}}} % Institution
@@ -94,7 +94,7 @@ Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus
 %------------------------------------------------
 
 \section*{R}\label{r}
-R ist eine Programmiersprache und eine Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein GNU-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. R weist große Ähnlichkeiten zu der Programmiersprache S auf, ein weiteres GNU-Projekt, welches weitgehend auch unter R läuft. \cite{rproject}
+R ist eine Programmiersprache und Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein GNU-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. R weist große Ähnlichkeiten zu der Programmiersprache S auf, ein weiteres GNU-Projekt, welches weitgehend auch unter R läuft. \cite{rproject}
 
 R bietet standardmäßig alle Hauptfunktionen an für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit R einfach, statistische Funktionen auf große Datenmengen anzuwenden.  
 
@@ -102,7 +102,8 @@ R bietet standardmäßig alle Hauptfunktionen an für die statistische Analyse v
 %------------------------------------------------
 
 \section*{ARX}
-ARX ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde. 
+ARX ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde.
+
 
 
 \chapter{Anwenderdokumentation}
@@ -112,6 +113,7 @@ Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu 
 \begin{itemize}
 \item Windows 10 Education (Version 1511)
 \item OS X El Capitan (Version 10.11.1)
+\item macOS Sierra (Version 10.12.2)
 \item Ubuntu
 \end{itemize}
 
@@ -148,9 +150,83 @@ In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Feature
 \label{macsetup}
 \end{figure}
 
-In Abbildung \ref{rterminalmac} ist das R-Terminal unter OS X (hier Version 10.11.1) zu sehen. Das Terminal verfügt über die beiden Tabs \textit{Terminal} und \textit{Setup} (s. \ref{macsetup)}. Unter \textit{Setup} wird entweder eine R-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten R-Version angegeben. 
+In Abbildung \ref{rterminalmac} ist das R-Terminal unter OS X (hier Version 10.11.1) zu sehen. Das Terminal verfügt über die beiden Tabs \textit{Terminal} und \textit{Setup} (s. \ref{macsetup)}. Unter \textit{Setup} wird entweder eine R-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten R-Version angegeben.
+
+\newpage
+
 \chapter{Entwicklerdokumentation}
-\section{SWT}
+
+\section{Verwendete Technologien}
+
+Das \textit{R-Terminal} wurde mit der Entwicklungsumgebung \textit{Eclipse} entwickelt.
+Als Programmiersprache wurde \textit{Java} gewählt. Zur Realisierung der graphischen Benutzeroberfläche wurde \textit{SWT} gewählt, genauere Details hierzu werden in \ref{swt} erläutert.
+
+
+
+\section{Architektur des R-Terminals}
+
+Die Software des \textit{R-Terminal} ist in zwei Komponenten aufgeteilt, welche als getrennte "`Packages"' vorliegen. Das erste Package beinhaltet die graphische Benutzeroberfläche, das Zweite beinhaltet die gesamte Integration von \textit{R} in \textit{Java}, es stellt also alle Funktionen zur Verfügung und verwaltet die Kommunikation zwischen \textit{R} und dem \textit{Java}-Programm.
+
+Durch die Trennung von graphischer Benutzeroberfläche und der \textit{R}-Integration können alle Funktionen auch ohne die GUI ausgeführt und verwendet werden.
+
+\section{Graphische Benutzeroberfläche}
+
+\begin{samepage}
+
+Das erste Package, benannt "`org.deidentifier.arx.gui"', erzeugt und verwaltet die graphische Benutzeroberfläche. Es umfasst sechs Klassen:
+\begin{itemize}
+	\item RMain
+	\item RTerminal
+	\item RSetupTab
+	\item RTerminalTab
+	\item RLayout
+	\item RCommandListener
+\end{itemize}
+\end{samepage}
+
+\subsection{RMain}
+
+Um das Programm mit der graphischen Benutzeroberfläche zu starten, muss die Methode "`main"' der Klasse \textit{RMain} aufgerufen werden. Diese erzeugt ein neues Display sowie eine Shell und erzeugt im Anschluss ein neues Objekt der Klasse \textit{RTerminal}.
+Letzteres erzeugt die einzelnen Komponenten der Oberfläche.
+
+\subsection{RTerminal}
+
+Die Erzeugung der GUI wird durch den Konstruktor des neuen \textit{RTerminal}-Objektes realisiert. Dieser erzeugt einen TabFolder mit zwei Tabs, welche mit den Klassen \textit{RTerminalTab} und \textit{RSetupTab} befüllt werden.
+Außerdem erzeugt der Konstruktor noch einen Ring-Puffer, welcher zur Speicherung des Std-Output von \textit{R} verwendet wird, sowie einen Listener. Sowohl der Ring-Puffer, als auch der Listener wurden im zweiten Package implementiert.
+Im Anschluss wird die Integration mit \textit{R} durch den Aufruf der Methode "`startRIntergration"' eingeleitet.\\
+
+Diese Methode erzeugt ein neues Objekt der Klasse "`RIntegration"', welches in \ref{RIntegration} beschrieben wird und die Integration von R realisiert.
+
+\subsection{RSetupTab}
+
+Die Klasse \textit{RSetupTab} erzeugt einen Tab, welcher Informationen zum verwendeten Betriebssystem sowie dem Status der R-Integration anzeigt.\\
+
+Die \textit{SWT}-Labels, welche die Informationen beinhalten, werden durch mehrere Methodenaufrufe im Konstruktor erzeugt.
+Das aktuell verwendete Betriebssystem wird durch den Aufruf der Methode "`printOS()"' der Klasse \textit{OS} aus dem zweiten Package aufgerufen. Weitere Informationen hierzu finden sich in \ref{OS}.
+
+Die Integration von \textit{R} wird in der Klasse \textit{RIntegration} des zweiten Package durchgeführt. Diese wird beim Start des Programms aufgerufen und durchsucht die Standart-Installationspfade von \textit{R} nach einer ausführbaren R-Executive.
+ Um den Status der Integration zu prüfen, wird aus \textit{OS} die Methode "`getR()"' aufgerufen. Diese gibt den absoluten Pfad zur aktuell verwendeten R-Executive zurück, welcher im \textit{RSetupTab} angezeigt wird.
+Wurde keine R-Executive gefunden oder konnte diese nicht erfolgreich gestartet werden, so wird von "`getR()"' \textit{null} zurückgegeben und es wird im \textit{RSetupTab} ausgegeben:  
+\begin{center}
+Location: "`No falid R-Version selected!"'
+
+Version: "`No falid R-Version selected!"'
+\end{center}
+
+Wurde eine R-Version gefunden und erfolgreich ausgeführt, so wird der erzeugte Listener ausgelöst. Dieser ruft anschließend die Methode "`update()"' auf, durch welche die beiden Felder Location und Version aktualisiert werden.\\
+
+Außerdem ermöglicht der \textit{RSetupTab} die manuelle Suche einer \textit{R}-Executive. Hierfür kann entweder der absolute Pfad zur Datei angegeben werden oder diese mittels eines Navigationsfensters des Standart-Dateimanagers ausgewählt werden.
+Der RSetupTab beinhaltet hierfür eine Kommandozeile zur Pfadeingabe bzw. einen Knopf, durch welchen das Navigationsfensters aufgerufen wird.
+
+\section{SWT}\label{swt} 
+Die graphische Benutzeroberfläche wurde mithilfe des Standard Widget Toolkit (SWT) realisiert. SWT ist ein "open-source widget toolkit" für Java mit Integration in die GUI des nativen Betriebssystems, sodass das Design der Benutzeroberfläche an das Design des Betriebssystems angepasst wird. 
+
+Für das Projekt \textit{R-Terminal} wurde die SWT-Version 4.2.1 verwendet.
+
+
+
+
+
 
 
 %----------------------------------------------------------------------------------------
