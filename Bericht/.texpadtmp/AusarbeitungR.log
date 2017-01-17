@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.18)  17 JAN 2017 23:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.18)  18 JAN 2017 00:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -559,36 +559,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--203
 
 [7]
 
-LaTeX Warning: Reference `OS' on page 8 undefined on input line 205.
+LaTeX Warning: Reference `OS' on page 8 undefined on input line 206.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--217
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
 
-Overfull \hbox (12.56984pt too wide) in paragraph at lines 218--220
+Overfull \hbox (12.56984pt too wide) in paragraph at lines 219--221
 []\T1/ppl/m/n/12 (-20) Auÿerdem er-mög-licht der \T1/ppl/m/it/12 (-20) RSe-tupT-ab \T1/ppl/m/n/12 (-20) die ma-nu-el-le Su-che ei-ner \T1/ppl/m/it/12 (-20) R\T1/ppl/m/n/12 (-20) -Executive.
  []
 
+
+LaTeX Warning: Reference `RTerminal' on page 8 undefined on input line 222.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
 [8]
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 245.
- (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+
+LaTeX Warning: Reference `RCommandListener' on page 9 undefined on input line 232.
+
+
+Overfull \hbox (7.20319pt too wide) in paragraph at lines 231--234
+[]\T1/ppl/m/n/12 (-20) Das Kom-po-si-tum ^^Rtop-li-ne^^P um-fasst ei-ne Kom-man-do-zei-le, ein Dropdown-
+ []
+
+
+LaTeX Warning: Reference `RBrowserWindow' on page 9 undefined on input line 235.
+
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 235.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 245.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 235.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 245.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 235.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 245.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 235.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 245.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 235.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -596,7 +615,18 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `zplm' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 256.
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
+
+ []
+
+[9] [10]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 277.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -604,7 +634,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [9
+ [11
 
 ] (/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.aux)
 
@@ -615,18 +645,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4420 strings out of 493014
- 66409 string characters out of 6133350
- 154578 words of memory out of 5000000
- 7720 multiletter control sequences out of 15000+600000
- 38736 words of font info for 154 fonts, out of 8000000 for 9000
+ 4465 strings out of 493014
+ 66833 string characters out of 6133350
+ 155579 words of memory out of 5000000
+ 7725 multiletter control sequences out of 15000+600000
+ 41772 words of font info for 182 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,5n,38p,686b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.pdf" (11 pages, 207513 bytes).
+ 38i,5n,38p,712b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on "/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.pdf" (13 pages, 219862 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  30229 words of extra memory for PDF output out of 35830 (max. 10000000)
 
