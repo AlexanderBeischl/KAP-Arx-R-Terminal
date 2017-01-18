@@ -16,12 +16,12 @@
 \contentsline {subsection}{\numberline {3.3.7}RCommandListener}{11}
 \contentsline {section}{\numberline {3.4}Funktionaler Kern - Integration von R}{12}
 \contentsline {subsection}{\numberline {3.4.1}RIntegration}{12}
-\contentsline {subsection}{\numberline {3.4.2}OS}{13}
-\contentsline {subsection}{\numberline {3.4.3}RBuffer}{14}
-\contentsline {subsection}{\numberline {3.4.4}RListener}{14}
+\contentsline {subsection}{\numberline {3.4.2}OS}{14}
+\contentsline {subsection}{\numberline {3.4.3}RBuffer}{15}
+\contentsline {subsection}{\numberline {3.4.4}RListener}{15}
 \contentsline {section}{\numberline {3.5}Abh\IeC {\"a}ngigkeiten}{15}
 \contentsline {subsection}{\numberline {3.5.1}SWT}{15}
-\contentsline {section}{\numberline {3.6}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{15}
-\contentsline {section}{\numberline {3.7}Alternativen}{15}
-\contentsline {subsection}{\numberline {3.7.1}rJava}{15}
-\contentsline {subsection}{\numberline {3.7.2}JRI}{15}
+\contentsline {section}{\numberline {3.6}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{16}
+\contentsline {section}{\numberline {3.7}Alternativen}{16}
+\contentsline {subsection}{\numberline {3.7.1}rJava}{16}
+\contentsline {subsection}{\numberline {3.7.2}JRI}{16}

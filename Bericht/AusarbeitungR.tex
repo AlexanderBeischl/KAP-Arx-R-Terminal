@@ -299,9 +299,17 @@ Anschließend wird der Prozess gestartet.\\
 
 Nach erfolgreichen Start des \textit{R}-Prozesses wird ein Reader "`reader"' erzeugt, welchem die Ausgabe des R-Prozesses übergeben wird. Dieser Reader übergibt die Ausgabe an den Ring-Puffer "`listener"'.
 Direkt im Anschluss wird die Methode "`getVersion(Reader reader)"' aufgerufen. Durch diese wird abgefragt, welche Version von \textit{R} verwendet wird.
- 
-ToDo... hier gehts weiter...
 
+Die Ausgabe der Version wird durch das Komanndo "`version"', welches an den laufenden \textit{R}-Prozess als Input durch den Methodenaufruf "`execute("version")"' übergeben wird, erreicht. Die Ausgabe dieses Kommandos soll nicht im Ausgabefenster der GUI, dem \textit{RTerminalTab}, angezeigt werden. Deshalb erzeugt die Methode "`getVersion(Reader reader)"' einen neuen, temporären Ring-Puffer, in welchem die Ausgabe des Std-Outputs gespeichert wird. 
+
+Aus dem Ausgabe-$String$ dieses "`version"'-Kommandos wird anschließend die genaue Version sowie der Nickname extrahiert und in der lokalen Variable "`version"' gespeichert. Im Anschluss wird der Rlistener  "`listener"' ausgelöst, welcher die Methode "`setupUpdate()"', die in \textit{RTerminal} überschrieben wurde, ausführt. Diese Methode ruft die "`update"'-Methode im \textit{RSetupTab} auf und aktualisiert den Tab.\\
+
+\textbf{ToDo...} hier gehts weiter...
+Execute Methode\\
+
+Alle weiteren Ausgaben werden in den Ringpuffer "`buffer"' geschrieben und durch Auslösen des RListener "`listener"' in der graphischen Benutzeroberfläche aktualisiert.\\
+
+ 
 
 \subsection{OS} \label{OS}
 
