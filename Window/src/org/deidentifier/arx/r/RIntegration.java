@@ -113,6 +113,13 @@ public class RIntegration {
         }
 	}
 	
+	
+	/**
+	 * This method is only called by getVersion(reader) and is a modified 
+	 * execute method.
+	 * The difference is we don't need to print the command out as we only want to 
+	 * get the command version's output to extract the version and the nickname.
+	 */
 	public void executeVersion() {
 	    if (this.process == null) {
 	        return;
@@ -179,7 +186,7 @@ public class RIntegration {
 		 
          try {
         	 while ((character = reader.read()) != '>') {
-			   //Verwirft das erst '>'
+			   //Drop the first '>'
 			 }
         	 
         	//Store the whole output of command "version"
