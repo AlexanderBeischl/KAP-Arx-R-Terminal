@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.Arrays;
 */
 import org.deidentifier.arx.r.OS;
-import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;

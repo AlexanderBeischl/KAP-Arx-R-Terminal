@@ -1,8 +1,5 @@
 package org.deidentifier.arx.gui;
 
-//import java.nio.Buffer;
-
-import org.deidentifier.arx.r.RBrowserWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.MouseAdapter;

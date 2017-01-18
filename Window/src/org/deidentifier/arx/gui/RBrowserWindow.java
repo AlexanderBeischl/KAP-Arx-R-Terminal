@@ -1,4 +1,4 @@
-package org.deidentifier.arx.r;
+package org.deidentifier.arx.gui;
 
 /*
  * @author Alexander Beischl
