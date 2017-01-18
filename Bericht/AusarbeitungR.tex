@@ -154,7 +154,35 @@ In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Feature
 \label{macsetup}
 \end{figure}
 
-In Abbildung \ref{rterminalmac} ist das R-Terminal unter OS X (hier Version 10.11.1) zu sehen. Das Terminal verfügt über die beiden Tabs \textit{Terminal} und \textit{Setup} (s. \ref{macsetup)}. Unter \textit{Setup} wird entweder eine R-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten R-Version angegeben.
+In Abbildung \ref{rterminalmac} ist das R-Terminal unter OS X (hier Version 10.11.1) zu sehen. Das Terminal verfügt über die beiden Tabs \textit{Terminal} und \textit{Setup} (s. \ref{macsetup)}. 
+
+\subsection{Setup}
+Unter \textit{Setup} wird entweder eine R-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten R-Version angegeben. 
+
+Hierbei gibt das Feld unter \textit{Operating System} das Betriebssystem der benutzten Plattform an. Das Feld \textit{Location} gibt den Pfad an, unter dem die automatische Suche die ausführbare R-Version gefunden hat. Konnte keine ausführbare R-Version gefunden werden, wird in dem Feld die Nachricht \textit{No valid R-exec found!} angezeigt. 
+
+Das mit \textit{Version} betitelte Feld gibt die Version an, die die gefundene R-Version hat. Wurde keine ausführbare R-Version gefunden oder eine ungültige R-Version angegeben, zeigt das Feld die Ausgabe \textit{No valid R-Version selected}an. 
+
+Sind auf dem Rechner mehrere R-Versionen vorhanden, von denen der Benutzer eine andere Version bevorzugt, als die durch die manuelle Suche gefundene, gibt es die beiden unteren, im folgenden erläuterten Felder als Optionen. 
+
+\textit{Select the R-Exec manually} öffnet eine Ordnerübersicht, durch die dann die zu der gewünschten R-Version navigiert werden kann. Hierbei sollte beachtet werden, dass nicht der Pfad zu der R-GUI angegeben werden sollte, welche oft zusammen mit dem R-Executable installiert wird, sondern zu der ausführbaren R-Datei.
+  
+Das letzte Feld \textit{Manually select the R-exec by typing in its location} gibt dem Benutzer die Möglichkeit, den bereits bekannten Dateipfad zur ausführbaren R-Datei anzugeben. Hierbei sollte ein absoluter Dateipfad angegeben werden, der die ausführbare R-Datei enthält (im Gegensatz dazu, nur den Ordner anzugeben, in dem die Datei liegt). 
+
+Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige R Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben.
+
+\subsection{Terminal}
+Nachdem die gewünschte R-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um R-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. 
+
+
+\section{Benutzung von R für ARX }
+Dieser Abschnitt wird sich mit der Benutzung von R im Zusammenhang mit großen Datentabellen befassen, wie sie in ARX üblich sind. Dies soll die Benutzung von dem R-Terminal zur Verarbeitung von ARX-Daten ermöglichen. 
+
+%insert skalenniveau Erklärung 
+%insert data.frame erklärung
+%insert rbind und cbind
+%insert Erklärung zu data.table und data.matrix 
+
 
 \newpage
 

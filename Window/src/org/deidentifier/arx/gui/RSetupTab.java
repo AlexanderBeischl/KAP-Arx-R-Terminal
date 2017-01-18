@@ -93,7 +93,7 @@ public class RSetupTab {
         
         if(OS.getR() == null)
         {
-    		dirtext.setText("No falid R-exec found!");
+    		dirtext.setText("No valid R-exec found!");
     	}		
         dirtext.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         dirtext.setEditable(false);
@@ -111,7 +111,7 @@ public class RSetupTab {
         vers = new Text(root, SWT.BORDER);
         if(OS.getR() == null)
         {
-        	vers.setText("No falid R-Version selected!");
+        	vers.setText("No valid R-Version selected!");
         }
         vers.setLayoutData(RLayout.createFillHorizontallyGridData(true));
         vers.setEditable(false);
@@ -123,7 +123,7 @@ public class RSetupTab {
     private void createManuellSearchWindow()
     {
         Label searchLabel = new Label(root, SWT.NONE);
-        searchLabel.setText("Select the R-Exec manuelly: ");
+        searchLabel.setText("Select the R-Exec manually: ");
         manuellSearch = new Button(root,SWT.PUSH);
         manuellSearch.setText("Select R-File");
         manuellSearch.setLayoutData(RLayout.createFillHorizontallyGridData(true));
