@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.18)  18 JAN 2017 23:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.18)  19 JAN 2017 00:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -654,7 +654,7 @@ Package babel Info: Redefining ngerman shorthand "~
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 ...erline {3.7}Alternativen}{21}{section.3.7}
+l.30 ...ne {4}Designentscheidungen}{22}{chapter.4}
                                                    [1
 
 ])
@@ -723,7 +723,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 134.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 134.
- <R-TerminalWindows.png, id=195, 642.4pt x 327.2225pt>
+ <R-TerminalWindows.png, id=200, 642.4pt x 327.2225pt>
 File: R-TerminalWindows.png Graphic file (type png)
  <use R-TerminalWindows.png>
 Package pdftex.def Info: R-TerminalWindows.png used on input line 138.
@@ -738,17 +738,17 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 141.
  [5
 
-] <rterminalwindows.png, id=203, 803.0pt x 448.67625pt>
+] <rterminalwindows.png, id=208, 803.0pt x 448.67625pt>
 File: rterminalwindows.png Graphic file (type png)
  <use rterminalwindows.png>
 Package pdftex.def Info: rterminalwindows.png used on input line 145.
 (pdftex.def)             Requested size: 312.00119pt x 174.33264pt.
- <R-Terminal.png, id=204, 798.985pt x 502.87875pt>
+ <R-Terminal.png, id=209, 798.985pt x 502.87875pt>
 File: R-Terminal.png Graphic file (type png)
  <use R-Terminal.png>
 Package pdftex.def Info: R-Terminal.png used on input line 152.
 (pdftex.def)             Requested size: 312.00119pt x 196.37514pt.
- <rterminalsetup.png, id=205, 800.9925pt x 499.8675pt>
+ <rterminalsetup.png, id=210, 800.9925pt x 499.8675pt>
 File: rterminalsetup.png Graphic file (type png)
  <use rterminalsetup.png>
 Package pdftex.def Info: rterminalsetup.png used on input line 159.
@@ -1125,28 +1125,46 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 451.
  [20]
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--473
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 465.
+(babel)             in language  on input line 474.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 465.
+(babel)             in language  on input line 474.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 469.
+(babel)             in language  on input line 474.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 469.
+(babel)             in language  on input line 474.
+[21]
+Kapitel 4.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 473.
+(babel)             in language  on input line 477.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 473.
+(babel)             in language  on input line 477.
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
+
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 485.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 485.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 487.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 487.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 487.
+(babel)             in language  on input line 491.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 487.
- [21]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 505.
+(babel)             in language  on input line 491.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 505.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1155,13 +1173,25 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 505.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 505.
- [22
+[22
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 505.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 523.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 523.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 523.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 523.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 523.
+ [23
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 523.
  (/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 505.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 505.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 523.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 523.
 Package rerunfilecheck Info: File `AusarbeitungR.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
@@ -1171,21 +1201,21 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 505.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 523.
  ) 
 Here is how much of TeX's memory you used:
- 8197 strings out of 493014
- 123702 string characters out of 6133350
+ 8206 strings out of 493014
+ 123786 string characters out of 6133350
  238217 words of memory out of 5000000
- 11285 multiletter control sequences out of 15000+600000
- 55838 words of font info for 251 fonts, out of 8000000 for 9000
+ 11286 multiletter control sequences out of 15000+600000
+ 56148 words of font info for 255 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  32i,8n,38p,746b,536s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.pdf" (24 pages, 269309 bytes).
+Output written on "/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.pdf" (25 pages, 270438 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 308 compressed objects within 4 object streams
- 68 named destinations out of 1000 (max. 500000)
- 38669 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 363 PDF objects out of 1000 (max. 8388607)
+ 317 compressed objects within 4 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 38677 words of extra memory for PDF output out of 42996 (max. 10000000)
 

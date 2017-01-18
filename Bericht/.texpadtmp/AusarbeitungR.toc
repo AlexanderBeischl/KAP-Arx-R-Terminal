@@ -27,6 +27,7 @@
 \contentsline {subsection}{\numberline {3.5.1}SWT}{19}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}R-Project}{20}{subsection.3.5.2}
 \contentsline {section}{\numberline {3.6}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{20}{section.3.6}
-\contentsline {section}{\numberline {3.7}Alternativen}{21}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}rJava}{21}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}JRI}{21}{subsection.3.7.2}
+\contentsline {chapter}{\numberline {4}Designentscheidungen}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}Alternativen}{22}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}rJava}{22}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}JRI}{22}{subsection.4.1.2}

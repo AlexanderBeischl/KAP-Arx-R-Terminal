@@ -446,26 +446,44 @@ Alle aktuellen \textit{R}-Versionen können von der Homepage des R-Projects\foot
 
 Der funktionale Kern des \textit{Arx-R-Terminals} kann auch ohne die graphische Benutzeroberfläche ausgeführt werden. Hierfür müssen allerdings folgende Objekte erzeugt werden:
 \begin{itemize}
-	\item ein Ring-Puffer der Klasse \textit{RBuffer}, welcher den Input für \textit{R} beinhaltet.
-	\item ein weiterer Ring-Puffer der selben Klasse, welcher den Std-Output von R beinhaltet.
-	\item ein Listener der Klasse \textit{RListener}
+	\item ein Ring-Puffer der Klasse \textit{RBuffer}, welcher den Input für \textit{R} beinhaltet
+	\item ein weiterer Ring-Puffer der selben Klasse, welcher den Std-Output von R beinhaltet
+	\item ein Listener der Klasse \textit{RListener}, welcher durch den Std-Output ausgelöst wird
 \end{itemize}
 	
 Anschließend müssen die abstrakten Methoden des \textit{RListeners} überschrieben werden:
 	\begin{itemize}
 		\item \textit{bufferUpdated()}
-		\item \textit{ closed()}
+		\item \textit{closed()}
 		\item \textit{setupUpdate()}
 	\end{itemize}
 
-Anschließend kann 
+Anschließend kann die Integration von R gestartet werden. Hierfür muss ein neues \textit{RIntegration}-Objekt erzeugt werden.
 
-\textbf{TODO}
+
+Um dem \textit{R}-Prozess nun Befehle zu übergeben, muss lediglich die Methode "`execute"' des erzeugten \textit{RIntegration}-Objekt aufgerufen werden und das Kommando als String übergeben werden.\\
+
+Beispiel: Es wurde ein \textit{RIntegration}-Objekt \textit{rProcess} erzeugt und es soll "`1+2+3+4+5"' als Kommando übergeben werden, dann muss
+	\begin{center}
+		\textit{rProcess}.execute("`1+2+3+4+5"')
+	\end{center} 
+	ausgeführt werden. Die Ausgabe wird im Ring-Puffer gespeichert, welcher für den Std-Output erzeugt wurde.\\
+\\
+Ein Beispiel hierzu befindet sich im Package "`Example"'.
+
+\newpage
+
+
+\chapter{Designentscheidungen}
+
+\textbf{TODO warum dieses Design}\\
+
+
+In diesem Kapitel werden mögliche Alternativen vorgestellt um \textit{R} in ein \textit{Java}-Programm zu integrieren.
+Die in dieser Dokumentation vorgestellte Umsetzung wurde gewählt, um die verwendete Version von \textit{R} frei wählen zu können und des weiteren Abhängigkeiten von weiteren Libraries zu vermeiden.  
 
 \section{Alternativen}
 
-In diesem Unterkapitel werden mögliche Alternativen vorgestellt um \textit{R} in ein \textit{Java}-Programm zu integrieren.
-Die in dieser Dokumentation vorgestellte Umsetzung wurde gewählt, um die verwendete Version von \textit{R} frei wählen zu können und des weiteren Abhängigkeiten von weiteren Libraries zu vermeiden.  
 \subsection{rJava}
 
 \textbf{TODO}
