@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.18)  18 JAN 2017 00:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.11.18)  18 JAN 2017 16:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,118 +496,26 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <20.74> not available
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 77.
  [1]
-Kapitel 1.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 88.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 96.
-[1
-
-] [2]
-Kapitel 2.
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 114.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsppl.fd
-File: omsppl.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
- <R-TerminalWindows.png, id=18, 642.4pt x 327.2225pt>
-File: R-TerminalWindows.png Graphic file (type png)
- <use R-TerminalWindows.png>
-Package pdftex.def Info: R-TerminalWindows.png used on input line 127.
-(pdftex.def)             Requested size: 312.00119pt x 158.9274pt.
- <rterminalwindows.png, id=20, 803.0pt x 448.67625pt>
-File: rterminalwindows.png Graphic file (type png)
- <use rterminalwindows.png>
-Package pdftex.def Info: rterminalwindows.png used on input line 134.
-(pdftex.def)             Requested size: 312.00119pt x 174.33264pt.
- <R-Terminal.png, id=21, 798.985pt x 502.87875pt>
-File: R-Terminal.png Graphic file (type png)
- <use R-Terminal.png>
-Package pdftex.def Info: R-Terminal.png used on input line 141.
-(pdftex.def)             Requested size: 312.00119pt x 196.37514pt.
- <rterminalsetup.png, id=22, 800.9925pt x 499.8675pt>
-File: rterminalsetup.png Graphic file (type png)
- <use rterminalsetup.png>
-Package pdftex.def Info: rterminalsetup.png used on input line 148.
-(pdftex.def)             Requested size: 312.00119pt x 194.71109pt.
-
-
-LaTeX Warning: Reference `macsetup)' on page 3 undefined on input line 153.
-
-[3
-
-] [4 <./R-TerminalWindows.png> <./rterminalwindows.png>] [5 <./R-Terminal.png> <./rterminalsetup.png>]
-Kapitel 3.
-[6
-
-]
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 187.
-
-Underfull \hbox (badness 10000) in paragraph at lines 194--197
-
- []
-
-
-LaTeX Warning: Reference `RIntegration' on page 7 undefined on input line 198.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
-
- []
-
-[7]
-
-LaTeX Warning: Reference `OS' on page 8 undefined on input line 206.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
-
- []
-
-
-Overfull \hbox (12.56984pt too wide) in paragraph at lines 219--221
-[]\T1/ppl/m/n/12 (-20) Auÿerdem er-mög-licht der \T1/ppl/m/it/12 (-20) RSe-tupT-ab \T1/ppl/m/n/12 (-20) die ma-nu-el-le Su-che ei-ner \T1/ppl/m/it/12 (-20) R\T1/ppl/m/n/12 (-20) -Executive.
- []
-
-
-LaTeX Warning: Reference `RTerminal' on page 8 undefined on input line 222.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
-
- []
-
-[8]
-
-LaTeX Warning: Reference `RCommandListener' on page 9 undefined on input line 232.
-
-
-Overfull \hbox (7.20319pt too wide) in paragraph at lines 231--234
-[]\T1/ppl/m/n/12 (-20) Das Kom-po-si-tum ^^Rtop-li-ne^^P um-fasst ei-ne Kom-man-do-zei-le, ein Dropdown-
- []
-
-
-LaTeX Warning: Reference `RBrowserWindow' on page 9 undefined on input line 235.
-
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 235.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1ppl.fd
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 85.
+ (/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.toc
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 4.
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 235.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 4.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 235.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 4.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 235.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 4.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 235.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 4.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -615,18 +523,136 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `zplm' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+)
+\tf@toc=\write3
+\openout3 = `AusarbeitungR.toc'.
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+ [1
+
+]
+Kapitel 1.
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 100.
+[2
+
+] [3]
+Kapitel 2.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 118.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/omsppl.fd
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 118.
+ <R-TerminalWindows.png, id=21, 642.4pt x 327.2225pt>
+File: R-TerminalWindows.png Graphic file (type png)
+ <use R-TerminalWindows.png>
+Package pdftex.def Info: R-TerminalWindows.png used on input line 131.
+(pdftex.def)             Requested size: 312.00119pt x 158.9274pt.
+ <rterminalwindows.png, id=23, 803.0pt x 448.67625pt>
+File: rterminalwindows.png Graphic file (type png)
+ <use rterminalwindows.png>
+Package pdftex.def Info: rterminalwindows.png used on input line 138.
+(pdftex.def)             Requested size: 312.00119pt x 174.33264pt.
+ <R-Terminal.png, id=24, 798.985pt x 502.87875pt>
+File: R-Terminal.png Graphic file (type png)
+ <use R-Terminal.png>
+Package pdftex.def Info: R-Terminal.png used on input line 145.
+(pdftex.def)             Requested size: 312.00119pt x 196.37514pt.
+ <rterminalsetup.png, id=25, 800.9925pt x 499.8675pt>
+File: rterminalsetup.png Graphic file (type png)
+ <use rterminalsetup.png>
+Package pdftex.def Info: rterminalsetup.png used on input line 152.
+(pdftex.def)             Requested size: 312.00119pt x 194.71109pt.
+
+
+LaTeX Warning: Reference `macsetup)' on page 4 undefined on input line 157.
+
+[4
+
+] [5 <./R-TerminalWindows.png> <./rterminalwindows.png>] [6 <./R-Terminal.png> <./rterminalsetup.png>]
+Kapitel 3.
+[7
+
+]
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 192.
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--239
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
-[9] [10]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 277.
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+
+ []
+
+
+Overfull \hbox (12.56984pt too wide) in paragraph at lines 224--226
+[]\T1/ppl/m/n/12 (-20) Auÿerdem er-mög-licht der \T1/ppl/m/it/12 (-20) RSe-tupT-ab \T1/ppl/m/n/12 (-20) die ma-nu-el-le Su-che ei-ner \T1/ppl/m/it/12 (-20) R\T1/ppl/m/n/12 (-20) -Executive.
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+
+Overfull \hbox (7.20319pt too wide) in paragraph at lines 236--239
+[]\T1/ppl/m/n/12 (-20) Das Kom-po-si-tum ^^Rtop-li-ne^^P um-fasst ei-ne Kom-man-do-zei-le, ein Dropdown-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--244
+
+ []
+
+[10] [11]
+Overfull \hbox (32.86882pt too wide) in paragraph at lines 265--266
+\T1/ppl/m/n/12 (-20) Die ei-gent-li-che In-te-gra-ti-on von R in Ja-va ist in dem Packa-ge ^^Rorg.deidentifier.arx.r^^P
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+
+ []
+
+[13] [14]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 343.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -634,7 +660,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [11
+ [15
 
 ] (/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.aux)
 
@@ -645,18 +671,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4465 strings out of 493014
- 66833 string characters out of 6133350
- 155579 words of memory out of 5000000
- 7725 multiletter control sequences out of 15000+600000
- 41772 words of font info for 182 fonts, out of 8000000 for 9000
+ 4488 strings out of 493014
+ 67226 string characters out of 6133350
+ 155691 words of memory out of 5000000
+ 7729 multiletter control sequences out of 15000+600000
+ 42812 words of font info for 193 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,5n,38p,712b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,5n,38p,746b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.pdf" (13 pages, 219862 bytes).
+Output written on "/Users/alexander/Documents/TUM/7. Semester/KAP/KAP-Arx-R-Terminal/Bericht/.texpadtmp/AusarbeitungR.pdf" (17 pages, 228797 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 94 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  30229 words of extra memory for PDF output out of 35830 (max. 10000000)
 

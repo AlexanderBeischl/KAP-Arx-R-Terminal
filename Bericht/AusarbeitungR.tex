@@ -80,6 +80,10 @@ Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris
 
 
 \vspace{30pt} % Some vertical space between the abstract and first section
+%----------------------------------------------------------------------------------------
+
+\tableofcontents
+
 
 %----------------------------------------------------------------------------------------
 %	ESSAY BODY
@@ -169,16 +173,17 @@ Die Software des \textit{R-Terminal} ist in zwei Komponenten aufgeteilt, welche 
 
 Durch die Trennung von graphischer Benutzeroberfläche und der \textit{R}-Integration können alle Funktionen auch ohne die GUI ausgeführt und verwendet werden.
 
-\section{Graphische Benutzeroberfläche}
+\section{Graphische Benutzeroberfläche}\label{gui}
 
 \begin{samepage}
 
-Das erste Package, benannt "`org.deidentifier.arx.gui"', erzeugt und verwaltet die graphische Benutzeroberfläche. Es umfasst sechs Klassen:
+Das erste Package, benannt "`org.deidentifier.arx.gui"', erzeugt und verwaltet die graphische Benutzeroberfläche. Es umfasst sieben Klassen:
 \begin{itemize}
 	\item RMain
 	\item RTerminal
 	\item RSetupTab
 	\item RTerminalTab
+	\item RBrowserWindow
 	\item RLayout
 	\item RCommandListener
 \end{itemize}
@@ -216,12 +221,12 @@ Version: "`No falid R-Version selected!"'
 
 Wurde eine R-Version gefunden und erfolgreich ausgeführt, so wird der erzeugte Listener ausgelöst. Dieser ruft anschließend die Methode "`update()"' auf, durch welche die beiden Felder Location und Version aktualisiert werden.\\
 
-Außerdem ermöglicht der \textit{RSetupTab} die manuelle Suche einer \textit{R}-Executive. Hierfür kann entweder der absolute Pfad zur Datei angegeben werden oder diese mittels eines Navigationsfensters des Standart-Dateimanagers ausgewählt werden.
-Der RSetupTab beinhaltet hierfür eine Kommandozeile zur Pfadeingabe bzw. einen Knopf, durch welchen das Navigationsfensters aufgerufen wird.
+Außerdem ermöglicht der \textit{RSetupTab} die manuelle Suche einer \textit{R}-Executive. Hierfür kann entweder der absolute Pfad zur Datei angegeben werden oder diese mittels eines Navigationsfensters ausgewählt werden.
+Der RSetupTab beinhaltet hierfür eine Kommandozeile zur Pfadeingabe bzw. einen Knopf, durch welchen ein Navigationsfensters aufgerufen wird.
 
-Die Kommandoleiste wird in der Methode "`createDirSearchLine()"' erzeugt und erfasst die Eingabe durch einen \textit{TraverseListener}. Der \textit{TraverseListener} wird durch Drücken der Return-Taste ausgelöst und gibt den eingegeben Pfad an die Methode "`updateSetup(path)"' weiter. Diese startet eine neue Integration von R durch den Aufruf der Methode "'startManuellRIntegration(path)"' aus der Klasse \textit{RTerminal}. Nähere Details hierzu in \ref{RTerminal}. Falls die R-Executive erfolgreich gestartet wurde, wird durch den RListener (siehe oben) der Tab wieder aktualisiert. Andernfalls wird die selbe Ausgabe angezeigt, wie bei der automatischen Suche.
+Die Kommandoleiste wird in der Methode "`createDirSearchLine()"' erzeugt und erfasst die Eingabe durch einen \textit{TraverseListener}. Der \textit{TraverseListener} wird durch Drücken der Return-Taste ausgelöst und gibt den eingegeben Pfad an die Methode "`updateSetup(path)"' weiter. Diese startet eine neue Integration von R durch den Aufruf der Methode "`startManuellRIntegration(path)"' aus der Klasse \textit{RTerminal}. Nähere Details hierzu in \ref{RTerminal}. Falls die R-Executive erfolgreich gestartet wurde, wird durch den RListener (siehe oben) der Tab wieder aktualisiert. Andernfalls wird die selbe Ausgabe angezeigt, wie bei der automatischen Suche.
 
-\subsection{RTerminalTab}
+\subsection{RTerminalTab} \label{RTerminal}
 
 In dem \textit{RTerminalTab} werden die \textit{R}-Befehls-Eingaben des Nutzers erfasst sowie der Std-Output von \textit{R} ausgegeben. Außerdem können mittels eines Knopfes fertige \textit{R}-Skripte geladen und ausgeführt werden. Der \textit{RTerminalTab} ist nur nutzbar, falls \textit{R} erfolgreich gestartet und integriert wurde.\\
 
@@ -232,18 +237,79 @@ Das Kompositum "`topline"' umfasst eine Kommandozeile, ein Dropdown-Menü um ein
 Die Kommandozeile und das Dropdown-Menü "`input"' wurden mit der importierten Klasse \textit{swt.widget.Combo} erstellt. Die Kommandozeile erfasst die Eingaben des Nutzers beim Drücken der Enter-Taste durch einen \textit{TraverseListener}. Die Eingabe wird anschließend an die Methode "`command(command)"' der Klasse  \textit{RCommandListener} übergeben, welche den Befehl an R übergibt. Dies wird in \ref{RCommandListener} beschrieben.
 Die letzten 10 Befehle werden im Dropdown-Menü angezeigt. Die Befehle werden in einem Ringpuffer mit 10 Elementen gespeichert, welcher als String Array implementiert ist.
 
-Skripte können durch den Knopf "`Select Script"' ausgewählt und ausgeführt werden. Der Knopf wird durch einen \textit{MouseListener} ausgelöst und erzeugt ein Navigationsfensters der Klasse \textit{RBrowserWindow}. Weiter Informationen hierzu in \ref{RBrowserWindow}. Durch dieses kann das Skript ausgewählt werden und es wird der absolute Pfad des Skriptes übergeben. Anschließend wird durch die Methode "`command(command)"' der Klasse  \textit{RCommandListener} der Befehl das Skript zu öffnen an R übergeben. Dieser setzt sich zusammen aus $source("$  absoluter Pfad $")$. \\
+Skripte können durch den Knopf "`Select Script"' ausgewählt und ausgeführt werden. Der Knopf wird durch einen \textit{MouseListener} ausgelöst und erzeugt ein Navigationsfensters der Klasse \textit{RBrowserWindow}. Weiter Informationen hierzu in \ref{RBrowserWindow}. Durch dieses kann das Skript ausgewählt werden und es wird der absolute Pfad des Skriptes übergeben. Anschließend wird überprüft, ob es sich um ein \textit{R}-Skript handelt, also die Datei auf "`.r"' endet. Trifft dies zu, so wird durch die Methode "`command(command)"' der Klasse  \textit{RCommandListener} der Befehl das Skript zu öffnen an R übergeben. Dieser setzt sich zusammen aus $source("$  absoluter Pfad $")$. \\
 
 Das Textfeld "`output"' beinhaltet die Ausgabe von \textit{R} und wurde durch die importierte Klasse \textit{StyledText} realisiert. Das Textfeld ist als Ringpuffer implementiert, sodass dieser nur die letzten $10000$ Zeichen des \textit{R}-Std-Output anzeigt. Die Größe des Ringpuffers ist in der Klasse \textit{RTerminal} in den globalen Variablen als int Variable "`BUFFER\_SIZE"' festgelegt und kann hier geändert werden.
 Der Std-Output von \textit{R} wird durch das Auslösen des RListener "`listener"' in \textit{RTerminal} aktualisiert. Dieser ruft hierzu die Methode "`setOutput(Text)"' aus \textit{RTerminalTab} auf.\\
 
-Falls \textit{R} erfolgreich durch "`startRIntegration(path)"' aus der Klasse \textit{RTerminal} gestartet wurde, wird die Methode "`enableTab()"' in \textit{RTerminalTab} aufgerufen, sodass der Tab nutzbar wird. Beim Beenden von \textit{R} wird in der Methode endR in  \textit{RTerminal} die Methode "`disableTab()"' in \textit{RTerminalTab} aufgerufen, welche den Tab wieder für den Nutzer sperrt.
+Falls \textit{R} erfolgreich durch "`startRIntegration(path)"' aus der Klasse \textit{RTerminal} gestartet wurde, wird die Methode "`enableTab()"' in \textit{RTerminalTab} aufgerufen, sodass der Tab nutzbar wird. Beim Beenden von \textit{R} wird in der Methode "`endR()"' in  \textit{RTerminal} die Methode "`disableTab()"' in \textit{RTerminalTab} aufgerufen, welche den Tab wieder für den Nutzer sperrt.
+
+\subsection{RBrowserWindow} \label{RBrowserWindow} 
+
+Die Klasse \textit{RBrowserWindow} implementiert ein Navigationsfenster des Standart-Dateimanagers. 
+Dieses wurde durch die importierte SWT-Klasse \textit{FileDialog} implementiert. Die Klasse beinhaltet nur eine Methode "`openBrowser(Shell)"', durch welche ein neuer FileDialog, also ein Navigationsfenster, erzeugt wird, mit welchem eine Datei ausgewählt werden kann. Anschließend gibt die Methode den absoluten Pfad der ausgewählten Datei zurück. 
+Mit dem Navigationsfenster kann sowohl manuell die \textit{R}-Executive im \textit{RSetupTab} sowie ein ausführbares \textit{R}-Skript im \textit{RTerminalTab} ausgewählt werden. Anschließend muss der Pfad übergeben werden, damit der funktionale Kern, siehe \ref{funktionaler Kern}, die Aktion durchführen kann.
+
+\subsection{RLayout}
+
+Diese Klasse definiert das SWT-Layout der Klassen \textit{RSetupTab} und \textit{RTerminalTab}. 
+Die Methoden der Klasse werden im Konstruktur der beiden genannten Klassen aufgerufen, um die SWT-Objekte der des jeweiligen Tabs mit den richtigen Parametern und Abständen zu erzeugen.
+
+\subsection{RCommandListener} \label{RCommandListener}
+
+Das Java-Interface \textit{RCommandListener} implementiert einen Listener, welcher bei der Eingabe von Befehlen für \textit{R} ausgeführt wird. Die abstrakte Methode "`command(command)"' des Interfaces wird in der Klasse \textit{RTerminal} mit der Methode "`execute(command)"' aus der Klasse \textit{RIntegration} überschrieben. Somit wird die Trennung der graphischen Oberfläche und des funktionalen Kerns der \textit{R}-Integration, welcher in \ref{funktionaler Kern} beschrieben wird, beibehalten.
+
+\newpage
+\section{Funktionaler Kern - Integration von R} \label{funktionaler Kern}
+
+Die eigentliche Integration von R in Java ist in dem Package "`org.deidentifier.arx.r"' implementiert. Dieses beinhaltet alle Funktionen, durch welche die \textit{R}-Executive automatisch oder manuell gefunden, ausgeführt und das Betriebssystem erkannt wird. Zur Integration von R in Java wurde die Klasse \textit{ProcessBuilder} verwendet.
+
+\begin{samepage}
+Das Package umfasst vier Klassen:
+\begin{itemize}
+	\item RIntegration
+	\item OS
+	\item RBuffer
+	\item RListener
+\end{itemize}
+\end{samepage}
 
 
+\subsection{RIntegration} \label{RIntegration}
+
+
+
+\subsection{OS} \label{OS}
+
+Die Klasse \textit{OS} beinhaltet die Erkennung des verwendeten Betriebsystems, die Anpassung der Pfade der Standart-Speicherorte der R-Executive je nach verwendeten Betriebssystem und die Überprüfung der übergebenen \textit{R}-Executives.\\
+
+Um die drei unterstützten Betriebssysteme Windows, Mac und Unix effizient zu unterscheiden, werden diese als Enum "`OSType"' erzeugt.\\
+
+Die absoluten Pfade der Standart-Speicherorte der \textit{R}-Executive wird für jedes Betriebssystem in einem eigenen String Array gespeichert. Es ist wichtig hier zu beachten, dass Windows andere Separatoren verwendet als Linux und OS X.
+Bei Windows müssen die einzelnen Verzeignisse durch "`$\backslash \backslash$"' getrennt werden, bei beiden anderen Betriebssystemen nur durch "`/"'. 
+
+Falls neue Standart-Speicherorte für die \textit{R}-Executive hinzugefügt werden sollen, so kann das jeweilige Array einfach um den neuen Pfad erweitert werden. Beim Starten des Programms werden alle Pfade des Arrays nach einer ausführbaren \textit{R}-Executive durchsucht.\\
+
+Außerdem werden die Dateinamen der \textit{R}-Executive für die unterschiedlichen Betriebssysteme in einem String-Array gespeichert, da diese je nach Betriebssystem anders benannt sind. Außerdem wird das jeweilige Array benötigt, um bei der manuellen \textit{R}-Auswahl zu prüfen, ob es sich um eine \textit{R}-Executive handelt. Dies wird in der Methode "`isRExec($String$ path)"' in Abhängigkeit des verwendeten Betriebssystems überprüft.\\
+
+Die Methode "`getOS()"' fragt den Namen des Betriebssystems ab und gibt dieses als Enum "`OSType"' passend zurück.\\
+
+Wie bereits beschrieben, werden nach dem Start des Programms die Standart-Speicherorte nach einer ausführbaren R-Executive durchsucht. Ob an einem dieser Speicherorte eine Executive liegt, wird mit der Methode "`String getPath($String[]$ locations, $String[]$ executables)"' überprüft. Außerdem wird versucht die Executive mit einem ProcessBuilder zu starten, um zu prüfen, ob der Nutzer ausreichende Zugriffsberechtigungen besitzt.\\
+
+Zusätzlich sind in der Klasse \textit{OS} die Parameter zur Ausführung der \textit{R}-Executive in \textit{ProcessBuilder} gespeichert. Diese werden beim Aufruf der Methode "`getParameters($String$ path)"' mit dem Pfad "`path"' der Executive zu einem String-Array konkateniert und anschließend als String-Array zurückgegeben.
+
+\subsection{RBuffer} \label{RBuffer}
+
+Diese Klasse implementiert den Ringpuffer, welcher für die Ausgabe des Std-Output von \textit{R} im Textausgabefenster des \textit{RTerminalTab} verwendet wird.
+Die Größe des Ringpuffers wird bei der Erzeugung dem Konstruktor übergeben und ist beim Starten des Programms mit graphischer Benutzeroberfläche in der Klasse \textit{RTerminal} in der Variable "`BUFFER\_SIZE"' festgelegt.
+
+\subsection{RListener} \label{RListener}
+
+Die Klasse \textit{RListener} implementiert einen Listener, welcher in den Klassen \textit{RTerminal} des ersten Package, siehe \ref{gui}, sowie \textit{RIntegration} verwendet wird. 
 
 
 \section{SWT}\label{swt} 
-Die graphische Benutzeroberfläche wurde mithilfe des Standard Widget Toolkit (SWT) realisiert. SWT ist ein "open-source widget toolkit" für Java mit Integration in die GUI des nativen Betriebssystems, sodass das Design der Benutzeroberfläche an das Design des Betriebssystems angepasst wird. 
+Die graphische Benutzeroberfläche wurde mithilfe des \textit{Standard Widget Toolkit} (SWT) realisiert. SWT ist ein "open-source widget toolkit" für Java mit Integration in die GUI des nativen Betriebssystems, sodass das Design der Benutzeroberfläche an das Design des Betriebssystems angepasst wird. 
 
 Für das Projekt \textit{R-Terminal} wurde die SWT-Version 4.2.1 verwendet.
 
