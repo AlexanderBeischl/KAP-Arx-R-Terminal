@@ -6,27 +6,28 @@
 \BOOKMARK [2][-]{subsection.2.3.1}{Setup}{section.2.3}% 6
 \BOOKMARK [2][-]{subsection.2.3.2}{Terminal}{section.2.3}% 7
 \BOOKMARK [1][-]{section.2.4}{Benutzung von R f\374r ARX }{chapter.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Entwicklerdokumentation}{}% 9
-\BOOKMARK [1][-]{section.3.1}{Verwendete Technologien}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.2}{Architektur des Arx-R-Terminals}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.3}{Graphische Benutzeroberfl\344che \(GUI\)}{chapter.3}% 12
-\BOOKMARK [2][-]{subsection.3.3.1}{RMain}{section.3.3}% 13
-\BOOKMARK [2][-]{subsection.3.3.2}{RTerminal}{section.3.3}% 14
-\BOOKMARK [2][-]{subsection.3.3.3}{RSetupTab}{section.3.3}% 15
-\BOOKMARK [2][-]{subsection.3.3.4}{RTerminalTab}{section.3.3}% 16
-\BOOKMARK [2][-]{subsection.3.3.5}{RBrowserWindow}{section.3.3}% 17
-\BOOKMARK [2][-]{subsection.3.3.6}{RLayout}{section.3.3}% 18
-\BOOKMARK [2][-]{subsection.3.3.7}{RCommandListener}{section.3.3}% 19
-\BOOKMARK [1][-]{section.3.4}{Funktionaler Kern - Integration von R}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.4.1}{RIntegration}{section.3.4}% 21
-\BOOKMARK [2][-]{subsection.3.4.2}{OS}{section.3.4}% 22
-\BOOKMARK [2][-]{subsection.3.4.3}{RBuffer}{section.3.4}% 23
-\BOOKMARK [2][-]{subsection.3.4.4}{RListener}{section.3.4}% 24
-\BOOKMARK [1][-]{section.3.5}{Abh\344ngigkeiten}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.5.1}{SWT}{section.3.5}% 26
-\BOOKMARK [2][-]{subsection.3.5.2}{R-Project}{section.3.5}% 27
-\BOOKMARK [1][-]{section.3.6}{Ausf\374hrung ohne graphische Benutzeroberfl\344che}{chapter.3}% 28
-\BOOKMARK [0][-]{chapter.4}{Designentscheidungen}{}% 29
-\BOOKMARK [1][-]{section.4.1}{Alternativen}{chapter.4}% 30
-\BOOKMARK [2][-]{subsection.4.1.1}{rJava}{section.4.1}% 31
-\BOOKMARK [2][-]{subsection.4.1.2}{JRI}{section.4.1}% 32
+\BOOKMARK [2][-]{subsection.2.4.1}{Skalenniveau}{section.2.4}% 9
+\BOOKMARK [0][-]{chapter.3}{Entwicklerdokumentation}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Verwendete Technologien}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Architektur des Arx-R-Terminals}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{Graphische Benutzeroberfl\344che \(GUI\)}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.3.1}{RMain}{section.3.3}% 14
+\BOOKMARK [2][-]{subsection.3.3.2}{RTerminal}{section.3.3}% 15
+\BOOKMARK [2][-]{subsection.3.3.3}{RSetupTab}{section.3.3}% 16
+\BOOKMARK [2][-]{subsection.3.3.4}{RTerminalTab}{section.3.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.5}{RBrowserWindow}{section.3.3}% 18
+\BOOKMARK [2][-]{subsection.3.3.6}{RLayout}{section.3.3}% 19
+\BOOKMARK [2][-]{subsection.3.3.7}{RCommandListener}{section.3.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Funktionaler Kern - Integration von R}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.4.1}{RIntegration}{section.3.4}% 22
+\BOOKMARK [2][-]{subsection.3.4.2}{OS}{section.3.4}% 23
+\BOOKMARK [2][-]{subsection.3.4.3}{RBuffer}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.4}{RListener}{section.3.4}% 25
+\BOOKMARK [1][-]{section.3.5}{Abh\344ngigkeiten}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.5.1}{SWT}{section.3.5}% 27
+\BOOKMARK [2][-]{subsection.3.5.2}{R-Project}{section.3.5}% 28
+\BOOKMARK [1][-]{section.3.6}{Ausf\374hrung ohne graphische Benutzeroberfl\344che}{chapter.3}% 29
+\BOOKMARK [0][-]{chapter.4}{Designentscheidungen}{}% 30
+\BOOKMARK [1][-]{section.4.1}{Alternativen}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.1.1}{rJava}{section.4.1}% 32
+\BOOKMARK [2][-]{subsection.4.1.2}{JRI}{section.4.1}% 33

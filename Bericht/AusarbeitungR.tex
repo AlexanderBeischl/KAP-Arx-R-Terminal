@@ -26,7 +26,7 @@
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
 \usepackage{graphicx} % Required for including pictures
 \usepackage{wrapfig} % Allows in-line images
-
+\usepackage{listings}
 \usepackage{mathpazo} % Use the Palatino font
 \usepackage[T1]{fontenc} % Required for accented characters
 \usepackage[utf8]{inputenc} 
@@ -184,6 +184,35 @@ Nachdem die gewünschte R-Version gefunden wurde, kann diese nun unter dem Tab \
 
 \section{Benutzung von R für ARX }
 Dieser Abschnitt wird sich mit der Benutzung von R im Zusammenhang mit großen Datentabellen befassen, wie sie in ARX üblich sind. Dies soll die Benutzung von dem Arx-R-Terminal zur Verarbeitung von ARX-Daten ermöglichen. 
+>>>>>>> 6a48931c8aab1089afd0d9c4798c9e95d59180c2
+
+\subsection{Skalenniveau}
+In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus ARX sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
+
+\begin{itemize}
+\item Numeric
+\item Integer
+\item Complex
+\item Logic
+\item Character
+\end{itemize}
+
+Wenn also eine Variable als Dezimalzahl ohne zusätzliche Bedingung deklariert wird, ist der Datentyp standardmäßig \texttt{numeric} (vgl. \ref{numericVar}).
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single, caption = Deklarierung einer numerischen Variable x]
+x = 13.4
+\end{lstlisting}
+\label{numericVar}
+
+Will man explizit einen Integer als Variable initialisieren, sieht der Befehl aus wie in \ref{integerVar}.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single, caption = Deklarierung einer numerischen Variable x]
+x = 13.4
+\end{lstlisting}
+\label{numericVar}
+
 
 %insert skalenniveau Erklärung 
 %insert data.frame erklärung
@@ -514,9 +543,12 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 %[\textit{On the electrodynamics of moving bodies}]. 
 %Annalen der Physik, 322(10):891–921, 1905.
 
- 
-\bibitem{rproject}
+ \bibitem{rproject}
 \texttt{https://www.r-project.org/about.html}
+
+\bibitem{skalenniveau}
+\texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/biometrie/Q1/SkriptQ1.pdf}
+
 \end{thebibliography}
 %----------------------------------------------------------------------------------------
 

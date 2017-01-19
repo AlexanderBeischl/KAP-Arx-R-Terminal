@@ -7,6 +7,7 @@
 \contentsline {subsection}{\numberline {2.3.1}Setup}{8}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Terminal}{8}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}Benutzung von R f\IeC {\"u}r ARX }{9}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Skalenniveau}{9}{subsection.2.4.1}
 \contentsline {chapter}{\numberline {3}Entwicklerdokumentation}{10}{chapter.3}
 \contentsline {section}{\numberline {3.1}Verwendete Technologien}{10}{section.3.1}
 \contentsline {section}{\numberline {3.2}Architektur des Arx-R-Terminals}{10}{section.3.2}
