@@ -24,11 +24,8 @@
 \contentsline {subsection}{\numberline {3.4.2}OS}{18}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}RBuffer}{19}{subsection.3.4.3}
 \contentsline {subsection}{\numberline {3.4.4}RListener}{20}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Abh\IeC {\"a}ngigkeiten}{20}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}SWT}{20}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}R-Project}{22}{subsection.3.5.2}
-\contentsline {section}{\numberline {3.6}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{22}{section.3.6}
-\contentsline {chapter}{\numberline {4}Designentscheidungen}{24}{chapter.4}
-\contentsline {section}{\numberline {4.1}Alternativen}{24}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}rJava}{24}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}JRI}{24}{subsection.4.1.2}
+\contentsline {section}{\numberline {3.5}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{20}{section.3.5}
+\contentsline {section}{\numberline {3.6}Abh\IeC {\"a}ngigkeiten}{21}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Java}{21}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}R-Project}{21}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}SWT}{21}{subsection.3.6.3}

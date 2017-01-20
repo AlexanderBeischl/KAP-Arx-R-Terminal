@@ -76,7 +76,9 @@ Terminal zur Bearbeitung von ARX-Daten mit R} % Subtitle
 \renewcommand{\abstractname}{Zusammenfassung} % Uncomment to change the name of the abstract to something else
 
 \begin{abstract}
-Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
+
+Im Rahmen des Klinisches Anwendungsprojektes wurde die Java-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in Java, sodass in der graphischen Benutzeroberfläche des \textit{R-Terminals} Befehle und Code eingegeben werden können, welche von \textit{R} ausgeführt werden. 
+
 \end{abstract}
 
 
@@ -96,6 +98,8 @@ This statement requires citation \cite{latexcompanion}; this one does too \cite{
 
 Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus consectetur. Nulla pellentesque tortor et aliquam vehicula. Maecenas imperdiet euismod enim ut pharetra. Suspendisse pulvinar sapien vitae placerat pellentesque. Nulla facilisi. Aenean vitae nunc venenatis, vehicula neque in, congue ligula.
 
+TODO Fabian bzgl. Lizenzen fragen
+
 %------------------------------------------------
 
 \section*{R}\label{r}
@@ -109,6 +113,13 @@ R bietet standardmäßig alle Hauptfunktionen an für die statistische Analyse v
 \section*{ARX}
 ARX ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde.
 
+\section*{Vorgaben}
+
+Für die Implementierung der Software wurde Java als Programmiersprache vorgegeben, außerdem sollte die graphische Benutzeroberfläche mit \textit{SWT} realisiert werden.
+
+Die graphische Benutzeroberfläche sollte aus unterschiedlichen Tabs aufgebaut sein. Ein Tab beinhaltet folgende Informationen zum Setup: verwendetes Betriebssystem, aktuell integrierte Version von \textit{R} und Installationsort der \textit{R}-Version. In einem weiteren Tab wird der Std-Output von \textit{R} ausgegeben und \textit{R}-Befehle können in diesen Tab eingegeben werden. 
+
+Beim Programmstart soll automatisch in den Standart-Installationsorten nach einer ausführbaren \textit{R}-Executive gesucht werden. Außerdem soll die Möglichkeit bestehen, manuell eine \textit{R}-Installation auszuwählen und diese mit der Software in Java zu integrieren. 
 
 
 \chapter{Anwenderdokumentation}
@@ -425,6 +436,36 @@ Durch die abstrakte Methode "`setupUpdate()"', welche in \textit{RTerminal} übe
 Durch "`bufferUpdate()"' wird das Ausgabefenster im \textit{RTerminalTab} aktualisiert. Diese abstrakte Methode wird ebenfalls in \textit{RTerminal} überschrieben.
 
 
+
+\section{Ausführung ohne graphische Benutzeroberfläche} \label{ohne GUI}
+
+Der funktionale Kern des \textit{R-Terminals} kann auch ohne die graphische Benutzeroberfläche ausgeführt werden. Hierfür müssen allerdings folgende Objekte erzeugt werden:
+\begin{itemize}
+	\item ein Ring-Puffer der Klasse \textit{RBuffer}, welcher den Input für \textit{R} beinhaltet
+	\item ein weiterer Ring-Puffer der selben Klasse, welchen den Std-Output von \textit{R} übergeben wird
+	\item ein Listener der Klasse \textit{RListener}, welcher durch den Std-Output ausgelöst wird
+\end{itemize}
+	
+Anschließend müssen die abstrakten Methoden des \textit{RListeners} überschrieben werden:
+	\begin{itemize}
+		\item \textit{bufferUpdated()}
+		\item \textit{closed()}
+		\item \textit{setupUpdate()}
+	\end{itemize}
+
+Anschließend kann die Integration von \textit{R} gestartet werden. Hierfür muss ein neues \textit{RIntegration}-Objekt erzeugt werden.
+
+
+Um dem \textit{R}-Prozess nun Befehle zu übergeben, muss lediglich die Methode "`execute"' des erzeugten \textit{RIntegration}-Objekt aufgerufen werden und das Kommando als String übergeben werden.\\
+\\
+Beispiel: Es wurde ein \textit{RIntegration}-Objekt \textit{rProcess} erzeugt und es soll "`1+2+3+4+5"' als Kommando übergeben werden, dann muss
+	\begin{center}
+		\textit{rProcess}.execute("`1+2+3+4+5"')
+	\end{center} 
+	ausgeführt werden. Die Ausgabe wird im Ring-Puffer gespeichert, welcher für den Std-Output erzeugt wurde.\\
+\\
+Ein Code-Beispiel hierzu befindet sich im Package "`ExampleWithoutGUI"'.
+
 \section{Abhängigkeiten}
 
 Das Projekt beinhaltet bereits alle benötigten Java-Libraries zur Ausführung der Software. 
@@ -432,6 +473,15 @@ Da die graphische Benutzeroberfläche mit \textit{SWT} realisiert wurde, müssen
 
 Für die Integration von \textit{R} in Java, welche durch das \textit{R-Terminal} umgesetzt wurde, muss eine Standalone-Installation von \textit{R} vorliegen. Nähre Details hierzu in \ref{r}.
  
+\subsection{Java}
+
+Die für das \textit{R-Terminal} verwendetet Programmiersprache ist Java. Für die Entwicklung und Tests wurde \textit{Java SE 8 (1.8.0\_91)} verwendet.
+ 
+\subsection{R-Project} \label{r}
+
+Um \textit{R} in Java zu integrieren muss eine Standalone-Installation von R, für welche der aktuellen Benutzer ausreichende Zugriffsrechte besitzt, vorhanden sein. 
+Alle aktuellen \textit{R}-Versionen können von der Homepage des \textit{R}-Projects\footnote{\url{https://www.r-project.org}} heruntergeladen werden. 
+
 
 \subsection{SWT}\label{swt} 
 Die graphische Benutzeroberfläche wurde mithilfe des \textit{Standard Widget Toolkit} (\textit{SWT}) realisiert. \textit{SWT} ist ein "`open-source widget toolkit"' für Java mit Integration in die GUI des nativen Betriebssystems, sodass das Design der Benutzeroberfläche an das Design des Betriebssystems angepasst wird. 
@@ -487,60 +537,12 @@ Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt w
 	Nun können Sie das Java-Programm starten.
 
 
-\subsection{R-Project} \label{r}
+%\newpage
+%\chapter{Designentscheidungen}
+%\textbf{TODO warum dieses Design}\\
+%In diesem Kapitel werden mögliche Alternativen vorgestellt um \textit{R} in ein \textit{Java}-Programm zu integrieren.
+%Die in dieser Dokumentation vorgestellte Umsetzung wurde gewählt, um die verwendete Version von \textit{R} frei wählen zu können und des weiteren Abhängigkeiten von weiteren Libraries zu vermeiden.  
 
-Um \textit{R} in Java zu integrieren muss eine Standalone-Installation von R, für welche der aktuellen Benutzer ausreichende Zugriffsrechte besitzt, vorhanden sein. 
-Alle aktuellen \textit{R}-Versionen können von der Homepage des \textit{R}-Projects\footnote{\url{https://www.r-project.org}} heruntergeladen werden. 
-
-\section{Ausführung ohne graphische Benutzeroberfläche} \label{ohne GUI}
-
-Der funktionale Kern des \textit{R-Terminals} kann auch ohne die graphische Benutzeroberfläche ausgeführt werden. Hierfür müssen allerdings folgende Objekte erzeugt werden:
-\begin{itemize}
-	\item ein Ring-Puffer der Klasse \textit{RBuffer}, welcher den Input für \textit{R} beinhaltet
-	\item ein weiterer Ring-Puffer der selben Klasse, welchen den Std-Output von \textit{R} übergeben wird
-	\item ein Listener der Klasse \textit{RListener}, welcher durch den Std-Output ausgelöst wird
-\end{itemize}
-	
-Anschließend müssen die abstrakten Methoden des \textit{RListeners} überschrieben werden:
-	\begin{itemize}
-		\item \textit{bufferUpdated()}
-		\item \textit{closed()}
-		\item \textit{setupUpdate()}
-	\end{itemize}
-
-Anschließend kann die Integration von \textit{R} gestartet werden. Hierfür muss ein neues \textit{RIntegration}-Objekt erzeugt werden.
-
-
-Um dem \textit{R}-Prozess nun Befehle zu übergeben, muss lediglich die Methode "`execute"' des erzeugten \textit{RIntegration}-Objekt aufgerufen werden und das Kommando als String übergeben werden.\\
-\\
-Beispiel: Es wurde ein \textit{RIntegration}-Objekt \textit{rProcess} erzeugt und es soll "`1+2+3+4+5"' als Kommando übergeben werden, dann muss
-	\begin{center}
-		\textit{rProcess}.execute("`1+2+3+4+5"')
-	\end{center} 
-	ausgeführt werden. Die Ausgabe wird im Ring-Puffer gespeichert, welcher für den Std-Output erzeugt wurde.\\
-\\
-Ein Code-Beispiel hierzu befindet sich im Package "`ExampleWithoutGUI"'.
-
-\newpage
-
-
-\chapter{Designentscheidungen}
-
-\textbf{TODO warum dieses Design}\\
-
-
-In diesem Kapitel werden mögliche Alternativen vorgestellt um \textit{R} in ein \textit{Java}-Programm zu integrieren.
-Die in dieser Dokumentation vorgestellte Umsetzung wurde gewählt, um die verwendete Version von \textit{R} frei wählen zu können und des weiteren Abhängigkeiten von weiteren Libraries zu vermeiden.  
-
-\section{Alternativen}
-
-\subsection{rJava}
-
-\textbf{TODO}
-
-\subsection{JRI}
-
-\textbf{TODO}
 
 
 
@@ -564,11 +566,17 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 %[\textit{On the electrodynamics of moving bodies}]. 
 %Annalen der Physik, 322(10):891–921, 1905.
 
- \bibitem{rproject}
-\texttt{https://www.r-project.org/about.html}
 
 \bibitem{skalenniveau}
 \texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/biometrie/Q1/SkriptQ1.pdf}
+\bibitem{rproject}
+\texttt{https://www.r-project.org/about.html}
+\bibitem{eclipse}
+\texttt{https://www.eclipse.org}
+\bibitem{swt}
+\texttt{https://www.eclipse.org/swt/}
+\bibitem{java}
+\texttt{https://www.java.com/de/}
 
 \end{thebibliography}
 %----------------------------------------------------------------------------------------

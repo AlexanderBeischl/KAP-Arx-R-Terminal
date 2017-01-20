@@ -23,11 +23,8 @@
 \BOOKMARK [2][-]{subsection.3.4.2}{OS}{section.3.4}% 23
 \BOOKMARK [2][-]{subsection.3.4.3}{RBuffer}{section.3.4}% 24
 \BOOKMARK [2][-]{subsection.3.4.4}{RListener}{section.3.4}% 25
-\BOOKMARK [1][-]{section.3.5}{Abh\344ngigkeiten}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.5.1}{SWT}{section.3.5}% 27
-\BOOKMARK [2][-]{subsection.3.5.2}{R-Project}{section.3.5}% 28
-\BOOKMARK [1][-]{section.3.6}{Ausf\374hrung ohne graphische Benutzeroberfl\344che}{chapter.3}% 29
-\BOOKMARK [0][-]{chapter.4}{Designentscheidungen}{}% 30
-\BOOKMARK [1][-]{section.4.1}{Alternativen}{chapter.4}% 31
-\BOOKMARK [2][-]{subsection.4.1.1}{rJava}{section.4.1}% 32
-\BOOKMARK [2][-]{subsection.4.1.2}{JRI}{section.4.1}% 33
+\BOOKMARK [1][-]{section.3.5}{Ausf\374hrung ohne graphische Benutzeroberfl\344che}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.6}{Abh\344ngigkeiten}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.6.1}{Java}{section.3.6}% 28
+\BOOKMARK [2][-]{subsection.3.6.2}{R-Project}{section.3.6}% 29
+\BOOKMARK [2][-]{subsection.3.6.3}{SWT}{section.3.6}% 30
