@@ -64,7 +64,7 @@ public class RTerminal {
 
             @Override
             public void closed() {
-                // TODO: Handle
+                
             }
             
             //Update the Std-Tab after a new R was started
@@ -97,43 +97,6 @@ public class RTerminal {
         	rPath = path;
         	tabTerminal.enableTab();
         }
-    }
-    
-    /**
-     * Before starting a new R-Exec the old one is shut down and 
-     * a Dialog in the RTerminalTab is shown to give the user feedback.
-     * Until a new R is running the Tab is disabled to prohibit any input.
-     */
-    public static void endR()
-    {
-    	if(r != null)
-    	{
-    		r.shutdown();
-    		showEndDialog();
-    	}
-    	tabTerminal.disableTab();
-    }
-    
-    /**
-     * When the new R-Exec is started, a Dialog is printed in the RTerminalTab 
-     * to feedback the user he can use R now. 
-     */
-    public static void showNewR()
-    {
-    	r.appendNewLines(2);
-    	char[] text = "New R was started!".toCharArray();
-    	buffer.append(text);
-    	r.appendNewLines(3);	
-    }
-    
-    /**
-     * Prints the endDialog in the RTabTerminal after R was shutdown.
-     */
-    public static void showEndDialog()
-    {
-    	r.appendNewLines(2);
-    	char[] text = "R was shut down!".toCharArray();
-    	buffer.append(text);
     }
     
     /**
@@ -175,5 +138,42 @@ public class RTerminal {
         }
         return false;
     }
-   
+    
+    /**
+     * Before starting a new R-Exec the old one is shut down and 
+     * a Dialog in the RTerminalTab is shown to give the user feedback.
+     * Until a new R is running the Tab is disabled to prohibit any input.
+     */
+    public static void endR()
+    {
+    	if(r != null)
+    	{
+    		r.shutdown();
+    		showEndDialog();
+    	}
+    	tabTerminal.disableTab();
+    }
+    
+    /**
+     * When the new R-Exec is started, a Dialog is printed in the RTerminalTab 
+     * to feedback the user he can use R now. 
+     */
+    public static void showNewR()
+    {
+    	r.appendNewLines(2);
+    	char[] text = "New R was started!".toCharArray();
+    	buffer.append(text);
+    	r.appendNewLines(3);	
+    }
+    
+    /**
+     * Prints the endDialog in the RTabTerminal after R was shutdown.
+     */
+    public static void showEndDialog()
+    {
+    	r.appendNewLines(2);
+    	char[] text = "R was shut down!".toCharArray();
+    	buffer.append(text);
+    }
+    
 }

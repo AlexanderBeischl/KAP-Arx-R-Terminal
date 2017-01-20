@@ -33,6 +33,9 @@
 \usepackage[ngerman]{babel}
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
 \usepackage{hyperref} %To include URLs
+\usepackage{caption}
+\usepackage{adjustbox}
+
 
 \makeatletter
 \renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
@@ -77,7 +80,7 @@ Terminal zur Bearbeitung von ARX-Daten mit R} % Subtitle
 
 \begin{abstract}
 
-Im Rahmen des Klinisches Anwendungsprojektes wurde die Java-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in Java, sodass in der graphischen Benutzeroberfläche des \textit{R-Terminals} Befehle und Code eingegeben werden können, welche von \textit{R} ausgeführt werden. 
+Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in \textit{Java}, sodass in der graphischen Benutzeroberfläche des \textit{R-Terminals} Befehle und Code eingegeben werden können, welche von \textit{R} ausgeführt werden. 
 
 \end{abstract}
 
@@ -105,7 +108,7 @@ TODO Fabian bzgl. Lizenzen fragen
 \section*{R}\label{r}
 R ist eine Programmiersprache und Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein GNU-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. R weist große Ähnlichkeiten zu der Programmiersprache S auf, ein weiteres GNU-Projekt, welches weitgehend auch unter R läuft. \cite{rproject}
 
-R bietet standardmäßig alle Hauptfunktionen an für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit R einfach, statistische Funktionen auf große Datenmengen anzuwenden.  
+R bietet standardmäßig alle Hauptfunktionen für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit R einfach, statistische Funktionen auf große Datenmengen anzuwenden.  
 
 
 %------------------------------------------------
@@ -113,18 +116,19 @@ R bietet standardmäßig alle Hauptfunktionen an für die statistische Analyse v
 \section*{ARX}
 ARX ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde.
 
+
 \section*{Vorgaben}
 
-Für die Implementierung der Software wurde Java als Programmiersprache vorgegeben, außerdem sollte die graphische Benutzeroberfläche mit \textit{SWT} realisiert werden.
+Für die Implementierung der Software wurde \textit{Java} als Programmiersprache vorgegeben, außerdem sollte die graphische Benutzeroberfläche mit \textit{SWT} realisiert werden.
 
-Die graphische Benutzeroberfläche sollte aus unterschiedlichen Tabs aufgebaut sein. Ein Tab beinhaltet folgende Informationen zum Setup: verwendetes Betriebssystem, aktuell integrierte Version von \textit{R} und Installationsort der \textit{R}-Version. In einem weiteren Tab wird der Std-Output von \textit{R} ausgegeben und \textit{R}-Befehle können in diesen Tab eingegeben werden. 
+Die graphische Benutzeroberfläche sollte aus unterschiedlichen Tabs aufgebaut sein. Ein Tab beinhaltet folgende Informationen zum Setup: verwendetes Betriebssystem, aktuell integrierte Version von \textit{R} und Installationsort der \textit{R}-Version. In einem weiteren Tab wird der Std-Output von \textit{R} ausgegeben und \textit{R}-Befehle können in diesem Tab eingegeben werden. 
 
-Beim Programmstart soll automatisch in den Standart-Installationsorten nach einer ausführbaren \textit{R}-Executive gesucht werden. Außerdem soll die Möglichkeit bestehen, manuell eine \textit{R}-Installation auszuwählen und diese mit der Software in Java zu integrieren. 
+Beim Programmstart soll automatisch in den Standart-Installationsorten nach einer ausführbaren \textit{R}-Executive gesucht werden. Außerdem soll die Möglichkeit bestehen, manuell eine \textit{R}-Installation auszuwählen und diese mit der Software in \textit{Java} zu integrieren. 
 
 
 \chapter{Anwenderdokumentation}
 \section{Übersicht}
-Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus ARX einzuladen und Skripte auszuführen, und gleichzeitig die im Kapitel \ref{einführung} beschriebenen Probleme zu umgehen. Das R-Terminal ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
+Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus ARX einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die im Kapitel \ref{Problemstellung} beschriebenen Probleme zu umgehen. Das R-Terminal ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
 
 \begin{itemize}
 \item Windows 10 Education (Version 1511)
@@ -137,37 +141,108 @@ Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu 
 
 In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Features des R-Terminals beschrieben. 
 
-\section{Vorbereitungen}
+\section{Voraussetzungen}
 
-\textbf{TODO} Installation von R im Vorhinein und Auswahl der richtigen SWT-Libraries beschreiben. (Auswahl der Libraries wird in \ref{swt}
- beschrieben ;)
+Um die Software \textit{R-Terminal} auszuführen, muss \textit{Java} sowie eine Standalone-Installation von \textit{R} installiert sein. Es wird empfohlen das \textit{R-Terminal} mit Eclipse auszuführen.
+Die Versionen, mit welchen die Software getestet wurde, sind unter \ref{Abhängigkeiten} aufgeführt. 
+
+\section{Vorbereitung} \label{swtanwender}
+
+Zunächst muss  das Projekt \textit{R-Terminal} in Eclipse importiert werden.
+
+Um das \textit{R-Terminal} ausführen zu können, müssen die betriebssystemspezifischen \textit{SWT}-Libraries auf den Bild-Path gesetzt und die \textit{SWT}-Libraries anderer Betriebssysteme entfernt werden.
+Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt wird:
+\begin{enumerate}
+	\item Navigieren Sie im \textit{Eclipse} Package Explorer zu:
+	\begin{center}\textit{R-Terminal -> lib  -> swt} \end{center}
+	
+	\item Wählen Sie die betriebssystemspezifischen \textit{SWT}-Libraries aus und öffnen Sie mit der rechten Maustaste, bzw. dem OS-spezifischen Äquivalent, für jede dieser Libraries das Auswahlfenster. Klicken Sie auf "`Build-Path"'.
+		Sollte die Library bereits hinzugefügt sein, erscheint "`Configure Build Path..."'. Ist dies nicht der Fall, erscheint "`Add to Build Path"', klicken Sie dieses an.\\
+
+\begin{figure}
+\centering	
+	\begin{minipage}{0.5\textwidth}
+	\centering	
+		\captionsetup{width=0.9\linewidth}
+		\includegraphics[width=0.9\linewidth]{Bilder/SWT-Add-to-Build-Path}
+    	\caption{\textit{Eclipse}: Adding a \textit{SWT}-Library to the Build Path}
+    	\label{addToBuildPath}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+	\centering
+		\captionsetup{width=0.9\linewidth}
+    	\includegraphics[width=0.9\linewidth]{Bilder/SWT-Configure-Build-Path}
+    	\caption{\textit{Eclipse}: This \textit{SWT}-Library is on the Build Path}
+    	\label{onBuildPath}
+	\end{minipage}
+\end{figure}
+		
+	Betriebssystemspezifische \textit{SWT}-Libraries:
+		
+	\begin{itemize}
+		\item Windows: \begin{itemize}
+							\item swt-4.2.1-win32-win32-x86\_64.jar
+							\item swt-4.2.1-win32-win32-x86.jar
+						\end{itemize}
+						
+		\item Mac: \begin{itemize}
+						\item swt-4.2.1-cocoa-macosx-x86\_64.jar
+						\item swt-4.2.1-cocoa-macosx.jar
+					\end{itemize}
+		\item Linux: \begin{itemize}
+						\item swt-4.2.1-gtk-linux-x86\_64.jar
+						\item swt-4.2.1-gtk-linux-x86.jar
+					 \end{itemize}
+	\end{itemize} 
+	
+	\item Überprüfen Sie nun, ob alle anderen Libraries des Ordners \textit{swt} nicht auf dem "`Build Path"' liegen. 
+		Gehen Sie hierfür zu:
+		\begin{center}
+			\textit{R-Terminal -> Referenced Libraries}
+		\end{center} 
+		
+		Überprüfen Sie, dass keine der genannten Libraries der oberen Aufzählung, die nicht Ihrem Betriebssystem zugehört, in diesem Ordner enthalten ist.
+		Sollte sich eine \textit{SWT}-Library für ein anderes Betriebssystems in diesem Ordner befinden, öffnen Sie mit einem Rechtsklick das Menü und wählen Sie aus: 
+		\begin{center}
+			\textit{Build Path -> Remove from Build Path}
+		\end{center}	
+		
+		Nun können Sie das \textit{Java}-Programm Sie die "`main"'-Methode in \textit{RMain} ausführen.
+\end{enumerate}
+\begin{figure}[t]
+	\centering
+		\includegraphics[width=\linewidth]{Bilder/SWT-Remove-from-Build-Path}
+    	\caption{\textit{Eclipse}: Removing a \textit{SWT}-Library from the Build Path}
+    	\label{removeFromBuildPath}
+\end{figure}
+
  
 \section{}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{R-TerminalWindows}
+\includegraphics[width=0.8\textwidth]{Bilder/R-TerminalWindows}
 \caption{R-Terminal: \textit{Terminal} unter Windows 10 Education (Version 1511)}
 \label{rterminalwindows}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{rterminalwindows}
+\includegraphics[width=0.8\textwidth]{Bilder/rterminalwindows}
 \caption{R-Terminal: \textit{Setup} unter Windows 10 Education (Version 1511)}
 \label{rterminalwindows}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{R-Terminal}
+\includegraphics[width=0.8\textwidth]{Bilder/R-Terminal}
 \caption{R-Terminal: \textit{Terminal} unter OS X (Version 10.11.1)}
 \label{rterminalmac}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{rterminalsetup}
+\includegraphics[width=0.8\textwidth]{Bilder/rterminalsetup}
 \caption{R-Terminal: \textit{Setup} unter OS X (Version 10.11.1)}
 \label{macsetup}
 \end{figure}
@@ -239,7 +314,7 @@ x = 13.4
 
 Das \textit{R-Terminal} wurde mit der Entwicklungsumgebung \textit{Eclipse} entwickelt.
 Als Programmiersprache wurde \textit{Java} gewählt. Die graphische Benutzeroberfläche wurde mit \textit{SWT} realisiert, genauere Details hierzu werden in \ref{swt} erläutert.
-Um \textit{R}-Kommandos auszuführen, startet das hier dokumentierte Programm \textit{R-Terminal} einen \textit{R}-Prozess der Standalone-Installation von \textit{R} durch die Java-Library \textit{ProcessBuilder}.
+Um \textit{R}-Kommandos auszuführen, startet das hier dokumentierte Programm \textit{R-Terminal} einen \textit{R}-Prozess der Standalone-Installation von \textit{R} durch die \textit{Java}-Library \textit{ProcessBuilder}.
 
 
 \section{Architektur des R-Terminals}
@@ -274,16 +349,15 @@ Diese erzeugt ein neues Display sowie eine Shell. Im Anschluss wird ein neues Ob
 
 \subsection{RTerminal}
 
-Die Erzeugung der einzelnen Komponenten der graphischen Benutzeroberfläche wird durch den Konstruktor der Klasse \textit{RTerminal} realisiert.
+Die Erzeugung der einzelnen Komponenten der graphischen Benutzeroberfläche wird durch den Konstruktor der Klasse \textit{RTerminal} realisiert.\\
 
 Dieser erzeugt einen TabFolder mit zwei Tabs, der erste Tab beinhaltet ein Objekt der Klasse \textit{RTerminalTab}, der zweite ein Objekt der Klasse \textit{RSetupTab}.
-Außerdem erzeugt der Konstruktor noch einen Ring-Puffer "`buffer"', welcher zur Speicherung des Std-Output von \textit{R} verwendet wird, sowie einen Listener "`listener"'. Sowohl der Ring-Puffer, als auch der Listener wurden im Package "`org.deidentifier.arx.r"' implementiert.
-Im Anschluss wird die Integration mit \textit{R} durch den Aufruf der Methode "`startRIntergration"' eingeleitet.\\
+Außerdem erzeugt der Konstruktor noch einen Ring-Puffer der Klasse \textit{RBuffer} "`buffer"', welcher zur Speicherung des Std-Output von \textit{R} verwendet wird, sowie einen \textit{RListener} "`listener"'. Sowohl der Ring-Puffer, als auch der \textit{RListener} wurden im Package "`org.deidentifier.arx.r"' implementiert.
+Im Konstruktor werden die abstrakten Methoden "`bufferUpdated()"', "`closed()"' und "`setupUpdate()"' überschrieben, sodass diese die Inhalte der beiden Tabs aktualisieren.\\
 
+Im Anschluss wird die Integration mit \textit{R} durch den Aufruf der Methode "`startRIntergration"' eingeleitet.
 Diese Methode "`startRIntergration"' erzeugt ein neues Objekt der Klasse "`RIntegration"', welches in \ref{RIntegration} beschrieben wird und die Integration von \textit{R} realisiert.
-\\
 
-TODO Listener Methodenüberschreiben
 
 \subsection{RSetupTab}
 
@@ -352,13 +426,13 @@ Die Methoden der Klasse werden im Konstruktur der beiden genannten Klassen aufge
 
 \subsection{RCommandListener} \label{RCommandListener}
 
-Das Java-Interface \textit{RCommandListener} implementiert einen Listener, welcher bei der Eingabe von Befehlen für \textit{R} ausgeführt wird. Die abstrakte Methode "`command($String$ command)"' des Interfaces wird in der Klasse \textit{RTerminal} mit der Methode "`execute(command)"' aus der Klasse \textit{RIntegration} überschrieben. Somit wird die Trennung der graphischen Oberfläche und des funktionalen Kerns der \textit{R}-Integration, welcher in \ref{funktionaler Kern} beschrieben wird, beibehalten.
+Das \textit{Java}-Interface \textit{RCommandListener} implementiert einen Listener, welcher bei der Eingabe von Befehlen für \textit{R} ausgeführt wird. Die abstrakte Methode "`command($String$ command)"' des Interfaces wird in der Klasse \textit{RTerminal} mit der Methode "`execute(command)"' aus der Klasse \textit{RIntegration} überschrieben. Somit wird die Trennung der graphischen Oberfläche und des funktionalen Kerns der \textit{R}-Integration, welcher in \ref{funktionaler Kern} beschrieben wird, beibehalten.
 
 
 \section{Funktionaler Kern - Integration von R} \label{funktionaler Kern}
 
-Die Integration von \textit{R} in Java ist in dem Package "`org.deidentifier.arx.r"' implementiert. Dieses beinhaltet alle Funktionen, durch welche die \textit{R}-Executive automatisch gefunden, ausgeführt und das Betriebssystem erkannt wird. Außerdem beinhaltet es alle Methoden zur Übermittlung des Input- und Outputstreams.
-Zur Integration von \textit{R} in Java wurde die Klasse \textit{ProcessBuilder} verwendet.
+Die Integration von \textit{R} in \textit{Java} ist in dem Package "`org.deidentifier.arx.r"' implementiert. Dieses beinhaltet alle Funktionen, durch welche die \textit{R}-Executive automatisch gefunden, ausgeführt und das Betriebssystem erkannt wird. Außerdem beinhaltet es alle Methoden zur Übermittlung des Input- und Outputstreams.
+Zur Integration von \textit{R} in \textit{Java} wurde die Klasse \textit{ProcessBuilder} verwendet.
 
 \begin{samepage}
 Das Package umfasst vier Klassen:
@@ -466,20 +540,20 @@ Beispiel: Es wurde ein \textit{RIntegration}-Objekt \textit{rProcess} erzeugt un
 \\
 Ein Code-Beispiel hierzu befindet sich im Package "`ExampleWithoutGUI"'.
 
-\section{Abhängigkeiten}
+\section{Abhängigkeiten} \label{Abhängigkeiten}
 
-Das Projekt beinhaltet bereits alle benötigten Java-Libraries zur Ausführung der Software. 
+Das Projekt beinhaltet bereits alle benötigten \textit{Java}-Libraries zur Ausführung der Software. 
 Da die graphische Benutzeroberfläche mit \textit{SWT} realisiert wurde, müssen die \textit{SWT}-Libraries je nach Betriebssystem ausgewählt werden. Dies wird genauer unter \ref{swt} erläutert.\\
 
-Für die Integration von \textit{R} in Java, welche durch das \textit{R-Terminal} umgesetzt wurde, muss eine Standalone-Installation von \textit{R} vorliegen. Nähre Details hierzu in \ref{r}.
+Für die Integration von \textit{R} in \textit{Java}, welche durch das \textit{R-Terminal} umgesetzt wurde, muss eine Standalone-Installation von \textit{R} vorliegen. Nähre Details hierzu in \ref{r}.
  
 \subsection{Java}
 
-Die für das \textit{R-Terminal} verwendetet Programmiersprache ist Java. Für die Entwicklung und Tests wurde \textit{Java SE 8 (1.8.0\_91)} verwendet.
+Die für das \textit{R-Terminal} verwendetet Programmiersprache ist \textit{Java}. Für die Entwicklung und Tests wurde \textit{Java SE 8 (1.8.0\_91)} verwendet.
  
 \subsection{R-Project} \label{r}
 
-Um \textit{R} in Java zu integrieren muss eine Standalone-Installation von R, für welche der aktuellen Benutzer ausreichende Zugriffsrechte besitzt, vorhanden sein. 
+Um \textit{R} in \textit{Java} zu integrieren muss eine Standalone-Installation von R, für welche der aktuellen Benutzer ausreichende Zugriffsrechte besitzt, vorhanden sein. 
 Alle aktuellen \textit{R}-Versionen können von der Homepage des \textit{R}-Projects\footnote{\url{https://www.r-project.org}} heruntergeladen werden. 
 
 
@@ -488,62 +562,7 @@ Die graphische Benutzeroberfläche wurde mithilfe des \textit{Standard Widget To
 
 Für das Projekt \textit{R-Terminal} wurde die \textit{SWT}-Version 4.2.1 verwendet.\\
 
-Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"' hinzugefügt werden, kann unter \ref{swtanwender} nachgeschlagen werden.\\
-\\
-\textbf{TODO vlt in die Anwenderdokumentation?}\\
-
-\label{swtanwender}
-
-Um das \textit{R-Terminal} ausführen zu können, müssen die betriebssystemspezifischen \textit{SWT}-Libraries auf den Bild-Path gesetzt und die \textit{SWT}-Libraries anderer Betriebssysteme entfernt werden.
-Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt wird:
-\begin{enumerate}
-	\item Navigieren Sie im \textit{Eclipse} Package Explorer zu:
-	\begin{center}\textit{R-Terminal -> lib  -> swt} \end{center}
-	
-	\item Wählen Sie die betriebssystemspezifischen \textit{SWT}-Libraries aus und öffnen Sie mit der rechten Maustaste, bzw. dem OS-spezifischen Äquivalent, für jede dieser Libraries das Auswahlfenster. Klicken Sie auf "`Build-Path"'.
-		Sollte die Library bereits hinzugefügt sein, erscheint "`Configure Build Path..."'. Ist dies nicht der Fall, erscheint "`Add to Build Path"', klicken Sie dieses an.\\
-		
-	Betriebssystemspezifische \textit{SWT}-Libraries:
-		
-	\begin{itemize}
-		\item Windows: \begin{itemize}
-							\item swt-4.2.1-win32-win32-x86\_64.jar
-							\item swt-4.2.1-win32-win32-x86.jar
-						\end{itemize}
-						
-		\item Mac: \begin{itemize}
-						\item swt-4.2.1-cocoa-macosx-x86\_64.jar
-						\item swt-4.2.1-cocoa-macosx.jar
-					\end{itemize}
-		\item Linux: \begin{itemize}
-						\item swt-4.2.1-gtk-linux-x86\_64.jar
-						\item swt-4.2.1-gtk-linux-x86.jar
-					 \end{itemize}
-	\end{itemize} 
-	
-	\item Überprüfen Sie nun, ob alle anderen Libraries des Ordners \textit{swt} nicht auf dem "`Build Path"' liegen. 
-		Gehen Sie hierfür zu:
-		\begin{center}
-			\textit{R-Terminal -> Referenced Libraries}
-		\end{center} 
-		
-		Überprüfen Sie, dass keine der genannten Libraries der oberen Aufzählung, die nicht Ihrem Betriebssystem zugehört, in diesem Ordner enthalten ist.
-		Sollte sich eine \textit{SWT}-Library für ein anderes Betriebssystems in diesem Ordner befinden, öffnen Sie mit einem Rechtsklick das Menü und wählen Sie aus: 
-		\begin{center}
-			\textit{Build Path -> Remove from Build Path}
-		\end{center}	
-\end{enumerate}
-
-	Nun können Sie das Java-Programm starten.
-
-
-%\newpage
-%\chapter{Designentscheidungen}
-%\textbf{TODO warum dieses Design}\\
-%In diesem Kapitel werden mögliche Alternativen vorgestellt um \textit{R} in ein \textit{Java}-Programm zu integrieren.
-%Die in dieser Dokumentation vorgestellte Umsetzung wurde gewählt, um die verwendete Version von \textit{R} frei wählen zu können und des weiteren Abhängigkeiten von weiteren Libraries zu vermeiden.  
-
-
+Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"' hinzugefügt werden, kann unter \ref{swtanwender} nachgeschlagen werden.
 
 
 
