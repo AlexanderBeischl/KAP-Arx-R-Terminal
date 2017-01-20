@@ -3,32 +3,32 @@
 \contentsline {chapter}{\numberline {2}Anwenderdokumentation}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}\IeC {\"U}bersicht}{5}{section.2.1}
 \contentsline {section}{\numberline {2.2}Vorbereitungen}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}}{6}{section.2.3}
+\contentsline {section}{\numberline {2.3}}{8}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Setup}{8}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Terminal}{8}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Terminal}{9}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}Benutzung von R f\IeC {\"u}r ARX }{9}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Skalenniveau}{9}{subsection.2.4.1}
-\contentsline {chapter}{\numberline {3}Entwicklerdokumentation}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}Verwendete Technologien}{10}{section.3.1}
-\contentsline {section}{\numberline {3.2}Architektur des Arx-R-Terminals}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Graphische Benutzeroberfl\IeC {\"a}che (GUI)}{11}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}RMain}{11}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}RTerminal}{11}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}RSetupTab}{12}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}RTerminalTab}{13}{subsection.3.3.4}
-\contentsline {subsection}{\numberline {3.3.5}RBrowserWindow}{14}{subsection.3.3.5}
-\contentsline {subsection}{\numberline {3.3.6}RLayout}{14}{subsection.3.3.6}
-\contentsline {subsection}{\numberline {3.3.7}RCommandListener}{14}{subsection.3.3.7}
-\contentsline {section}{\numberline {3.4}Funktionaler Kern - Integration von R}{15}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}RIntegration}{15}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}OS}{17}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}RBuffer}{18}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}RListener}{18}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Abh\IeC {\"a}ngigkeiten}{18}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}SWT}{19}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}R-Project}{20}{subsection.3.5.2}
-\contentsline {section}{\numberline {3.6}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{20}{section.3.6}
-\contentsline {chapter}{\numberline {4}Designentscheidungen}{22}{chapter.4}
-\contentsline {section}{\numberline {4.1}Alternativen}{22}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}rJava}{22}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}JRI}{22}{subsection.4.1.2}
+\contentsline {chapter}{\numberline {3}Entwicklerdokumentation}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Verwendete Technologien}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Architektur des R-Terminals}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Graphische Benutzeroberfl\IeC {\"a}che (GUI)}{12}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}RMain}{12}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}RTerminal}{12}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}RSetupTab}{13}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}RTerminalTab}{14}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}RBrowserWindow}{15}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.6}RLayout}{16}{subsection.3.3.6}
+\contentsline {subsection}{\numberline {3.3.7}RCommandListener}{16}{subsection.3.3.7}
+\contentsline {section}{\numberline {3.4}Funktionaler Kern - Integration von R}{16}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}RIntegration}{16}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}OS}{18}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}RBuffer}{19}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}RListener}{20}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Abh\IeC {\"a}ngigkeiten}{20}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}SWT}{20}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}R-Project}{22}{subsection.3.5.2}
+\contentsline {section}{\numberline {3.6}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{22}{section.3.6}
+\contentsline {chapter}{\numberline {4}Designentscheidungen}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}Alternativen}{24}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}rJava}{24}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}JRI}{24}{subsection.4.1.2}
