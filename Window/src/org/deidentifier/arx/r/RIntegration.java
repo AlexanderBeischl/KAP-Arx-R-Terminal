@@ -120,7 +120,7 @@ public class RIntegration {
 	 * The difference is we don't need to print the command out as we only want to 
 	 * get the command version's output to extract the version and the nickname.
 	 */
-	public void executeVersion() {
+	private void executeVersion() {
 	    if (this.process == null) {
 	        return;
 	    }

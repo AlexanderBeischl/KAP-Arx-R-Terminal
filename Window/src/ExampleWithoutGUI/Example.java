@@ -9,12 +9,7 @@ import org.deidentifier.arx.r.RListener;
 public class Example {
 
 	    public static void main(String[] args) {
-	        
-	        
-        RBuffer inputBuffer = new RBuffer(100);
-        inputBuffer.append("1+2+3+4+5".toCharArray());
-        System.out.println("'"+inputBuffer.toString()+"'");
-        
+	           
         final RBuffer outputBuffer = new RBuffer(500);
         final RListener listener = new RListener(10) {
 

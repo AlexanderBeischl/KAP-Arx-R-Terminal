@@ -26,7 +26,13 @@
 \contentsline {subsection}{\numberline {3.4.3}RBuffer}{21}{subsection.3.4.3}
 \contentsline {subsection}{\numberline {3.4.4}RListener}{22}{subsection.3.4.4}
 \contentsline {section}{\numberline {3.5}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{22}{section.3.5}
-\contentsline {section}{\numberline {3.6}Abh\IeC {\"a}ngigkeiten}{23}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Java}{23}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}R-Project}{23}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}SWT}{24}{subsection.3.6.3}
+\contentsline {subsection}{\numberline {3.5.1}Aufruf des R-Terminals ohne GUI}{22}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}API}{23}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Klasse: RIntegration}{23}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Klasse: OS}{24}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}Klasse: RBuffer}{26}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}Klasse: RListener}{26}{subsection.3.5.6}
+\contentsline {section}{\numberline {3.6}Abh\IeC {\"a}ngigkeiten}{27}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Java}{27}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}R-Project}{27}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}SWT}{27}{subsection.3.6.3}

@@ -25,7 +25,13 @@
 \BOOKMARK [2][-]{subsection.3.4.3}{RBuffer}{section.3.4}% 25
 \BOOKMARK [2][-]{subsection.3.4.4}{RListener}{section.3.4}% 26
 \BOOKMARK [1][-]{section.3.5}{Ausf\374hrung ohne graphische Benutzeroberfl\344che}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.6}{Abh\344ngigkeiten}{chapter.3}% 28
-\BOOKMARK [2][-]{subsection.3.6.1}{Java}{section.3.6}% 29
-\BOOKMARK [2][-]{subsection.3.6.2}{R-Project}{section.3.6}% 30
-\BOOKMARK [2][-]{subsection.3.6.3}{SWT}{section.3.6}% 31
+\BOOKMARK [2][-]{subsection.3.5.1}{Aufruf des R-Terminals ohne GUI}{section.3.5}% 28
+\BOOKMARK [2][-]{subsection.3.5.2}{API}{section.3.5}% 29
+\BOOKMARK [2][-]{subsection.3.5.3}{Klasse: RIntegration}{section.3.5}% 30
+\BOOKMARK [2][-]{subsection.3.5.4}{Klasse: OS}{section.3.5}% 31
+\BOOKMARK [2][-]{subsection.3.5.5}{Klasse: RBuffer}{section.3.5}% 32
+\BOOKMARK [2][-]{subsection.3.5.6}{Klasse: RListener}{section.3.5}% 33
+\BOOKMARK [1][-]{section.3.6}{Abh\344ngigkeiten}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.6.1}{Java}{section.3.6}% 35
+\BOOKMARK [2][-]{subsection.3.6.2}{R-Project}{section.3.6}% 36
+\BOOKMARK [2][-]{subsection.3.6.3}{SWT}{section.3.6}% 37

@@ -375,11 +375,10 @@ Die Integration von \textit{R} wird in der Klasse \textit{RIntegration} des  Pac
  Um den Status der Integration zu prüfen, rufen "`showRLocation()"' und "`showRVersion()"' die Methode "`getR()"' aus \textit{OS} auf. Diese gibt den absoluten Pfad zur aktuell verwendeten R-Executive zurück, welcher im \textit{RSetupTab} angezeigt wird.
 Wurde keine R-Executive gefunden oder konnte diese nicht erfolgreich gestartet werden, so wird von "`getR()"' \textit{null} zurückgegeben und im \textit{RSetupTab} wird ausgegeben:  
 \begin{center}
-Location: "`No falid R-exec found!"'
+Location: "`No valid R-exec found!"'
 
-Version: "`No falid R-Version selected!"'
+Version: "`No valid R-Version selected!"'
 \end{center}
-
 Wurde eine \textit{R}-Version gefunden und erfolgreich ausgeführt, so wird der erzeugte Listener in \textit{RTerminal} ausgelöst. Dieser ruft anschließend die Methode "`update()"' auf, durch welche der Inhalt von Location und Version aktualisiert wird.\\
 
 Außerdem ermöglicht der \textit{RSetupTab} die manuelle Auswahl einer \textit{R}-Executive. Im Konstruktor wird hierfür ein Knopf mit "`createManuellSearchWindow()"' zum Öffnen eines Navigationsfensters sowie eine Kommandozeile "`createDirSearchLine()"' erzeugt, sodass entweder der absolute Pfad zur Datei angegeben oder diese mittels des Navigationsfensters ausgewählt werden kann.
@@ -405,9 +404,8 @@ Die letzten 10 eingegebenen Befehle werden im Dropdown-Menü angezeigt. Die Befe
 
 Skripte können durch den Knopf "`scriptButton"' ausgewählt und ausgeführt werden. Der Knopf wird durch einen \textit{MouseListener} ausgelöst und erzeugt ein Navigationsfensters der Klasse \textit{RBrowserWindow}. Weiter Informationen hierzu in \ref{RBrowserWindow}. Durch dieses kann das Skript ausgewählt werden und es wird vom \textit{RBrowserWindow} der absolute Pfad des Skriptes übergeben. Anschließend wird überprüft, ob es sich um ein \textit{R}-Skript handelt, also die Datei auf "`.r"' endet. Trifft dies zu, so wird durch die Methode "`command($String$ command)"' der Klasse  \textit{RCommandListener} der Befehl das Skript zu öffnen an \textit{R} übergeben. Dieser setzt sich zusammen aus:
 \begin{center}
-$source("$  absoluter Pfad $")$.	
+$source("$  absoluter Pfad $")$
 \end{center}
-
 
 Das Textfeld "`output"' beinhaltet die Ausgabe von \textit{R} und wurde durch die importierte Klasse \textit{StyledText} realisiert. Das Textfeld ist als Ring-Puffer implementiert, sodass dieser nur die letzten $10000$ Zeichen des \textit{R}-Std-Output anzeigt. Die Größe des Ring-Puffers ist in der Klasse \textit{RTerminal} als globale int Variable "`BUFFER\_SIZE"' festgelegt und kann hier geändert werden.
 Der Std-Output von \textit{R} wird durch das Auslösen des RListener "`listener"' in \textit{RTerminal} aktualisiert. Dieser ruft hierzu die Methode "`setOutput($String$ text)"' aus \textit{RTerminalTab} auf. Der Listener wird nach erfolgreichem Starten von \textit{R} durch die Klasse \textit{RIntegration} übergeben. Diese ruft die Methode "`setCommandListener($RCommandListener$ listener)"' im \textit{RTerminalTab} auf und übergibt den Listener als Argument. Details zum Listener finden sich in \ref{RCommandListener}.\\
@@ -514,10 +512,15 @@ Durch "`bufferUpdate()"' wird das Ausgabefenster im \textit{RTerminalTab} aktual
 
 \section{Ausführung ohne graphische Benutzeroberfläche} \label{ohne GUI}
 
-Der funktionale Kern des \textit{R-Terminals} kann auch ohne die graphische Benutzeroberfläche ausgeführt werden. Hierfür müssen allerdings folgende Objekte erzeugt werden:
+Der funktionale Kern des \textit{R-Terminals} kann auch ohne die graphische Benutzeroberfläche ausgeführt werden. 
+Hierfür wird die Umsetzung anhand eines Beispiels in \ref{BeispielOhneGUI} erklärt. 
+Eine Übersicht der Methoden zur Nutzung des \textit{R-Terminals} ohne GUI befindet sich in \ref{API}.
+
+\subsection{Aufruf des R-Terminals ohne GUI} \label{BeispielOhneGUI}
+
+Um das \textit{R-Terminal} ohne graphische Benutzeroberfläche zu nutzen müssen folgende Objekte erzeugt werden:
 \begin{itemize}
-	\item ein Ring-Puffer der Klasse \textit{RBuffer}, welcher den Input für \textit{R} beinhaltet
-	\item ein weiterer Ring-Puffer der selben Klasse, welchen den Std-Output von \textit{R} übergeben wird
+	\item ein Ring-Puffer der Klasse \textit{RBuffer}, welcher der Std-Output von \textit{R} übergeben wird
 	\item ein Listener der Klasse \textit{RListener}, welcher durch den Std-Output ausgelöst wird
 \end{itemize}
 	
@@ -528,18 +531,204 @@ Anschließend müssen die abstrakten Methoden des \textit{RListeners} überschri
 		\item \textit{setupUpdate()}
 	\end{itemize}
 
-Anschließend kann die Integration von \textit{R} gestartet werden. Hierfür muss ein neues \textit{RIntegration}-Objekt erzeugt werden.
+Nun kann die Integration von \textit{R} gestartet werden. Hierfür muss ein neues \textit{RIntegration}-Objekt erzeugt werden. Diesem werden der Pfad "`path"' zur \textit{R}-Executive als String, der erzeugte \textit{RBuffer} "`buffer"' und der \textit{RListener} "`listener"' übergeben:
 
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+final RIntegration rProcess = 
+	new RIntegration(path, buffer, listener)	
+\end{lstlisting}
 
 Um dem \textit{R}-Prozess nun Befehle zu übergeben, muss lediglich die Methode "`execute"' des erzeugten \textit{RIntegration}-Objekt aufgerufen werden und das Kommando als String übergeben werden.\\
 \\
 Beispiel: Es wurde ein \textit{RIntegration}-Objekt \textit{rProcess} erzeugt und es soll "`1+2+3+4+5"' als Kommando übergeben werden, dann muss
-	\begin{center}
-		\textit{rProcess}.execute("`1+2+3+4+5"')
-	\end{center} 
-	ausgeführt werden. Die Ausgabe wird im Ring-Puffer gespeichert, welcher für den Std-Output erzeugt wurde.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+rProcess.execute("1+2+3+4+5")	
+\end{lstlisting}
+ausgeführt werden. Die Ausgabe wird im Ring-Puffer gespeichert, welcher für den Std-Output erzeugt wurde.\\
 \\
 Ein Code-Beispiel hierzu befindet sich im Package "`ExampleWithoutGUI"'.
+
+\subsection{API} \label{API}
+
+\subsection{Klasse: RIntegration}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public RIntegration(final String path, 
+	            final RBuffer buffer,
+	            final RListener listener)	
+\end{lstlisting}
+%
+Der Konstruktor dieser Klasse erzeugt den \textit{R}-Prozess, startet diesen und verwaltet die Input- und Outputstreams.
+\begin{itemize}
+	\item path: String des Pfades zur \textit{R}-Executive
+	\item buffer: Output-Buffer
+	\item listener: Listener des Std-Outputstreams des \textit{R}-Prozess
+\end{itemize}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public void execute(String command)
+\end{lstlisting}
+\begin{itemize}
+	\item command: Das Kommando als String
+\end{itemize}
+
+Durch die Methode "`execute"' werden die Befehle für den \textit{R}-Prozess ausgeführt.
+%
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public boolean isAlive()
+\end{lstlisting}
+%
+Mit der Methode "`isAlive"'  kann geprüft werden, ob der \textit{R}-Prozess noch aktiv ist.
+\begin{itemize}
+	\item returns true: \textit{R}-Prozess ist noch aktiv
+	\item returns false: \textit{R}-Prozess ist nicht mehr 
+\end{itemize}
+
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public void shutdown()
+\end{lstlisting}
+%
+Die Methode "`shutdown"' beendet den laufenden \textit{R}-Prozess.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public String getVersion()
+\end{lstlisting}
+%
+Die Methode "`shutdown"' gibt die Version und den Nickname der letzten verwendeten \textit{R}-Version konkateniert als String zurück.
+
+\subsection{Klasse: OS}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public static OSType getOS()
+\end{lstlisting}
+Diese Methode gibt das verwendete Betriebssystem zurück:
+\begin{itemize}
+	\item Enum OSType (WINDOWS,UNIX,MAC)
+\end{itemize} 
+Wird das Betriebssystem nicht unterstützt, wird folgende Exception geworfen:
+\begin{itemize}
+	\item IllegalStateException("{}Unsupported operating system"{})
+\end{itemize}
+
+ 
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public static String getR()
+\end{lstlisting}
+\begin{itemize}
+	\item returns \textit{String} path: gibt den Pfad zur gefundenen \textit{R}-Executive als String zurück
+	\item returns \textit{null}: falls keine Executive gefunden wurde
+\end{itemize}
+
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public static String getR(String folder)
+\end{lstlisting}
+Diese Methode durchsucht das übergebene Verzeichnis nach einer \textit{R}-Executive
+\begin{itemize}
+	\item returns \textit{String} path: Falls eine Executive gefunden wurde wird der absolute Pfad zu dieser zurückgegeben
+	\item returns \textit{null}: Falls keine Executive gefunden wurde
+\end{itemize}
+
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public static String[] getParameters(String path)
+\end{lstlisting}
+Die Methode "`getParameters"' gibt die Parameter für den \textit{ProcessBuilder} aus.
+\begin{itemize}
+	\item path: Der Pfad zur \textit{R}-Executive 
+	\item MAC: returns $String$[] \{path, "--vanilla", "--quiet", "--interactive" \};
+	\item UNIX: returns $String$[] \{path, "--vanilla", "--quiet", "--interactive" \};
+	\item WINDOWS: returns $String$[] \{path, "--vanilla", "--quiet", "--ess"\};
+\end{itemize}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public static String printOS()
+\end{lstlisting}
+Diese Methode gibt das verwendete Betriebssystem als String zurück.
+\begin{itemize}
+	\item returns: "macOS", "{}Unix", "Windows"
+	\item IllegalStateException("{}Unknown operating system"): falls das OS nicht zu den drei oben genannten gehört
+\end{itemize}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public static boolean isR_Exec(String path)
+\end{lstlisting}
+Diese Methode prüft, ob die übergebene Datei eine \textit{R}-Executive ist.
+\begin{itemize}
+	\item $String$ path: der absolute Pfad der Datei
+	\item returns $true$: Datei ist eine \textit{R}-Executive
+	\item returns $false$: Datei ist keine \textit{R}-Executive
+\end{itemize}
+
+\subsection{Klasse: RBuffer}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public RBuffer(int size)
+\end{lstlisting}
+Dem Konstruktor wird die Größe des Ring-Puffers als Anzahl der Zeichen übergeben.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public void append(char c)
+\end{lstlisting}
+Fügt ein Zeichen an den Ring-Puffer an.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public void append(char[] buffer)
+\end{lstlisting}
+Fügt alle im Char-Array enthaltenen Zeichen an den Ring-Puffer an.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public String toString()
+\end{lstlisting}
+Diese Methode gibt den gesamten Inhalt des Ring-Puffers als String zurück.
+
+\subsection{Klasse: RListener}
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public RListener(int ticksPerSecond)
+\end{lstlisting}
+Dem Konstruktor wird die maximale Anzahl an Events pro Sekunde als int übergeben.\\
+\\
+Die folgenden drei abstrakten Methoden müssen beim erzeugen eines neuen \textit{RListener}-Objetes überschrieben werden.
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public abstract void bufferUpdated();
+\end{lstlisting}
+Diese Methode wird bei einem Update des Output-Buffers ausgelöst.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public abstract void closed();
+\end{lstlisting}
+Diese Methode wird beim Beenden des \textit{R}-Prozesses ausgelöst.\\
+
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+public abstract void setupUpdate();
+\end{lstlisting}
+Diese Methode wird beim Starten eines neuen \textit{R}-Prozesses ausgelöst.
+
 
 \section{Abhängigkeiten} \label{Abhängigkeiten}
 
