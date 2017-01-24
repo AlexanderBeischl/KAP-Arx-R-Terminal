@@ -69,6 +69,7 @@ Terminal zur Bearbeitung von ARX-Daten mit R} % Subtitle
 %----------------------------------------------------------------------------------------
 
 \begin{document}
+\renewcommand\lstlistingname{R-Befehl}
 
 \maketitle % Print the title section
 
@@ -218,18 +219,20 @@ Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt w
 \end{figure}
 
  
-\section{}
+\section{Benutzung des R-Terminals}
+
+In diesem Kapitel wird die Benutzung des \textit{R-Terminals} beschrieben. Hierfür wird zunächst ein Überblick über die graphische Benutzeroberfläche in \ref{Setup} und \ref{Terminal} gegeben. Außerdem wird die Nutzung gemeinsam mit dem Programm \textit{ARX} in \ref{NutzungArx} erläutert.\\
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{Bilder/R-TerminalWindows}
+\includegraphics[width=0.8\textwidth]{Bilder/rterminalwindows}
 \caption{R-Terminal: \textit{Terminal} unter Windows 10 Education (Version 1511)}
 \label{rterminalwindows}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
-\includegraphics[width=0.8\textwidth]{Bilder/rterminalwindows}
+\includegraphics[width=0.8\textwidth]{Bilder/R-TerminalWindows}
 \caption{R-Terminal: \textit{Setup} unter Windows 10 Education (Version 1511)}
 \label{rterminalwindows}
 \end{figure}
@@ -247,11 +250,10 @@ Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt w
 \caption{R-Terminal: \textit{Setup} unter OS X (Version 10.11.1)}
 \label{macsetup}
 \end{figure}
+Diese wird für das Betriebssystem \textit{OS X} in Abbildung \ref{rterminalmac} dargestellt. Das Terminal verfügt über die zwei Tabs \textit{Terminal} und \textit{Setup} (S. \pageref{macsetup}). In Folgenden werden die beiden Tabs sowie deren Bedienung ausführlich erklärt.
 
-In Abbildung \ref{rterminalmac} ist das R-Terminal unter OS X (hier Version 10.11.1) zu sehen. Das Terminal verfügt über die beiden Tabs \textit{Terminal} und \textit{Setup} (s. \ref{macsetup)}. 
-
-\subsection{Setup}
-Unter \textit{Setup} wird entweder eine R-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten R-Version angegeben. 
+\subsection{Setup} \label{Setup}
+Unter \textit{Setup} wird entweder eine \textit{R}-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten \textit{R}-Version angegeben. 
 
 Hierbei gibt das Feld unter \textit{Operating System} das Betriebssystem der benutzten Plattform an. Das Feld \textit{Location} gibt den Pfad an, unter dem die automatische Suche die ausführbare R-Version gefunden hat. Konnte keine ausführbare R-Version gefunden werden, wird in dem Feld die Nachricht \textit{No valid R-exec found!} angezeigt. 
 
@@ -263,17 +265,17 @@ Sind auf dem Rechner mehrere R-Versionen vorhanden, von denen der Benutzer eine 
   
 Das letzte Feld \textit{Manually select the R-exec by typing in its location} gibt dem Benutzer die Möglichkeit, den bereits bekannten Dateipfad zur ausführbaren R-Datei anzugeben. Hierbei sollte ein absoluter Dateipfad angegeben werden, der die ausführbare R-Datei enthält (im Gegensatz dazu, nur den Ordner anzugeben, in dem die Datei liegt). 
 
-Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige R Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben.
+Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige R Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben. 
 
-\subsection{Terminal}
+\subsection{Terminal} \label{Terminal}
 Nachdem die gewünschte R-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um R-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. 
 
 
-\section{Benutzung von R für ARX }
+\section{Benutzung von R für ARX } \label{NutzungArx}
 Dieser Abschnitt wird sich mit der Benutzung von R im Zusammenhang mit großen Datentabellen befassen, wie sie in ARX üblich sind. Dies soll die Benutzung von dem R-Terminal zur Verarbeitung von ARX-Daten ermöglichen. 
 
 
-\subsection{Skalenniveau}
+\subsection{Datentypen und Skalenniveau}\label{Skalen}
 In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus ARX sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
 
 \begin{itemize}
@@ -281,30 +283,181 @@ In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stuf
 \item Integer
 \item Complex
 \item Logic
-\item Character
 \end{itemize}
 
 Wenn also eine Variable als Dezimalzahl ohne zusätzliche Bedingung deklariert wird, ist der Datentyp standardmäßig \texttt{numeric} (vgl. \ref{numericVar}).
 
 \lstset{language=R}
-\begin{lstlisting}[frame=single, caption = Deklarierung einer numerischen Variable x]
-x = 13.4
+\begin{lstlisting}[frame=single,caption={Deklarierung einer numerischen Variable x}]
+> x = 13.4
 \end{lstlisting}
 \label{numericVar}
 
-Will man explizit einen Integer als Variable initialisieren, sieht der Befehl aus wie in \ref{integerVar}.
+Will man explizit einen Integer als Variable initialisieren, sieht der Befehl aus wie in \ref{integerVar}. Es sollte zusätzlich beachtet werden, dass \texttt{TRUE} und \texttt{FALSE} in R jeweils die Ganzzahlwerte 1 und 0 besitzen. 
 
 \lstset{language=R}
-\begin{lstlisting}[frame=single, caption = Deklarierung einer numerischen Variable x]
-x = 13.4
+\begin{lstlisting}[frame=single,caption={Deklarierung einer ganzzahligen Variable y}]
+> y = as.integer(4.5)
+> y 	# gibt y als Wert aus 
+[1] 4
 \end{lstlisting}
-\label{numericVar}
+\label{integerVar}
 
+Um eine Variable mit dem Typ \texttt{complex} zu initialisieren, wird der imaginäre Teil der komplexen Zahl bei der Initialisierung angegeben. Ein Beispiel dazu ist in \ref{complexVar} zu sehen.
 
-%insert skalenniveau Erklärung 
-%insert data.frame erklärung
-%insert rbind und cbind
-%insert Erklärung zu data.table und data.matrix 
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Deklarierung einer komplexen Variable z}]
+> z = 2 + 5i
+\end{lstlisting}
+\label{complexVar}
+
+Die Datentypen können jeweils durch den Befehl \texttt{class()} abgefragt werden. Die Ausgaben sind in \ref{class} zu sehen. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Abfrage des Datentypen}]
+> class(x)
+"numeric"
+> class(y)
+"integer"
+> class(z)
+"complex"
+\end{lstlisting}
+\label{class}
+
+Nachdem nun die quantitativen Merkmale dargestellt werden können, stellt sich die Frage nach der Darstellung der qualitativen Merkmalen. 
+
+Die qualitativen Merkmale werden in nominalskalierte und ordinalskalierte Merkmale unterteilt. Ordinallskalierte Merkmale haben eine vorbestimmte Ordnung untereinander, die nicht zwangsläufig eine lineare Beziehung zueinander haben müssen. Nominalskalierte Merkmale sind hingegen eindeutige Kategorien, die untereinander keine Ordnung haben. 
+
+Die einfachste Möglichkeit, einer Variable ein qualitatives Merkmal zuzuordnen, ist sie als \texttt{character} zu definieren. Dies geschieht durch eine einfache Zuweisung wie in \ref{characterVar}.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Deklarierung einer qualitativen Variable a}]
+> a = "verheiratet"     #nominalskaliertes Merkmal
+> class(a)
+"character"
+> b = "befriedigend"	#ordinalskaliertes Merkmal
+> class(b)
+"character"
+\end{lstlisting}
+\label{characterVar}
+
+Dies ist allerdings keine optimale Lösung, da hierdurch keine eindeutige, abgegrenzte Kategorisierung der Variablen stattfindet. Im Falle der ordinalskalierten Variablen kann auch keine Ordnung unter den Variablen festgelegt werden. Möchte man ein Histogramm erstellen, was bei qualitativen Merkmalen sehr wahrscheinlich ist, werden die Strings nicht als Instanz eines Attributs gezählt, sondern einfach nur als Strings. Um also eine bessere Darstellung für qualitative Merkmale zu erreichen, gibt es sogenannte \texttt{factor variables}. Hierbei kann ein Vektor aus Integers erstellt werden, wo jedem Integer ein \texttt{label} zugewiesen wird. Ein Beispiel dazu ist in \ref{factorVar} zu sehen. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Erstellung einer \texttt{factor variable}}]
+> v=c(0, 1, 1, 0, 1) #Vektorinitialisierung
+> v
+[1] 0 1 1 0 1		#Ausgabe von v
+> einheiten=factor(v,labels=c("metrisch","imperial"))
+> einheiten 
+[1] metrisch imperial imperial metrisch imperial
+Levels: metrisch imperial
+\end{lstlisting}
+\label{factorVar}
+
+Nun konnte den verschiedenen Werten im Vektor \texttt{v} ein \texttt{label} zugeordnet werden. Zu beachten ist hierbei, dass der \texttt{labels}-Vektor entweder 1 oder genauso viele Elemente beinhaltet, wie verschiedene Werte im Basisvektor \texttt{v} enthalten sind. Die Zeile \textit{Levels} gibt die Ordnung der Merkmale an. Hierbei wurde \textit{metrisch} auf den ersten Wert gesetzt, der im Vektor \texttt{v} vorkommt, \textit{imperial} auf den ersten Wert, der von \textit{metrisch} verschieden ist. Dadurch konnte eine eindeutige Ordnung unter den Merkmalen festgelegt werden, nämlich \textit{imperial} $>$ \textit{metrisch}. Dies ist für dieses einfache Beispiel allerdings sinnlos, da keine Ordnung unter dem metrischen und imperialen System besteht.  Natürlich ist es ebenfalls möglich, eine \texttt{factor variable} direkt anhand von Strings zu erstellen, s. \ref{strFactorVar}.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Erstellung einer \texttt{factor Variable} mit Strings}]
+> w=c("sehr gut", "gut", "gut", "ausreichend", 
+"mangelhaft", "sehr gut", "befriedigend", 
+"gut", "ausreichend", "gut", "befriedigend")
+> factor(w)
+ [1] sehr gut gut          gut ausreichend mangelhaft  
+ [6] sehr gut befriedigend gut ausreichend gut         
+[11] befriedigend
+Levels:ausreichend befriedigend gut mangelhaft sehr gut
+\end{lstlisting}
+\label{strFactorVar}
+
+Es wurden mit der \texttt{factor}-Funktion direkt \textit{Levels} erstellt, die allerdings nicht die gewünschte Ordnung haben, die wir von den Schulnoten im Beispiel erwartet hätten. Dies ist aufgrund der automatischen alphabetischen Sortierung der Levels. Für eine selbst erstellte Ordnung, siehe R-Befehl \ref{factorVar}. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Ordnen einer selbsterstellten \texttt{factor Variable}}]
+> noten = ordered(w, levels=("sehr gut", "gut", 
+"befriedigend", "ausreichend", "mangelhaft"))
+> noten
+ [1] sehr gut gut          gut ausreichend  mangelhaft  
+ [6] sehr gut befriedigend gut ausreichend  gut         
+[11] befriedigend
+Levels: sehr gut < gut < befriedigend 
+< ausreichend < mangelhaft
+\end{lstlisting}
+\label{factorVar}
+
+Hier sieht man nun auch eine eindeutige Ordnung unter den Notenstufen \cite{factorVariables}. Die Bedeutung der \texttt{factor}-Funktion in Anwendung auf Vektoren wird im folgenden Abschnitt erklärt. 
+
+Zusätzlich gibt es das R-Package \texttt{memisc}. Diese Erweiterung weist Objekten, die ein \texttt{item} sind, ein \texttt{level of measurement} (Skalenniveau) zu, das entweder ein \textit{ordinal, nominal, interval} oder \textit{ratio} ist. Je nach dem Skalenniveau wird das \texttt{item} in einen \texttt{factor} (\textit{nominal}), einen geordneten Vector (\textit{ordinal}) oder einen numerischen Vektor (\textit{interval und} \textit{ratio}) konvertiert. 
+
+\subsection{Tabellen}
+
+In \texttt{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
+
+Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \texttt{data.fram()} erstellt werden kann (s. \ref{dataframe}) \cite{dataFrame}.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={\texttt{data.frame} aus 3 Vektoren}]
+> v1 = c(1,2,3)
+> v2 = c("a","b","c")
+> v3 = c(FALSE, FALSE, TRUE)
+> frame = data.frame(v1, v2, v3)
+> frame
+  v1 v2    v3
+1  1  a FALSE
+2  2  b FALSE
+3  3  c  TRUE
+> names(frame) = c("Zahl", "Buchstabe", "Bool")
+> frame
+  Zahl Buchstabe  Bool
+1    1         a FALSE
+2    2         b FALSE
+3    3         c  TRUE
+
+\end{lstlisting}
+\label{dataframe}
+
+Mithilfe der in Abschnitt \ref{Skalen} beschriebenen Funktionen können die Spaltenvektoren in das gewünschte Skalenniveau konvertiert werden.
+ 
+Für die Nutzung von ARX mit dem R-Terminal können die bereits vorhandenen Daten auch aus ARX als CSVs eingeladen werden. 
+Diese werden in ein \texttt{data.frame} gelesen, wie in Beispiel \ref{readTable} gezeigt.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Einlesen einer Tabelle}]
+frame=read.csv(file="c:/test.csv",header=TRUE,sep=",")
+\end{lstlisting}
+\label{readTable}
+
+Die hier verwendeten Argumente sind einmal das \texttt{file}, der \texttt{header} und \texttt{sep}. \texttt{file} gibt den Dateipfad zu der CSV Datei an. Hierbei kann auch ein Pfad angegeben werden, der relativ zum Arbeitsordner ist. \texttt{header} gibt an, ob in der Datei die erste Zeile ein Header ist, in dem die Namen der Spaltenattribute stehen, oder ob keine Namen für die Spalten vorhanden sind und in der ersten Zeile direkt der Inhalt der Tabelle beginnt. \texttt{sep} gibt den Character an, durch den die Spalten getrennt sind. 
+
+Möchte man ein \texttt{data.frame} erweitern, z.B. durch eine neue Zeile oder eine neue Spalte, gibt es dafür die Funktionen \texttt{rbind} und \texttt{cbind}. Die Funktionen sind anzuwenden wie in \ref{readTable} vorgestellt. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={\texttt{rbind} und \texttt{cbind}}]
+#Hierbei auf die gleichen Spaltennamen achten
+> frame2 = data.frame(Zahl=4,Buchstabe="d",Bool=TRUE)
+#frame aus data.frame
+> newframe=rbind(frame, frame2)		
+> newframe
+  Zahl Buchstabe  Bool
+1    1         a FALSE
+2    2         b FALSE
+3    3         c  TRUE
+4    4         d  TRUE
+######################
+#Hier geht auch ein Vektor
+> Nummer = c(4, 3, 2, 1)
+> cbind(newframe, Nummer)
+  Zahl Buchstabe  Bool Nummer
+1    1         a FALSE  4
+2    2         b FALSE  3
+3    3         c  TRUE  2
+4    4         d  TRUE  1
+
+\end{lstlisting}
+\label{readTable}
+
+%Bei der Verwendung von \texttt{data.frame} sollte beachtet werden, dass zwar nützliche Funktionen verwendet werden können, sich das \texttt{data.frame} ausschließlich 
+%insert Erklärung zu data.table und data.matrix?
 
 
 \newpage
@@ -778,6 +931,8 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 
 \bibitem{skalenniveau}
 \texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/biometrie/Q1/SkriptQ1.pdf}
+\bibitem{dataFrame}
+\texttt{http://www.r-tutor.com/r-introduction/data-frame}
 \bibitem{rproject}
 \texttt{https://www.r-project.org/about.html}
 \bibitem{eclipse}
@@ -786,6 +941,8 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 \texttt{https://www.eclipse.org/swt/}
 \bibitem{java}
 \texttt{https://www.java.com/de/}
+\bibitem{factorVariables}
+\texttt{http://www.ats.ucla.edu/stat/r/modules/factor\_variables.htm}
 
 \end{thebibliography}
 %----------------------------------------------------------------------------------------
