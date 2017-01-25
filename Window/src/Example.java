@@ -1,4 +1,4 @@
-package ExampleWithoutGUI;
+
 import java.util.Scanner;
 import org.deidentifier.arx.r.OS;
 import org.deidentifier.arx.r.RBuffer;

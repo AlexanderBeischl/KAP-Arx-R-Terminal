@@ -35,6 +35,7 @@
 \usepackage{hyperref} %To include URLs
 \usepackage{caption}
 \usepackage{adjustbox}
+\usepackage{placeins}
 
 
 \makeatletter
@@ -466,9 +467,9 @@ Möchte man ein \texttt{data.frame} erweitern, z.B. durch eine neue Zeile oder e
 
 \section{Verwendete Technologien}
 
-Das \textit{R-Terminal} wurde mit der Entwicklungsumgebung \textit{Eclipse} entwickelt.
-Als Programmiersprache wurde \textit{Java} gewählt. Die graphische Benutzeroberfläche wurde mit \textit{SWT} realisiert, genauere Details hierzu werden in \ref{swt} erläutert.
-Um \textit{R}-Kommandos auszuführen, startet das hier dokumentierte Programm \textit{R-Terminal} einen \textit{R}-Prozess der Standalone-Installation von \textit{R} durch die \textit{Java}-Library \textit{ProcessBuilder}.
+Das \textit{R-Terminal} wurde mit der Entwicklungsumgebung \textit{Eclipse} \cite{eclipse} entwickelt.
+Als Programmiersprache wurde \textit{Java} \cite{java} gewählt. Die graphische Benutzeroberfläche wurde mit \textit{SWT} \cite{swt} realisiert, genauere Details hierzu werden in \ref{swt} erläutert.
+Um \textit{R}-Kommandos auszuführen, startet das hier dokumentierte Programm \textit{R-Terminal} einen \textit{R}-Prozess der Standalone-Installation von \textit{R} durch die \textit{Java}-Library \textit{ProcessBuilder} \cite{processBuilder}.
 
 
 \section{Architektur des R-Terminals}
@@ -478,6 +479,14 @@ Die Software des \textit{R-Terminal} ist in zwei Komponenten aufgeteilt, welche 
 Durch die Trennung von graphischer Benutzeroberfläche und der Integration von \textit{R}, also dem funktionalen Kern, kann die \textit{R}-Integration auch ohne graphische Benutzeroberfläche ausgeführt und verwendet werden. Hierzu wird nur das zweite Package benötigt, welches in \ref{funktionaler Kern} behandelt wird. Die Ausführung ohne GUI wird in \ref{ohne GUI} erläutert.\\
 
 Alle Klassen der Software \textit{R-Terminal}, sowie deren wichtigsten Methoden, werden in den Kapiteln \ref{gui} und \ref{funktionaler Kern} vorgestellt.
+
+\begin{figure}[h!]
+		\includegraphics[width = 15cm]{Bilder/Klassendiagramm.pdf}
+    	\caption{\textit{R-Terminal}: Klassendiagramm des Programms}
+    	\label{klassendiagramm}
+\end{figure}
+\FloatBarrier
+\newpage
 
 \section{Graphische Benutzeroberfläche (GUI)}\label{gui}
 
@@ -584,7 +593,7 @@ Das \textit{Java}-Interface \textit{RCommandListener} implementiert einen Listen
 \section{Funktionaler Kern - Integration von R} \label{funktionaler Kern}
 
 Die Integration von \textit{R} in \textit{Java} ist in dem Package "`org.deidentifier.arx.r"' implementiert. Dieses beinhaltet alle Funktionen, durch welche die \textit{R}-Executive automatisch gefunden, ausgeführt und das Betriebssystem erkannt wird. Außerdem beinhaltet es alle Methoden zur Übermittlung des Input- und Outputstreams.
-Zur Integration von \textit{R} in \textit{Java} wurde die Klasse \textit{ProcessBuilder} verwendet.
+Zur Integration von \textit{R} in \textit{Java} wurde die Klasse \textit{ProcessBuilder} \cite{processBuilder} verwendet.
 
 \begin{samepage}
 Das Package umfasst vier Klassen:
@@ -599,7 +608,7 @@ Das Package umfasst vier Klassen:
 
 \subsection{RIntegration} \label{RIntegration}
 
-Die Klasse \textit{RIntegration} ist das Kernstück des \textit{R-Terminals} und ist für die Integration von \textit{R} verantwortlich. Der \textit{R}-Prozess wird durch die Library \textit{ProcessBuilder} gestartet.
+Die Klasse \textit{RIntegration} ist das Kernstück des \textit{R-Terminals} und ist für die Integration von \textit{R} verantwortlich. Der \textit{R}-Prozess wird durch die Library \textit{ProcessBuilder} \cite{processBuilder} gestartet.
 
 Wird das Programm mit der graphischen Benutzeroberfläche gestartet, so wird für jede gefundene ausführbare \textit{R}-Executive durch die Methode "`startRIntegration"' beziehungsweise "`startManuellRIntegration"' ein neues Objekt dieser Klasse erzeugt.
 Hierbei werden dem Konstruktor folgende Argumente übergeben:
@@ -892,20 +901,21 @@ Für die Integration von \textit{R} in \textit{Java}, welche durch das \textit{R
  
 \subsection{Java}
 
-Die für das \textit{R-Terminal} verwendetet Programmiersprache ist \textit{Java}. Für die Entwicklung und Tests wurde \textit{Java SE 8 (1.8.0\_91)} verwendet.
+Die für das \textit{R-Terminal} verwendetet Programmiersprache ist \textit{Java}. Für die Entwicklung und Tests wurde \textit{Java SE 8 (1.8.0\_91)} verwendet. \cite{java}
  
 \subsection{R-Project} \label{r}
 
 Um \textit{R} in \textit{Java} zu integrieren muss eine Standalone-Installation von R, für welche der aktuellen Benutzer ausreichende Zugriffsrechte besitzt, vorhanden sein. 
-Alle aktuellen \textit{R}-Versionen können von der Homepage des \textit{R}-Projects\footnote{\url{https://www.r-project.org}} heruntergeladen werden. 
+Alle aktuellen \textit{R}-Versionen können von der Homepage des \textit{R}-Projects \cite{rproject} heruntergeladen werden. 
 
 
 \subsection{SWT}\label{swt} 
-Die graphische Benutzeroberfläche wurde mithilfe des \textit{Standard Widget Toolkit} (\textit{SWT}) realisiert. \textit{SWT} ist ein "`open-source widget toolkit"' für Java mit Integration in die GUI des nativen Betriebssystems, sodass das Design der Benutzeroberfläche an das Design des Betriebssystems angepasst wird. 
+Die graphische Benutzeroberfläche wurde mithilfe des \textit{Standard Widget Toolkit} (\textit{SWT}) realisiert \cite{swt}. \textit{SWT} ist ein "`open-source widget toolkit"' für Java mit Integration in die GUI des nativen Betriebssystems, sodass das Design der Benutzeroberfläche an das Design des Betriebssystems angepasst wird. 
 
 Für das Projekt \textit{R-Terminal} wurde die \textit{SWT}-Version 4.2.1 verwendet.\\
 
 Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"' hinzugefügt werden, kann unter \ref{swtanwender} nachgeschlagen werden.
+
 
 
 
@@ -930,7 +940,7 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 
 
 \bibitem{skalenniveau}
-\texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/biometrie/Q1/SkriptQ1.pdf}
+\texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/ biometrie/Q1/SkriptQ1.pdf}
 \bibitem{dataFrame}
 \texttt{http://www.r-tutor.com/r-introduction/data-frame}
 \bibitem{rproject}
@@ -942,7 +952,10 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 \bibitem{java}
 \texttt{https://www.java.com/de/}
 \bibitem{factorVariables}
-\texttt{http://www.ats.ucla.edu/stat/r/modules/factor\_variables.htm}
+\texttt{http://www.ats.ucla.edu/stat/r/modules/factor\_variables.html}
+\bibitem{processBuilder}
+\texttt{https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html}
+
 
 \end{thebibliography}
 %----------------------------------------------------------------------------------------

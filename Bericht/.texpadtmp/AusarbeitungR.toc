@@ -13,27 +13,27 @@
 \contentsline {chapter}{\numberline {3}Entwicklerdokumentation}{17}{chapter.3}
 \contentsline {section}{\numberline {3.1}Verwendete Technologien}{17}{section.3.1}
 \contentsline {section}{\numberline {3.2}Architektur des R-Terminals}{17}{section.3.2}
-\contentsline {section}{\numberline {3.3}Graphische Benutzeroberfl\IeC {\"a}che (GUI)}{18}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}RMain}{18}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}RTerminal}{18}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}RSetupTab}{19}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}RTerminalTab}{20}{subsection.3.3.4}
-\contentsline {subsection}{\numberline {3.3.5}RBrowserWindow}{21}{subsection.3.3.5}
-\contentsline {subsection}{\numberline {3.3.6}RLayout}{22}{subsection.3.3.6}
-\contentsline {subsection}{\numberline {3.3.7}RCommandListener}{22}{subsection.3.3.7}
-\contentsline {section}{\numberline {3.4}Funktionaler Kern - Integration von R}{22}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}RIntegration}{23}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}OS}{24}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}RBuffer}{25}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}RListener}{26}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{26}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Aufruf des R-Terminals ohne GUI}{26}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}API}{27}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Klasse: RIntegration}{27}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}Klasse: OS}{28}{subsection.3.5.4}
-\contentsline {subsection}{\numberline {3.5.5}Klasse: RBuffer}{30}{subsection.3.5.5}
-\contentsline {subsection}{\numberline {3.5.6}Klasse: RListener}{30}{subsection.3.5.6}
-\contentsline {section}{\numberline {3.6}Abh\IeC {\"a}ngigkeiten}{31}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Java}{31}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}R-Project}{31}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}SWT}{31}{subsection.3.6.3}
+\contentsline {section}{\numberline {3.3}Graphische Benutzeroberfl\IeC {\"a}che (GUI)}{19}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}RMain}{19}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}RTerminal}{19}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}RSetupTab}{20}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}RTerminalTab}{21}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}RBrowserWindow}{22}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.6}RLayout}{23}{subsection.3.3.6}
+\contentsline {subsection}{\numberline {3.3.7}RCommandListener}{23}{subsection.3.3.7}
+\contentsline {section}{\numberline {3.4}Funktionaler Kern - Integration von R}{23}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}RIntegration}{24}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}OS}{25}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}RBuffer}{26}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}RListener}{27}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{27}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Aufruf des R-Terminals ohne GUI}{27}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}API}{28}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Klasse: RIntegration}{28}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Klasse: OS}{29}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}Klasse: RBuffer}{31}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}Klasse: RListener}{31}{subsection.3.5.6}
+\contentsline {section}{\numberline {3.6}Abh\IeC {\"a}ngigkeiten}{32}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Java}{32}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}R-Project}{32}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}SWT}{32}{subsection.3.6.3}
