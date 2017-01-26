@@ -108,15 +108,15 @@ TODO Fabian bzgl. Lizenzen fragen + Einführung schreiben
 %------------------------------------------------
 
 \section*{R}\label{r}
-R ist eine Programmiersprache und Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein GNU-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. R weist große Ähnlichkeiten zu der Programmiersprache S auf, ein weiteres GNU-Projekt, welches weitgehend auch unter R läuft. \cite{rproject}
+R ist eine Programmiersprache und Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein \textit{GNU}-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. \textit{R} weist große Ähnlichkeiten zu der Programmiersprache \textit{S} auf, einem weiteren \textit{GNU}-Projekt, welches weitgehend auch unter \textit{R} läuft. \cite{rproject}
 
-R bietet standardmäßig alle Hauptfunktionen für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit R einfach, statistische Funktionen auf große Datenmengen anzuwenden.  
+\textit{R} bietet standardmäßig alle Hauptfunktionen für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit \textit{R} einfach, statistische Funktionen auf große Datenmengen anzuwenden. \cite{rproject}
 
 
 %------------------------------------------------
 
 \section*{ARX}
-ARX ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde.
+\textit{ARX} ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde. \cite{arx}
 
 
 \section*{Vorgaben}
@@ -130,7 +130,7 @@ Beim Programmstart soll automatisch in den Standart-Installationsorten nach eine
 
 \chapter{Anwenderdokumentation}
 \section{Übersicht}
-Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus ARX einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die im Kapitel \ref{Problemstellung} beschriebenen Probleme zu umgehen. Das R-Terminal ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
+Das \textit{R-Terminal} dient dazu, über eine externe Schnittstelle \textit{R} aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus \textit{ARX} einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die in der Einführung beschriebenen Probleme zu umgehen. Das \textit{R-Terminal} ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
 
 \begin{itemize}
 \item Windows 10 Education (Version 1511)
@@ -141,7 +141,7 @@ Das R-Terminal dient dazu, über eine externe Schnittstelle R aufzurufen und zu 
 
 %insert screenshot for linux and the correct ubuntu/opensuse version
 
-In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Features des R-Terminals beschrieben. 
+In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Features des \textit{R-Terminals} beschrieben. 
 
 \section{Voraussetzungen}
 
@@ -167,14 +167,14 @@ Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt w
 	\centering	
 		\captionsetup{width=0.9\linewidth}
 		\includegraphics[width=0.9\linewidth]{Bilder/SWT-Add-to-Build-Path}
-    	\caption{\textit{Eclipse}: Adding a \textit{SWT}-Library to the Build Path}
+    	\caption{\textit{Eclipse}: Hinzufügen der \textit{SWT}-Library zum Build Path}
     	\label{addToBuildPath}
 	\end{minipage}%
 	\begin{minipage}{0.5\textwidth}
 	\centering
 		\captionsetup{width=0.9\linewidth}
     	\includegraphics[width=0.9\linewidth]{Bilder/SWT-Configure-Build-Path}
-    	\caption{\textit{Eclipse}: This \textit{SWT}-Library is on the Build Path}
+    	\caption{\textit{Eclipse}: Diese \textit{SWT}-Library ist bereits auf dem Build Path}
     	\label{onBuildPath}
 	\end{minipage}
 \end{figure}
@@ -215,7 +215,7 @@ Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt w
 \begin{figure}[t]
 	\centering
 		\includegraphics[width=\linewidth]{Bilder/SWT-Remove-from-Build-Path}
-    	\caption{\textit{Eclipse}: Removing a \textit{SWT}-Library from the Build Path}
+    	\caption{\textit{Eclipse}: Entfernen der \textit{SWT}-Library vom Build Path}
     	\label{removeFromBuildPath}
 \end{figure}
 
@@ -234,21 +234,21 @@ In diesem Kapitel wird die Benutzung des \textit{R-Terminals} beschrieben. Hierf
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=0.8\textwidth]{Bilder/R-TerminalWindows}
-\caption{R-Terminal: \textit{Setup} unter Windows 10 Education (Version 1511)}
+\caption{\textit{R-Terminal}: \textit{Setup} unter Windows 10 Education (Version 1511)}
 \label{rterminalwindows}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=0.8\textwidth]{Bilder/R-Terminal}
-\caption{R-Terminal: \textit{Terminal} unter OS X (Version 10.11.1)}
+\caption{\textit{R-Terminal}: \textit{Terminal} unter OS X (Version 10.11.1)}
 \label{rterminalmac}
 \end{figure}
 
 \begin{figure}[htpb]
 \centering
 \includegraphics[width=0.8\textwidth]{Bilder/rterminalsetup}
-\caption{R-Terminal: \textit{Setup} unter OS X (Version 10.11.1)}
+\caption{\textit{R-Terminal}: \textit{Setup} unter OS X (Version 10.11.1)}
 \label{macsetup}
 \end{figure}
 Diese wird für das Betriebssystem \textit{OS X} in Abbildung \ref{rterminalmac} dargestellt. Das Terminal verfügt über die zwei Tabs \textit{Terminal} und \textit{Setup} (S. \pageref{macsetup}). In Folgenden werden die beiden Tabs sowie deren Bedienung ausführlich erklärt.
@@ -256,28 +256,28 @@ Diese wird für das Betriebssystem \textit{OS X} in Abbildung \ref{rterminalmac}
 \subsection{Setup} \label{Setup}
 Unter \textit{Setup} wird entweder eine \textit{R}-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten \textit{R}-Version angegeben. 
 
-Hierbei gibt das Feld unter \textit{Operating System} das Betriebssystem der benutzten Plattform an. Das Feld \textit{Location} gibt den Pfad an, unter dem die automatische Suche die ausführbare R-Version gefunden hat. Konnte keine ausführbare R-Version gefunden werden, wird in dem Feld die Nachricht \textit{No valid R-exec found!} angezeigt. 
+Hierbei gibt das Feld unter \textit{Operating System} das Betriebssystem der benutzten Plattform an. Das Feld \textit{Location} gibt den Pfad an, unter dem die automatische Suche die ausführbare \textit{R}-Version gefunden hat. Konnte keine ausführbare R-Version gefunden werden, wird in dem Feld die Nachricht \textit{No valid R-exec found!} angezeigt. 
 
-Das mit \textit{Version} betitelte Feld gibt die Version an, die die gefundene R-Version hat. Wurde keine ausführbare R-Version gefunden oder eine ungültige R-Version angegeben, zeigt das Feld die Ausgabe \textit{No valid R-Version selected}an. 
+Das mit \textit{Version} betitelte Feld gibt die Version an, die die gefundene \textit{R}-Version hat. Wurde keine ausführbare \textit{R}-Version gefunden oder eine ungültige \textit{R}-Version angegeben, zeigt das Feld die Ausgabe \textit{No valid R-Version selected}an. 
 
-Sind auf dem Rechner mehrere R-Versionen vorhanden, von denen der Benutzer eine andere Version bevorzugt, als die durch die manuelle Suche gefundene, gibt es die beiden unteren, im folgenden erläuterten Felder als Optionen. 
+Sind auf dem Rechner mehrere \textit{R}-Versionen vorhanden, von denen der Benutzer eine andere Version bevorzugt, als die durch die automatische Suche gefundene, gibt es die beiden unteren, im folgenden erläuterten Felder als Optionen. 
 
-\textit{Select the R-Exec manually} öffnet eine Ordnerübersicht, durch die dann die zu der gewünschten R-Version navigiert werden kann. Hierbei sollte beachtet werden, dass nicht der Pfad zu der R-GUI angegeben werden sollte, welche oft zusammen mit dem R-Executable installiert wird, sondern zu der ausführbaren R-Datei.
+\textit{Select the R-Exec manually} öffnet eine Ordnerübersicht, durch die dann die zu der gewünschten \textit{R}-Version navigiert werden kann. Hierbei sollte beachtet werden, dass nicht der Pfad zu der \textit{R-GUI} angegeben werden sollte, welche oft zusammen mit dem \textit{R}-Executable installiert wird, sondern zu der ausführbaren \textit{R}-Datei.
   
-Das letzte Feld \textit{Manually select the R-exec by typing in its location} gibt dem Benutzer die Möglichkeit, den bereits bekannten Dateipfad zur ausführbaren R-Datei anzugeben. Hierbei sollte ein absoluter Dateipfad angegeben werden, der die ausführbare R-Datei enthält (im Gegensatz dazu, nur den Ordner anzugeben, in dem die Datei liegt). 
+Das letzte Feld \textit{Manually select the R-exec by typing in its location} gibt dem Benutzer die Möglichkeit, den bereits bekannten Dateipfad zur ausführbaren \textit{R}-Datei anzugeben. Hierbei sollte ein absoluter Dateipfad angegeben werden, der die ausführbare \textit{R}-Datei enthält (im Gegensatz dazu, nur den Ordner anzugeben, in dem die Datei liegt). 
 
-Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige R Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben. 
+Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige \textit{R} Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben. 
 
 \subsection{Terminal} \label{Terminal}
-Nachdem die gewünschte R-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um R-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. 
+Nachdem die gewünschte \textit{R}-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um \textit{R}-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. 
 
 
 \section{Benutzung von R für ARX } \label{NutzungArx}
-Dieser Abschnitt wird sich mit der Benutzung von R im Zusammenhang mit großen Datentabellen befassen, wie sie in ARX üblich sind. Dies soll die Benutzung von dem R-Terminal zur Verarbeitung von ARX-Daten ermöglichen. 
+Dieser Abschnitt wird sich mit der Benutzung von \textit{R} im Zusammenhang mit großen Datentabellen befassen, wie sie in \textit{ARX} üblich sind. Dies soll die Benutzung von dem \textit{R}-Terminal zur Verarbeitung von \textit{ARX}-Daten ermöglichen. 
 
 
 \subsection{Datentypen und Skalenniveau}\label{Skalen}
-In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus ARX sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
+In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus \textit{ARX} sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
 
 \begin{itemize}
 \item Numeric
@@ -371,7 +371,7 @@ Levels:ausreichend befriedigend gut mangelhaft sehr gut
 \end{lstlisting}
 \label{strFactorVar}
 
-Es wurden mit der \texttt{factor}-Funktion direkt \textit{Levels} erstellt, die allerdings nicht die gewünschte Ordnung haben, die wir von den Schulnoten im Beispiel erwartet hätten. Dies ist aufgrund der automatischen alphabetischen Sortierung der Levels. Für eine selbst erstellte Ordnung, siehe R-Befehl \ref{factorVar}. 
+Es wurden mit der \texttt{factor}-Funktion direkt \textit{Levels} erstellt, die allerdings nicht die gewünschte Ordnung haben, die wir von den Schulnoten im Beispiel erwartet hätten. Dies ist aufgrund der automatischen alphabetischen Sortierung der Levels. Für eine selbst erstellte Ordnung, siehe \textit{R}-Befehl \ref{factorVar}. 
 
 \lstset{language=R}
 \begin{lstlisting}[frame=single,caption={Ordnen einer selbsterstellten \texttt{factor Variable}}]
@@ -388,11 +388,11 @@ Levels: sehr gut < gut < befriedigend
 
 Hier sieht man nun auch eine eindeutige Ordnung unter den Notenstufen \cite{factorVariables}. Die Bedeutung der \texttt{factor}-Funktion in Anwendung auf Vektoren wird im folgenden Abschnitt erklärt. 
 
-Zusätzlich gibt es das R-Package \texttt{memisc}. Diese Erweiterung weist Objekten, die ein \texttt{item} sind, ein \texttt{level of measurement} (Skalenniveau) zu, das entweder ein \textit{ordinal, nominal, interval} oder \textit{ratio} ist. Je nach dem Skalenniveau wird das \texttt{item} in einen \texttt{factor} (\textit{nominal}), einen geordneten Vector (\textit{ordinal}) oder einen numerischen Vektor (\textit{interval und} \textit{ratio}) konvertiert. 
+Zusätzlich gibt es das \textit{R}-Package \texttt{memisc}. Diese Erweiterung weist Objekten, die ein \texttt{item} sind, ein \texttt{level of measurement} (Skalenniveau) zu, das entweder ein \textit{ordinal, nominal, interval} oder \textit{ratio} ist. Je nach dem Skalenniveau wird das \texttt{item} in einen \texttt{factor} (\textit{nominal}), einen geordneten Vector (\textit{ordinal}) oder einen numerischen Vektor (\textit{interval und} \textit{ratio}) konvertiert. 
 
 \subsection{Tabellen}
 
-In \texttt{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
+In \textit{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
 
 Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \texttt{data.fram()} erstellt werden kann (s. \ref{dataframe}) \cite{dataFrame}.
 
@@ -419,7 +419,7 @@ Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \tex
 
 Mithilfe der in Abschnitt \ref{Skalen} beschriebenen Funktionen können die Spaltenvektoren in das gewünschte Skalenniveau konvertiert werden.
  
-Für die Nutzung von ARX mit dem R-Terminal können die bereits vorhandenen Daten auch aus ARX als CSVs eingeladen werden. 
+Für die Nutzung von \textit{ARX} mit dem \textit{R-Terminal} können die bereits vorhandenen Daten auch aus \textit{ARX} als CSVs eingeladen werden. 
 Diese werden in ein \texttt{data.frame} gelesen, wie in Beispiel \ref{readTable} gezeigt.
 
 \lstset{language=R}
@@ -428,7 +428,7 @@ frame=read.csv(file="c:/test.csv",header=TRUE,sep=",")
 \end{lstlisting}
 \label{readTable}
 
-Die hier verwendeten Argumente sind einmal das \texttt{file}, der \texttt{header} und \texttt{sep}. \texttt{file} gibt den Dateipfad zu der CSV Datei an. Hierbei kann auch ein Pfad angegeben werden, der relativ zum Arbeitsordner ist. \texttt{header} gibt an, ob in der Datei die erste Zeile ein Header ist, in dem die Namen der Spaltenattribute stehen, oder ob keine Namen für die Spalten vorhanden sind und in der ersten Zeile direkt der Inhalt der Tabelle beginnt. \texttt{sep} gibt den Character an, durch den die Spalten getrennt sind. 
+Die hier verwendeten Argumente sind einmal das \texttt{file}, der \texttt{header} und \texttt{sep}. \texttt{file} gibt den Dateipfad zu der CSV-Datei an. Hierbei kann auch ein Pfad angegeben werden, der relativ zum Arbeitsordner ist. \texttt{header} gibt an, ob in der Datei die erste Zeile ein Header ist, in dem die Namen der Spaltenattribute stehen, oder ob keine Namen für die Spalten vorhanden sind und in der ersten Zeile direkt der Inhalt der Tabelle beginnt. \texttt{sep} gibt den Character an, durch den die Spalten getrennt sind. 
 
 Möchte man ein \texttt{data.frame} erweitern, z.B. durch eine neue Zeile oder eine neue Spalte, gibt es dafür die Funktionen \texttt{rbind} und \texttt{cbind}. Die Funktionen sind anzuwenden wie in \ref{readTable} vorgestellt. 
 
@@ -955,6 +955,9 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 \texttt{http://www.ats.ucla.edu/stat/r/modules/factor\_variables.html}
 \bibitem{processBuilder}
 \texttt{https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html}
+\bibitem{arx}
+\texttt{http://arx.deidentifier.org}
+
 
 
 \end{thebibliography}
