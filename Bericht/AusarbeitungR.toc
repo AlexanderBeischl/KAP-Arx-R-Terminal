@@ -1,0 +1,39 @@
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einf\IeC {\"u}hrung}{2}{chapter.1}
+\contentsline {chapter}{\numberline {2}Anwenderdokumentation}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}\IeC {\"U}bersicht}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Voraussetzungen}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Vorbereitung}{5}{section.2.3}
+\contentsline {section}{\numberline {2.4}Benutzung des R-Terminals}{6}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Setup}{7}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Terminal}{10}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Benutzung von R f\IeC {\"u}r ARX }{10}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Datentypen und Skalenniveau}{10}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Tabellen}{14}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}Entwicklerdokumentation}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Verwendete Technologien}{16}{section.3.1}
+\contentsline {section}{\numberline {3.2}Architektur des R-Terminals}{16}{section.3.2}
+\contentsline {section}{\numberline {3.3}Graphische Benutzeroberfl\IeC {\"a}che (GUI)}{18}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}RMain}{18}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}RTerminal}{18}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}RSetupTab}{19}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}RTerminalTab}{20}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}RBrowserWindow}{21}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.6}RLayout}{22}{subsection.3.3.6}
+\contentsline {subsection}{\numberline {3.3.7}RCommandListener}{22}{subsection.3.3.7}
+\contentsline {section}{\numberline {3.4}Funktionaler Kern - Integration von R}{22}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}RIntegration}{23}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}OS}{24}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}RBuffer}{25}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}RListener}{26}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Ausf\IeC {\"u}hrung ohne graphische Benutzeroberfl\IeC {\"a}che}{26}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Aufruf des R-Terminals ohne GUI}{26}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}API}{27}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Klasse: RIntegration}{27}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Klasse: OS}{28}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}Klasse: RBuffer}{30}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}Klasse: RListener}{30}{subsection.3.5.6}
+\contentsline {section}{\numberline {3.6}Abh\IeC {\"a}ngigkeiten}{31}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Java}{31}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}R-Project}{31}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}SWT}{31}{subsection.3.6.3}

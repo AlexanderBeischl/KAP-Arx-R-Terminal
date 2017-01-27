@@ -98,12 +98,16 @@ Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \t
 %----------------------------------------------------------------------------------------
 
 \chapter{Einführung}\label{einführung}
+Für die Arbeit von Tabellen aus ARX, welche sich mit medizinischen Daten befassen, bietet sich R aufgrund der Unterstützung statistischer Funktionen an. Allerdings können ARX Tabellen nicht direkt in der R GUI eingelesen werden, was nicht technische, sondern rechtliche Gründe hat. ARX ist unter 
+der Apache License lizensiert, während R als GNU Projekt unter GPL (GNU General Public License) lizensiert ist. 
 
-This statement requires citation \cite{latexcompanion}; this one does too. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum lacus sem, ut varius ante dignissim ac. Sed a mi quis lectus feugiat aliquam. Nunc sed vulputate velit. Sed commodo metus vel felis semper, quis rutrum odio vulputate. Donec a elit porttitor, facilisis nisl sit amet, dignissim arcu. Vivamus accumsan pellentesque nulla at euismod. Duis porta rutrum sem, eu facilisis mi varius sed. Suspendisse potenti. Mauris rhoncus neque nisi, ut laoreet augue pretium luctus. Vestibulum sit amet luctus sem, luctus ultrices leo. Aenean vitae sem leo.
+Obwohl beide Lizenzen für freie Software genutzt werden, welche den Nutzern kaum Restriktionen im Umgang mit der Software auferlegen, sind sie nicht zueinander kompatibel. Während Software unter Apache License in GPL Projekten integriert werden dürfen, umgekehrt GPL lässt dies nicht zu. 
 
-Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus consectetur. Nulla pellentesque tortor et aliquam vehicula. Maecenas imperdiet euismod enim ut pharetra. Suspendisse pulvinar sapien vitae placerat pellentesque. Nulla facilisi. Aenean vitae nunc venenatis, vehicula neque in, congue ligula.\\
+Diese Inkompatibilität kommt zustande, wenn Software unter Apache mit von GPL Software abgeleiteten Projekten geschrieben wird. Dadurch muss es unter GPL gestellt werden. In diesem Falle müsste ARX als Apache License Projekt unter GPL gestellt werden, um es mit R zusammen zu verwenden. Dies wiederum lässt die Apache License nicht zu, da jede Apache Software unter Apache lizensiert werden muss. Es ist weitgehend von GPL-Autoren interpretationsbedingt, was ein von GPL Software abgeleitetes Projekt ist. Um hierbei Komplikationen zu vermeiden, sollte nicht mal von Apache Software zu GPL Software verlinkt werden \cite{license}. 
 
-TODO Fabian bzgl. Lizenzen fragen + Einführung schreiben
+Das Ziel des RTerminals ist es, eine lizenzfreie Plattform zu bieten. Dadurch kann R aufgerufen werden und innerhalb des RTerminals ARX Daten eingelesen und bearbeitet werden. Zusätzliche Features im Terminal sollen die Arbeit mit R erleichtern. 
+
+In dieser Dokumentation werden die Hintergründe von R und ARX erläutert, die Vorgaben Features des RTerminals in der Anwenderdokumentation aufgelistet und einige Funktionen von R beschrieben, die die Arbeit mit ARX in R erleichtern soll. Anschließend werden in der Entwicklerdokumentation die technischen Hintergründe des RTerminals erklärt und die Klassen dokumentiert. Zuletzt werden Alternativen und Möglichkeiten zur Verbesserung des RTerminals beschrieben. 
 
 %------------------------------------------------
 
@@ -927,10 +931,10 @@ Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"'
 
 %\bibliography{sample}
 \begin{thebibliography}{9} %Das ist nur ein Beispiel, 1 und 2 sind im dummy text oben eingebunden 
-\bibitem{latexcompanion} 
-Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
-\textit{The \LaTeX\ Companion}. 
-Addison-Wesley, Reading, Massachusetts, 1993.
+%\bibitem{latexcompanion} 
+%Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+%\textit{The \LaTeX\ Companion}. 
+%Addison-Wesley, Reading, Massachusetts, 1993.
  
 %\bibitem{einstein} 
 %Albert Einstein. 
@@ -938,7 +942,8 @@ Addison-Wesley, Reading, Massachusetts, 1993.
 %[\textit{On the electrodynamics of moving bodies}]. 
 %Annalen der Physik, 322(10):891–921, 1905.
 
-
+\bibitem{license}
+\texttt{https://www.apache.org/licenses/GPL-compatibility.html}
 \bibitem{skalenniveau}
 \texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/ biometrie/Q1/SkriptQ1.pdf}
 \bibitem{dataFrame}
