@@ -101,7 +101,7 @@ Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \t
 
 Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern müssen die Datensätze anonymisiert werden.
 Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) entwickelt. Es ermöglicht die Anonymisierung dieser Daten sowie mit diesen als Tabellen zu arbeiten.
-Um mit diesen Tabellen aus \textit{ARX} zu arbeiten bieten sich \textit{R}aufgrund der Unterstützung statistischer Funktionen an. 
+Um mit diesen Tabellen aus \textit{ARX} zu arbeiten,  bieten sich \textit{R} aufgrund der Unterstützung statistischer Funktionen an. 
 
 Allerdings können Tabellen aus \textit{ARX} nicht direkt in der \textit{R}-GUI eingelesen werden, was nicht technische, sondern rechtliche Gründe hat. \textit{ARX} ist unter der Apache License lizensiert, während \textit{R} als GNU-Projekt unter GPL (GNU General Public License) lizensiert ist. 
 
@@ -111,7 +111,7 @@ Diese Inkompatibilität kommt zustande, wenn Software unter Apache mit von GPL S
 
 Das Ziel des \textit{RTerminals} ist es, eine lizenzfreie Plattform zu bieten, welche es ermöglicht \textit{R} aufzurufen und innerhalb des \textit{RTerminals} \textit{ARX}-Daten einzulesen und diese zu bearbeiten. Zusätzliche Features im Terminal sollen die Arbeit mit \textit{R} erleichtern. 
 
-In dieser Dokumentation werden die Hintergründe von \textit{R} und \textit{ARX} erläutert, die Vorgaben und Features des \textit{RTerminals} in der Anwenderdokumentation aufgelistet und einige Funktionen von \textit{R} beschrieben, welche die Arbeit mit \textit{ARX} in textit{R} erleichtern sollen. Anschließend werden in der Entwicklerdokumentation die technischen Hintergründe des \textit{RTerminals} erklärt und die Klassen dokumentiert.
+In dieser Dokumentation werden die Hintergründe von \textit{R} und \textit{ARX} erläutert, die Vorgaben und Features des \textit{RTerminals} in der Anwenderdokumentation aufgelistet und einige Funktionen von \textit{R} beschrieben, welche die Arbeit mit \textit{ARX} in \textit{R} erleichtern sollen. Anschließend werden in der Entwicklerdokumentation die technischen Hintergründe des \textit{RTerminals} erklärt und die Klassen dokumentiert.
 %------------------------------------------------
 
 \section*{R}\label{r}
@@ -159,7 +159,7 @@ Die Versionen, mit welchen die Software getestet wurde, sind unter \ref{Abhängi
 
 Zunächst muss  das Projekt \textit{R-Terminal} in Eclipse importiert werden.
 
-Um das \textit{R-Terminal} ausführen zu können, müssen die betriebssystemspezifischen \textit{SWT}-Libraries auf den Bild-Path gesetzt und die \textit{SWT}-Libraries anderer Betriebssysteme entfernt werden.
+Um das \textit{R-Terminal} ausführen zu können, müssen die betriebssystemspezifischen \textit{SWT}-Libraries auf den Build-Path gesetzt und die \textit{SWT}-Libraries anderer Betriebssysteme entfernt werden.
 Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt wird:
 \begin{enumerate}
 	\item Navigieren Sie im \textit{Eclipse} Package Explorer zu:
@@ -276,7 +276,7 @@ Das letzte Feld \textit{Manually select the R-exec by typing in its location} gi
 Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige \textit{R} Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben. 
 
 \subsection{Terminal} \label{Terminal}
-Nachdem die gewünschte \textit{R}-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um \textit{R}-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. 
+Nachdem die gewünschte \textit{R}-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um \textit{R}-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. Rechts neben dem Eingabefeld gibt es den Button \textit{Select Script}. Dieser Button öffnet bei Aktivierung eine Ordnerübersicht, aus der ein \textit{R}-Skript ausgewählt werden kann, welches dann ausgeführt wird. 
 
 
 \section{Benutzung von R für ARX } \label{NutzungArx}
@@ -287,10 +287,10 @@ Dieser Abschnitt wird sich mit der Benutzung von \textit{R} im Zusammenhang mit 
 In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus \textit{ARX} sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
 
 \begin{itemize}
-\item Numeric
-\item Integer
-\item Complex
-\item Logic
+\item \texttt{Numeric}
+\item \texttt{Integer}
+\item \texttt{Complex}
+\item \texttt{Logic}
 \end{itemize}
 
 Wenn also eine Variable als Dezimalzahl ohne zusätzliche Bedingung deklariert wird, ist der Datentyp standardmäßig \texttt{numeric} (vgl. \ref{numericVar}).
@@ -336,7 +336,7 @@ Nachdem nun die quantitativen Merkmale dargestellt werden können, stellt sich d
 
 Die qualitativen Merkmale werden in nominalskalierte und ordinalskalierte Merkmale unterteilt. Ordinallskalierte Merkmale haben eine vorbestimmte Ordnung untereinander, die nicht zwangsläufig eine lineare Beziehung zueinander haben müssen. Nominalskalierte Merkmale sind hingegen eindeutige Kategorien, die untereinander keine Ordnung haben. 
 
-Die einfachste Möglichkeit, einer Variable ein qualitatives Merkmal zuzuordnen, ist sie als \texttt{character} zu definieren. Dies geschieht durch eine einfache Zuweisung wie in \ref{characterVar}.
+Die einfachste Möglichkeit, einer Variable ein qualitatives Merkmal zuzuordnen, ist es als \texttt{character} zu definieren. Dies geschieht durch eine einfache Zuweisung wie in \ref{characterVar}.
 
 \lstset{language=R}
 \begin{lstlisting}[frame=single,caption={Deklarierung einer qualitativen Variable a}]
@@ -401,7 +401,7 @@ Zusätzlich gibt es das \textit{R}-Package \texttt{memisc}. Diese Erweiterung we
 
 In \textit{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
 
-Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \texttt{data.fram()} erstellt werden kann (s. \ref{dataframe}) \cite{dataFrame}.
+Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \texttt{data.frame()} erstellt werden kann (s. \ref{dataframe}) \cite{dataFrame}.
 
 \lstset{language=R}
 \begin{lstlisting}[frame=single,caption={\texttt{data.frame} aus 3 Vektoren}]
@@ -475,7 +475,7 @@ Möchte man ein \texttt{data.frame} erweitern, z.B. durch eine neue Zeile oder e
 \section{Verwendete Technologien}
 
 Das \textit{R-Terminal} wurde mit der Entwicklungsumgebung \textit{Eclipse} \cite{eclipse} entwickelt.
-Als Programmiersprache wurde \textit{Java} \cite{java} gewählt. Die graphische Benutzeroberfläche wurde mit \textit{SWT} \cite{swt} realisiert, genauere Details hierzu werden in \ref{swt} erläutert.
+Als Programmiersprache wurde \textit{Java} \cite{java} gewählt. Die grafische Benutzeroberfläche wurde mit \textit{SWT} \cite{swt} realisiert, genauere Details hierzu werden in \ref{swt} erläutert.
 Um \textit{R}-Kommandos auszuführen, startet das hier dokumentierte Programm \textit{R-Terminal} einen \textit{R}-Prozess der Standalone-Installation von \textit{R} durch die \textit{Java}-Library \textit{ProcessBuilder} \cite{processBuilder}.
 
 
@@ -647,14 +647,14 @@ Mit dieser Methode werden alle Kommandos an den \textit{R}-Prozess übergeben. D
 
 \subsection{OS} \label{OS}
 
-Die Klasse \textit{OS} implementiert folgende Funktionalitäten: Erkennung des verwendeten Betriebsystems, die Anpassung der Pfade der Standart-Speicherorte der \textit{R}-Executive je nach verwendeten Betriebssystem und die Überprüfung der übergebenen \textit{R}-Executives.\\
+Die Klasse \textit{OS} implementiert folgende Funktionalitäten: Erkennung des verwendeten Betriebsystems, die Anpassung der Pfade der Standard-Speicherorte der \textit{R}-Executive je nach verwendeten Betriebssystem und die Überprüfung der übergebenen \textit{R}-Executives.\\
 
 Um die drei unterstützten Betriebssysteme Windows, Mac und Unix effizient zu unterscheiden, werden diese als Enum Konstanten "`OSType"' erzeugt.\\
 
 Die absoluten Pfade der Standart-Speicherorte der \textit{R}-Executive werden für jedes Betriebssystem in einem eigenen String Array gespeichert. Es ist wichtig hier zu beachten, dass Windows andere Separatoren verwendet als Linux und OS X.
 Bei Windows müssen die einzelnen Verzeichnisse durch "`$\backslash \backslash$"' getrennt werden, bei beiden anderen Betriebssystemen durch "`/"'. 
 
-Falls neue Standart-Speicherorte für die \textit{R}-Executive hinzugefügt werden sollen, kann das jeweilige Array einfach um den neuen Pfad erweitert werden. Beim Starten des \textit{R-Terminals} durch die graphische Benutzeroberfläche werden alle Pfade des Arrays nach einer ausführbaren \textit{R}-Executive durchsucht.Hierfür wird die Methode "`getR()"' aufgerufen, welche im Folgenden noch vorgestellt wird.\\
+Falls neue Standart-Speicherorte für die \textit{R}-Executive hinzugefügt werden sollen, kann das jeweilige Array einfach um den neuen Pfad erweitert werden. Beim Starten des \textit{R-Terminals} durch die graphische Benutzeroberfläche werden alle Pfade des Arrays nach einer ausführbaren \textit{R}-Executive durchsucht. Hierfür wird die Methode "`getR()"' aufgerufen, welche im Folgenden noch vorgestellt wird.\\
 
 Außerdem werden die Dateinamen der \textit{R}-Executive für die unterschiedlichen Betriebssysteme in einem String-Array gespeichert, da sich diese je nach Betriebssystem unterscheiden. Außerdem wird das jeweilige Array benötigt, um bei der manuellen \textit{R}-Auswahl zu prüfen, ob es sich um eine gültige \textit{R}-Executive handelt. Dies wird in der Methode "`isRExec($String$ path)"' in Abhängigkeit vom verwendeten Betriebssystems überprüft.\\
 
@@ -662,7 +662,7 @@ Die Methode "`getOS()"' fragt den Namen des Betriebssystems ab und gibt dieses a
 
 Wie bereits beschrieben, werden nach dem Start des Programms die Standart-Speicherorte nach einer ausführbaren R-Executive durchsucht. Ob an einem dieser Speicherorte eine Executive liegt, wird mit der Methode "`getPath($String[]$ locations, $String[]$ executables)"' überprüft. Außerdem wird versucht die Executive mit \textit{ProcessBuilder} zu starten, um zu prüfen, ob der Nutzer ausreichende Zugriffsberechtigungen besitzt.\\
 
-Zusätzlich sind in der Klasse \textit{OS} die Parameter zur Ausführung der \textit{R}-Executive für den \textit{ProcessBuilder} gespeichert. Diese werden beim Aufruf der Methode "`getParameters($String$ path)"' mit dem Pfad "`path"' der Executive zu einem String-Array konkateniert und anschließend als String-Array zurückgegeben.
+Zusätzlich sind in der Klasse \textit{OS} die Parameter zur Ausführung der \textit{R}-Executive für den \textit{ProcessBuilder} gespeichert. Diese werden beim Aufruf der Methode "`getParameters($String$ path)"' mit dem Pfad "`path"' der Executive zu einem String-Array konkateniert und anschließend als String Array zurückgegeben.
 
 \subsection{RBuffer} \label{RBuffer}
 
@@ -946,25 +946,36 @@ Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"'
 %Annalen der Physik, 322(10):891–921, 1905.
 
 \bibitem{license}
-\texttt{https://www.apache.org/licenses/GPL-compatibility.html}
+The Apache Software Foundation. \\
+\texttt{https://www.apache.org/licenses/GPL-compatibility.html}, Januar 2016
 \bibitem{skalenniveau}
-\texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/ biometrie/Q1/SkriptQ1.pdf}
+Institut Institut für Biometrie und Klinische Epidemiologie,\\
+Universitätsklinikum Benjamin Franklin \\
+\texttt{https://biometrie.charite.de/fileadmin/user\_upload/microsites/m\_cc04/ biometrie/Q1/SkriptQ1.pdf}, Januar 2016
 \bibitem{dataFrame}
-\texttt{http://www.r-tutor.com/r-introduction/data-frame}
+R Tutorial. An Introduction to Statistics, Chi Yau \\
+\texttt{http://www.r-tutor.com/r-introduction/data-frame}, Januar 2016
 \bibitem{rproject}
-\texttt{https://www.r-project.org/about.html}
+The R Foundation.\\
+\texttt{https://www.r-project.org/about.html}, Januar 2016
 \bibitem{eclipse}
-\texttt{https://www.eclipse.org}
+The Eclipse Foundation. \\
+\texttt{https://www.eclipse.org}, Januar 2016
 \bibitem{swt}
-\texttt{https://www.eclipse.org/swt/}
+The Eclipse Foundation. \\
+\texttt{https://www.eclipse.org/swt/}, Januar 2016
 \bibitem{java}
-\texttt{https://www.java.com/de/}
+Oracle Corporation. \\
+\texttt{https://www.java.com/de/}, Januar 2016
 \bibitem{factorVariables}
-\texttt{http://www.ats.ucla.edu/stat/r/modules/factor\_variables.html}
+UC Regenta. \\
+\texttt{http://www.ats.ucla.edu/stat/r/modules/factor\_variables.html}, Januar 2016
 \bibitem{processBuilder}
-\texttt{https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html}
+Oracle Corporation. \\
+\texttt{https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html}, Januar 2016
 \bibitem{arx}
-\texttt{http://arx.deidentifier.org}
+Fabian Prasser*, Florian Kohlmayer*. (*Equal contributors)\\
+Putting Statistical Disclosure Control Into Practice: The ARX Data Anonymization Tool.\\\texttt{http://arx.deidentifier.org}, Januar 2016
 
 
 
