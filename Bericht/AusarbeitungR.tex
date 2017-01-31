@@ -81,8 +81,12 @@ Terminal zur Bearbeitung von ARX-Daten mit R} % Subtitle
 \renewcommand{\abstractname}{Zusammenfassung} % Uncomment to change the name of the abstract to something else
 
 \begin{abstract}
+%Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in \textit{Java}, sodass in der graphischen Benutzeroberfläche des \textit{R-Terminals} Befehle und Code eingegeben werden können, welche von \textit{R} ausgeführt werden.
+Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in \textit{Java}, sodass \textit{R}-Befehle und \textit{R}-Skripte in \textit{Java} ausgeführt werden können. Hierfür wird durch das \textit{R-Terminal} eine Standalone-Installation von \textit{R} durch \textit{ProcessBuilder} als Prozess gestartet und die Kommunikation mittels Input- und Output-Stream hergestellt.
 
-Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in \textit{Java}, sodass in der graphischen Benutzeroberfläche des \textit{R-Terminals} Befehle und Code eingegeben werden können, welche von \textit{R} ausgeführt werden. 
+Das \textit{R-Terminal} verfügt über eine graphische Benutzeroberfläche. Es kann aber auch ohne die GUI genutzt werden, sodass es in weitere Programme integriert werden kann.
+
+Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anonymisierungs-Tool \textit{ARX} exportiert wurden, \textit{R}-Befehle ausgeführt werden. Dies ist ohne Nutzung des \textit{R-Terminal} nicht möglich, da die Lizenzrechte von \textit{R} und \textit{ARX} die gemeinsame Nutzung nicht erlauben.
 
 \end{abstract}
 
@@ -99,9 +103,9 @@ Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \t
 
 \chapter{Einführung}\label{einführung}
 
-Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern müssen die Datensätze anonymisiert werden.
+Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern, müssen die Datensätze anonymisiert werden.
 Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) entwickelt. Es ermöglicht die Anonymisierung dieser Daten sowie mit diesen als Tabellen zu arbeiten.
-Um mit diesen Tabellen aus \textit{ARX} zu arbeiten,  bieten sich \textit{R} aufgrund der Unterstützung statistischer Funktionen an. 
+Um mit diesen Tabellen aus \textit{ARX} zu arbeiten, bieten sich die Programmiersprache und Entwicklungsumgebung \textit{R} aufgrund der Unterstützung statistischer Funktionen an. 
 
 Allerdings können Tabellen aus \textit{ARX} nicht direkt in der \textit{R}-GUI eingelesen werden, was nicht technische, sondern rechtliche Gründe hat. \textit{ARX} ist unter der Apache License lizensiert, während \textit{R} als GNU-Projekt unter GPL (GNU General Public License) lizensiert ist. 
 
