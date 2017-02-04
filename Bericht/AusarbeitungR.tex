@@ -423,7 +423,7 @@ Hier sieht man nun auch eine eindeutige Ordnung unter den Notenstufen \cite{fact
 
 Zusätzlich gibt es das \textit{R}-Package \texttt{memisc}. Diese Erweiterung weist Objekten, die ein \texttt{item} sind, ein \texttt{level of measurement} (Skalenniveau) zu, das entweder ein \textit{ordinal, nominal, interval} oder \textit{ratio} ist. Je nach dem Skalenniveau wird das \texttt{item} in einen \texttt{factor} (\textit{nominal}), einen geordneten Vector (\textit{ordinal}) oder einen numerischen Vektor (\textit{interval und} \textit{ratio}) konvertiert. 
 
-\subsection{Tabellen}
+\subsection{Tabellen} \label{tabellen}
 
 In \textit{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
 
@@ -949,7 +949,12 @@ Für das Projekt \textit{R-Terminal} wurde die \textit{SWT}-Version 4.2.1 verwen
 
 Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"' hinzugefügt werden, kann unter \ref{swtanwender} nachgeschlagen werden.
 
+\chapter{Zukünftige Arbeiten}
 
+Das \textit{R-Terminal}, welches im Rahmen dieser Arbeit erstellt wurde, setzt die Integration von \textit{R} in \textit{Java} um. 
+Allerdings müssen anonymisierten Daten bisher noch manuell aus \textit{ARX} als Tabellen in CSV-Format exportiert werden und anschließend durch das \textit{RTerminal} an den \textit{R}-Prozess übergeben werden. Dieser manuelle Import sowie die Anpassung der Datenrepräsentation der Tabellen in \textit{R} wird in Kapitel \ref{tabellen} beschrieben.
+
+Der manuelle Import ist aber umständlich. In zukünftigen Arbeiten sollte deshalb der Implementierung eines automatischen Datenimports aus dem Anonymisierungstool \textit{ARX} eine hohe Priorität zukommen.
 
 
 %----------------------------------------------------------------------------------------

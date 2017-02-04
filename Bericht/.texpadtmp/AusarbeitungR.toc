@@ -37,3 +37,4 @@
 \contentsline {subsection}{\numberline {3.6.1}Java}{33}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}R-Project}{33}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}SWT}{33}{subsection.3.6.3}
+\contentsline {chapter}{\numberline {4}Zuk\IeC {\"u}nftige Arbeiten}{34}{chapter.4}
