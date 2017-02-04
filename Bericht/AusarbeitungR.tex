@@ -43,27 +43,40 @@
 \renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
 
 \renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
-\begin{flushright} % Right align
+\begin{center} % Right align
 {\LARGE\@title} % Increase the font size of the title
 
 \vspace{50pt} % Some vertical space between the title and author name
 
 {\large\@author} % Author name
+\vspace{10pt}
 \\\@date % Date
 
 \vspace{40pt} % Some vertical space between the author block and abstract
-\end{flushright}
+\end{center}
 }
 
 %----------------------------------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------------------------------
-
+%\begingroup
+\vspace{1.5cm}
 \title{\textbf{}\\ % Title
-Terminal zur Bearbeitung von ARX-Daten mit R} % Subtitle
+Erstellung einer Schnittelle zwischen \\ einem Anonymiserungstool f{\"u}r \\ medizinische Daten und dem \\ Statistikprogramm R\\} % Subtitle
 
-\author{\textsc{Alexander Beischl und Thuy Tran} % Author
-\\{\textit{Technische Universität München}}} % Institution
+%\endgroup
+
+\author{
+\textsc{Klinisches Anwendungsprojekt}
+\vspace{15pt}
+\\ \textit{Institut für Medizinische Statistik und Epidemiologie, 
+\\Klinikum rechts der Isar der TUM} % Institution
+\vspace{10pt}
+\\ \textit{Bearbeiter: Alexander Beischl und Thuy Tran} % Author
+\vspace{10pt}
+\\ \textit{Aufgabensteller: Prof. Dr. Klaus A. Kuhn} 
+\vspace{10pt}
+\\ \textit{Betreuer: Dr. Fabian Prasser}}
 
 \date{\today} % Date
 
@@ -101,7 +114,7 @@ Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anon
 %	ESSAY BODY
 %----------------------------------------------------------------------------------------
 
-\chapter{Einführung}\label{einführung}
+\chapter{Einleitung}\label{einführung}
 
 %Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern, müssen die Datensätze anonymisiert werden.
 %Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt. Es ermöglicht die Anonymisierung dieser Daten sowie mit diesen als Tabellen zu arbeiten.
@@ -150,7 +163,7 @@ Beim Programmstart soll automatisch in den Standart-Installationsorten nach eine
 
 \chapter{Anwenderdokumentation}
 \section{Übersicht}
-Das \textit{R-Terminal} dient dazu, über eine externe Schnittstelle \textit{R} aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus \textit{ARX} einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die in der Einführung beschriebenen Probleme zu umgehen. Das \textit{R-Terminal} ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
+Das \textit{R-Terminal} dient dazu, über eine externe Schnittstelle \textit{R} aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus \textit{ARX} einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die in der Einleitung beschriebenen Probleme zu umgehen. Das \textit{R-Terminal} ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
 
 \begin{itemize}
 \item Windows 10 Education (Version 1511)
