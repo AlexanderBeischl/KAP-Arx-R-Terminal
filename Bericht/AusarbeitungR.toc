@@ -1,5 +1,5 @@
 \select@language {ngerman}
-\contentsline {chapter}{\numberline {1}Einf\IeC {\"u}hrung}{3}{chapter.1}
+\contentsline {chapter}{\numberline {1}Einleitung}{3}{chapter.1}
 \contentsline {chapter}{\numberline {2}Anwenderdokumentation}{6}{chapter.2}
 \contentsline {section}{\numberline {2.1}\IeC {\"U}bersicht}{6}{section.2.1}
 \contentsline {section}{\numberline {2.2}Voraussetzungen}{6}{section.2.2}
@@ -37,3 +37,4 @@
 \contentsline {subsection}{\numberline {3.6.1}Java}{33}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}R-Project}{33}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}SWT}{33}{subsection.3.6.3}
+\contentsline {chapter}{\numberline {4}Zuk\IeC {\"u}nftige Arbeiten}{34}{chapter.4}

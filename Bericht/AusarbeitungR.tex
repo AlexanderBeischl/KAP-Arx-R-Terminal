@@ -122,11 +122,15 @@ Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anon
 
 Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern, müssen die Datensätze anonymisiert werden.
 Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt. Es ermöglicht die Anonymisierung dieser Daten sowie mit diesen als Tabellen zu arbeiten.
+
+Diese Notwendigkeit für die Privatsphäre der Patienten führt allerdings auch zu Informationsverlust und einer Verzerrung statistischer Eigenschaften. Das bedeutet, dass die Anonymisierung eines Datensatzes dazu führen kann, dass ein Datensatz unter Umständen nicht mehr nutzbar ist. 
+
 Um mit diesen Patientendaten aus \textit{ARX} in Form von Tabellen zu arbeiten und statistische Analysen durchzuführen, bieten sich die Programmiersprache und Entwicklungsumgebung \textit{R} an, da diese alle grundlegenden statistischer Funktionen bereitstellt. 
 
-Das \textit{RTerminal} soll eine Schnittstelle bieten, um \textit{R} in einer GUI auszuführen und \textit{ARX}-Daten einzulesen sowie zu bearbeiten. Zusätzlich soll es Funktionen bieten, die eine dynamische Arbeit mit \textit{R} erleichtern sollen. 
-Eine Benutzeroberfläche für \textit{R} wird bereits in einem eigenen \textit{R}-Package angeboten. Bei der direkten Benutzung der \textit{R}-GUI gibt es allerdings rechtliche Probleme. Diese Probleme treten aufgrund der jeweiligen Lizenzierung auf.
+Obwohl ARX bereits Analysen mit statistischen Methoden ermöglicht, bietet \textit{R} als spezialisierte Statistiksoftware einen größeren Umfang an Methoden zur statistischen Auswertung von Patientendaten an. Mithilfe des \textit{R}-Pakets \textit{sdcMicro}, welches sowohl Funktionen zur Anonymisierung, als auch Methoden zur Risikoeinschätzung von Anonymisierung bietet \cite{sdc}. Damit können Datensätze direkt in \textit{R} anonymisiert und statistisch untersucht werden, wodurch potenzielle Abweichungen untersucht werden können. 
 
+Das \textit{RTerminal} soll eine Schnittstelle bieten, um \textit{R} in einer GUI auszuführen und \textit{ARX}-Daten einzulesen sowie zu bearbeiten. Zusätzlich soll es Funktionen bieten, die eine dynamische Arbeit mit \textit{R} erleichtern sollen. 
+Eine Benutzeroberfläche für \textit{R} wird bereits in einem eigenen \textit{R}-Package angeboten. Ebenfalls existieren bereits für Java Pakete wie RServe, JRI und RCaller. Bei der direkten Benutzung der \textit{R}-GUI gibt es allerdings rechtliche Probleme, aufgrund der jeweiligen Lizenzierung. Eine Lizenzinkompabilität tritt ebenfalls bei der Verwendung von JRI, RServe und RCaller auf. 
 %Die direkte Analyse der Tabellen aus \textit{ARX} mit \textit{R} ist allerdings aufgrund der jeweiligen Lizenzierung nicht möglich. 
 %Allerdings können Tabellen aus \textit{ARX} nicht direkt in der \textit{R}-GUI eingelesen werden, was nicht technische, sondern rechtliche Gründe hat. 
 
@@ -979,6 +983,9 @@ Der manuelle Import ist aber umständlich. In zukünftigen Arbeiten sollte desha
 \bibitem{license}
 The Apache Software Foundation. \\
 \texttt{https://www.apache.org/licenses/GPL-compatibility.html}, Januar 2016
+\bibitem{sdc}
+The R Foundation.\\
+\texttt{https://cran.r-project.org/web/packages/sdcMicro/index.html}, Februar 2016
 \bibitem{skalenniveau}
 Institut Institut für Biometrie und Klinische Epidemiologie,\\
 Universitätsklinikum Benjamin Franklin \\
