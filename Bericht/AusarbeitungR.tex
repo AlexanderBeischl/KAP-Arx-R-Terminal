@@ -116,31 +116,36 @@ Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anon
 
 \chapter{Einleitung}\label{einführung}
 
-%Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern, müssen die Datensätze anonymisiert werden.
-%Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt. Es ermöglicht die Anonymisierung dieser Daten sowie mit diesen als Tabellen zu arbeiten.
-%Um mit diesen Patientendaten aus \textit{ARX} in Form von Tabellen zu arbeiten und statistische Analysen durchzuführen, bieten sich die Programmiersprache und Entwicklungsumgebung \textit{R} an. \textit{R} stellt alle grundlegenden statistischer Funktionen bereit. 
-
 Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern, müssen die Datensätze anonymisiert werden.
-Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt. Es ermöglicht die Anonymisierung dieser Daten sowie mit diesen als Tabellen zu arbeiten.
+Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt. Es ermöglicht die Anonymisierung der Patientendaten sowie mit diesen als Tabellen zu arbeiten.
 
-Diese Notwendigkeit für die Privatsphäre der Patienten führt allerdings auch zu Informationsverlust und einer Verzerrung statistischer Eigenschaften. Das bedeutet, dass die Anonymisierung eines Datensatzes dazu führen kann, dass ein Datensatz unter Umständen nicht mehr nutzbar ist. 
+Diese Notwendigkeit zur Wahrung der Privatsphäre der Patienten führt allerdings auch zu Informationsverlust und einer Verzerrung statistischer Eigenschaften. Die Anonymisierung eines Datensatzes kann somit dazu führen, dass dieser unter Umständen nicht mehr nutzbar ist. Deshalb müssen außerdem untersucht werden können, ob die Daten weiterhin für den geplanten Forschungszweck verwendbar sind.
 
-Um mit diesen Patientendaten aus \textit{ARX} in Form von Tabellen zu arbeiten und statistische Analysen durchzuführen, bieten sich die Programmiersprache und Entwicklungsumgebung \textit{R} an, da diese alle grundlegenden statistischer Funktionen bereitstellt. 
+ Obwohl \textit{ARX} bereits grundlegenden statistischen Methoden zur Analyse bereitstellt, bietet es sich an die Programmiersprache und Entwicklungsumgebung \textit{R} zu verwenden, um mit den Patientendaten aus \textit{ARX} in Form von Tabellen zu arbeiten und statistische Analysen durchzuführen.
+ \textit{R} bietet als spezialisierte Statistiksoftware eine umfangreiche Sammlung an Funktionen zur statistischen Auswertung von Daten an und ist das wichtigste Werkzeug für Statistikanalysen der medizinischen Forschung. Deshalb 
 
-Obwohl ARX bereits Analysen mit statistischen Methoden ermöglicht, bietet \textit{R} als spezialisierte Statistiksoftware einen größeren Umfang an Methoden zur statistischen Auswertung von Patientendaten an. Mithilfe des \textit{R}-Pakets \textit{sdcMicro}, welches sowohl Funktionen zur Anonymisierung, als auch Methoden zur Risikoeinschätzung von Anonymisierung bietet \cite{sdc}. Damit können Datensätze direkt in \textit{R} anonymisiert und statistisch untersucht werden, wodurch potenzielle Abweichungen untersucht werden können. 
+Zusätzlich kann das \textit{R}-Pakets \textit{sdcMicro} verwendet werden, welches sowohl Funktionen zur Anonymisierung, als auch Methoden zur Risikoeinschätzung von Anonymisierung breitstellt \cite{sdc}. Dadurch können Datensätze direkt in \textit{R} anonymisiert und statistisch untersucht werden, wodurch potenzielle Abweichungen ausfindig gemacht werden können. 
 
-Das \textit{RTerminal} soll eine Schnittstelle bieten, um \textit{R} in einer GUI auszuführen und \textit{ARX}-Daten einzulesen sowie zu bearbeiten. Zusätzlich soll es Funktionen bieten, die eine dynamische Arbeit mit \textit{R} erleichtern sollen. 
-Eine Benutzeroberfläche für \textit{R} wird bereits in einem eigenen \textit{R}-Package angeboten. Ebenfalls existieren bereits für Java Pakete wie RServe, JRI und RCaller. Bei der direkten Benutzung der \textit{R}-GUI gibt es allerdings rechtliche Probleme, aufgrund der jeweiligen Lizenzierung. Eine Lizenzinkompabilität tritt ebenfalls bei der Verwendung von JRI, RServe und RCaller auf. 
-%Die direkte Analyse der Tabellen aus \textit{ARX} mit \textit{R} ist allerdings aufgrund der jeweiligen Lizenzierung nicht möglich. 
-%Allerdings können Tabellen aus \textit{ARX} nicht direkt in der \textit{R}-GUI eingelesen werden, was nicht technische, sondern rechtliche Gründe hat. 
+Durch die Verwendung von \textit{R} sollen somit die Eingabe- und anonymisierte Ausgabe der Patientendaten aus \textit{ARX}
+ untersucht werden, um die statistischen Abweichungen zu analysieren und die Verwendbarkeit der anonymisierten Daten zu untersuchen.\\
+\\
+%\subsection*{Möglichkeiten der Integration}
+Eine direkte Analyse der Tabellen aus \textit{ARX} mit \textit{R} ist aufgrund der jeweiligen Lizenzierung leider nicht möglich, was nicht technische, sondern rechtliche Gründe hat.
 
 \textit{ARX} ist unter der Apache License lizensiert, während \textit{R} als GNU-Projekt unter GPL (GNU General Public License) lizensiert ist. 
 Obwohl beide Lizenzen für freie Software genutzt werden, welche den Nutzern kaum Restriktionen im Umgang mit der Software auferlegen, sind sie nicht miteinander kompatibel. Während Software unter Apache License in GPL Projekten integriert werden dürfen, lässt GPL umgekehrt dies nicht zu. 
 
 Diese Inkompatibilität kommt zustande, wenn Software unter Apache mit von GPL Software abgeleiteten Projekten geschrieben wird. Dadurch muss diese unter GPL gestellt werden. In diesem Falle müsste \textit{ARX} als Apache License Projekt unter GPL gestellt werden, um es gemeinsam mit \textit{R} zu verwenden. Dies wiederum lässt die Apache License nicht zu, da jede Apache Software unter Apache lizensiert werden muss. Es ist weitgehend von GPL-Autoren interpretationsbedingt, was ein von GPL Software abgeleitetes Projekt ist. Um hierbei Komplikationen zu vermeiden, sollte nicht mal von Apache Software zu GPL Software verlinkt werden \cite{license}. 
 
-Das Ziel des in diesem Rahmen entwickelten \textit{RTerminals} ist es, eine lizenzfreie Plattform zu bieten, welche es ermöglicht \textit{R} aufzurufen und innerhalb des \textit{RTerminals} \textit{ARX}-Daten einzulesen und diese zu bearbeiten.
+Deshalb kann die von \textit{R} angebotene Benutzeroberfläche nicht gemeinsam mit \textit{ARX} genutzt werden.
 
+Das Ziel des in diesem Rahmen entwickelten \textit{RTerminals} ist es, eine lizenzfreie Plattform zur Verfügung zu stellen, welche es ermöglicht \textit{R} aufzurufen und innerhalb des \textit{RTerminals} \textit{ARX}-Daten einzulesen und diese zu bearbeiten.
+
+Das \textit{RTerminal} bietet hierfür eine Schnittstelle um \textit{R} in einer eigenen GUI auszuführen und \textit{ARX}-Daten einzulesen sowie zu bearbeiten. Zusätzlich soll es Funktionen bieten, die eine dynamische Arbeit mit \textit{R} erleichtern.
+Es existieren zwar bereits für \textit{Java} Pakete wie \textit{RServe}, \textit{JRI} und \textit{RCaller}, welche ebenfalls eine Integration realisieren, eine direkten Nutzung von JRI, RServe und RCaller mit \textit{ARX} ist aufgrund der jeweiligen Lizenzierung aber nicht möglich.
+
+Aus diesem Grund wurde für das \textit{RTerminal} die Integration von \textit{R} als leichtgewichtiger Subprozess gewählt, bei welchem die Kommunikation zwischen dem \textit{RTerminal} und dem \textit{R}-Prozess über den Standardinput und Standardoutput des \textit{R}-Prozesses erfolgt.\\
+\\
 In dieser Dokumentation werden die Hintergründe von \textit{R} und \textit{ARX} erläutert, die Vorgaben und Features des \textit{RTerminals} in der Anwenderdokumentation aufgelistet und einige Funktionen von \textit{R} beschrieben, welche die Arbeit mit \textit{ARX} in \textit{R} erleichtern sollen. Anschließend werden in der Entwicklerdokumentation die technischen Hintergründe des \textit{RTerminals} erklärt und die Klassen dokumentiert.
 %------------------------------------------------
 
