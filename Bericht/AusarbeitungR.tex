@@ -94,12 +94,20 @@ Erstellung einer Schnittelle zwischen \\ einem Anonymiserungstool f{\"u}r \\ med
 \renewcommand{\abstractname}{Zusammenfassung} % Uncomment to change the name of the abstract to something else
 
 \begin{abstract}
-%Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in \textit{Java}, sodass in der graphischen Benutzeroberfläche des \textit{R-Terminals} Befehle und Code eingegeben werden können, welche von \textit{R} ausgeführt werden.
-Im Rahmen des Klinisches Anwendungsprojektes wurde die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert die Programmiersprache und Entwicklungsumgebung \textit{R} in \textit{Java}, sodass \textit{R}-Befehle und \textit{R}-Skripte in \textit{Java} ausgeführt werden können. Hierfür wird durch das \textit{R-Terminal} eine Standalone-Installation von \textit{R} durch \textit{ProcessBuilder} als Prozess gestartet und die Kommunikation mittels Input- und Output-Stream hergestellt.
+
+\noindent
+In der heutigen medizinischen Forschung ist die statistische Auswertung von Patientendaten ein wichtiger Bestandteil. Hierbei müssen die verwendeten Daten zur Wahrung der Identität und des Datenschutzes der Patienten anonymisiert werden.
+
+Das "`Data Anonymization Tool"' (\textit{ARX}), welches am Institut für Medizinische Statistik und Epidemiologie entwickelt wurde, ermöglicht diese Anonymisierung der Daten. Allerdings kommt es bei jeder Anonymisierung zu einem Informationsverlust und Verzerrungen der statistischen Eigenschaften. 
+Um diese zu untersuchen und die Unterschiede der Eingabedaten sowie der anonymisierten Ausgabedaten zu analysieren, bietet sich die Nutzung der Programmiersprache und Entwicklungsumgebung \textit{R} an, da sie umfangreiche statistische Funktionen bereitstellt.
+Allerdings ist eine gemeinsame Nutzung von \textit{R} in Verbindung mit \textit{ARX} aufgrund von Lizenzrechten nicht möglich. Ebenso können bestehende Schnittstellenprogramme aus Lizenzrechten nicht genutzt werden.
+
+Aus diesem Grund wurde im Rahmen des Klinisches Anwendungsprojektes die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert \textit{R} in \textit{Java}, sodass \textit{R}-Befehle und \textit{R}-Skripte in \textit{Java} ausgeführt werden können und bietet somit eine lizenzfreie Plattform an. Hierfür wird durch das \textit{R-Terminal} eine Standalone-Installation von \textit{R} durch \textit{ProcessBuilder} als Prozess gestartet und die Kommunikation mittels Input- und Output-Stream hergestellt.
 
 Das \textit{R-Terminal} verfügt über eine graphische Benutzeroberfläche. Es kann aber auch ohne die GUI genutzt werden, sodass es in weitere Programme integriert werden kann.
+Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anonymisierungs-Tool \textit{ARX} exportiert wurden, \textit{R}-Befehle ausgeführt werden. 
 
-Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anonymisierungs-Tool \textit{ARX} exportiert wurden, \textit{R}-Befehle ausgeführt werden. Dies ist ohne Nutzung des \textit{R-Terminal} nicht möglich, da die Lizenzrechte von \textit{R} und \textit{ARX} die gemeinsame Nutzung nicht erlauben.
+Somit können die Ein- und Ausgabedaten von \textit{ARX} mit \textit{R} überprüft und analysiert werden, ohne dass Lizenzkollisionen auftreten.
 
 \end{abstract}
 
@@ -127,9 +135,10 @@ Diese Notwendigkeit zur Wahrung der Privatsphäre der Patienten führt allerding
 Zusätzlich kann das \textit{R}-Pakets \textit{sdcMicro} verwendet werden, welches sowohl Funktionen zur Anonymisierung, als auch Methoden zur Risikoeinschätzung von Anonymisierung breitstellt \cite{sdc}. Dadurch können Datensätze direkt in \textit{R} anonymisiert und statistisch untersucht werden, wodurch potenzielle Abweichungen ausfindig gemacht werden können. 
 
 Durch die Verwendung von \textit{R} sollen somit die Eingabe- und anonymisierte Ausgabe der Patientendaten aus \textit{ARX}
- untersucht werden, um die statistischen Abweichungen zu analysieren und die Verwendbarkeit der anonymisierten Daten zu untersuchen.\\
-\\
-%\subsection*{Möglichkeiten der Integration}
+ untersucht werden, um die statistischen Abweichungen zu analysieren und die Verwendbarkeit der anonymisierten Daten zu untersuchen.
+ 
+\subsection*{Möglichkeiten der Integration}
+
 Eine direkte Analyse der Tabellen aus \textit{ARX} mit \textit{R} ist aufgrund der jeweiligen Lizenzierung leider nicht möglich, was nicht technische, sondern rechtliche Gründe hat.
 
 \textit{ARX} ist unter der Apache License lizensiert, während \textit{R} als GNU-Projekt unter GPL (GNU General Public License) lizensiert ist. 
