@@ -96,10 +96,10 @@ Erstellung einer Schnittelle zwischen \\ einem Anonymiserungstool f{\"u}r \\ med
 \begin{abstract}
 
 \noindent
-In der heutigen medizinischen Forschung ist die statistische Auswertung von Patientendaten ein wichtiger Bestandteil. Hierbei müssen die verwendeten Daten zur Wahrung der Identität und des Datenschutzes der Patienten anonymisiert werden.
+Der Austausch von sensiblen personenbezogenen Daten spielt in der modernen medizinischen Forschung eine wichtige Rolle. Hierbei muss die Privatsphäre der betroffenen Patienten oder Probanden geschützt werden. Eine Möglichkeit dazu ist die Datenanonymisierung. Anonymisierung meint in diesem Zusammenhang die Veränderung personenbezogener Daten derart, dass die Beziehung zwischen den Daten und den Datensubjekten nur mit unverhältnismäßigem Aufwand wiederhergestellt werden kann.
 
-Das "`Data Anonymization Tool"' (\textit{ARX}), welches am Institut für Medizinische Statistik und Epidemiologie entwickelt wurde, ermöglicht diese Anonymisierung der Daten. Allerdings kommt es bei jeder Anonymisierung zu einem Informationsverlust und Verzerrungen der statistischen Eigenschaften. 
-Um diese zu untersuchen und die Unterschiede der Eingabedaten sowie der anonymisierten Ausgabedaten zu analysieren, bietet sich die Nutzung der Programmiersprache und Entwicklungsumgebung \textit{R} an, da sie umfangreiche statistische Funktionen bereitstellt.
+Das Datenanonymisierungstool \textit{ARX}, welches am Institut für Medizinische Statistik und Epidemiologie entwickelt wurde, implementiert verschiedene Methoden der Datenanonymisierung. Allerdings kommt es bei jeder Anonymisierung zu einem Informationsverlust und Verzerrungen der statistischen Eigenschaften. 
+Vor dem Austausch anonymisierter Daten müssen diese also geprüft werden, beispielsweise indem die Eingabedaten mit den anonymisierten Ausgabedaten verglichen werden. Um dabei die Auswirkungen der Anonymisierung auf eine Vielzahl statistischer Eigenschaften und Verfahren analysieren zu können, bietet sich die Nutzung eines Statistikprogramms an.
 Allerdings ist eine gemeinsame Nutzung von \textit{R} in Verbindung mit \textit{ARX} aufgrund von Lizenzrechten nicht möglich. Ebenso können bestehende Schnittstellenprogramme aus Lizenzrechten nicht genutzt werden.
 
 Aus diesem Grund wurde im Rahmen des Klinisches Anwendungsprojektes die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert \textit{R} in \textit{Java}, sodass \textit{R}-Befehle und \textit{R}-Skripte in \textit{Java} ausgeführt werden können und bietet somit eine lizenzfreie Plattform an. Hierfür wird durch das \textit{R-Terminal} eine Standalone-Installation von \textit{R} durch \textit{ProcessBuilder} als Prozess gestartet und die Kommunikation mittels Input- und Output-Stream hergestellt.
@@ -124,8 +124,8 @@ Somit können die Ein- und Ausgabedaten von \textit{ARX} mit \textit{R} überpr�
 
 \chapter{Einleitung}\label{einführung}
 
-Die Auswertung von Patientendaten ist heute ein wichtiger Bestandteil der medizinischen Forschung. Um die Identifikation einer Person durch ihre Patientendaten zu verhindern, müssen die Datensätze anonymisiert werden.
-Hierfür wurde das "`Data Anonymization Tool"' (\textit{ARX}) vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt. Es ermöglicht die Anonymisierung der Patientendaten sowie mit diesen als Tabellen zu arbeiten.
+Der Austausch von sensiblen personenbezogenen Daten spielt in der modernen medizinischen Forschung eine wichtige Rolle. Hierbei muss die Privatsphäre der betroffenen Patienten oder Probanden geschützt werden. Eine Möglichkeit dazu ist die Datenanonymisierung. Anonymisierung meint in diesem Zusammenhang die Veränderung personenbezogener Daten derart, dass die Beziehung zwischen den Daten und den Datensubjekten nur mit unverhältnismäßigem Aufwand wiederhergestellt werden kann.
+Hierfür wurde das Datenanonymisierungstool \textit{ARX} vom Institut für Medizinische Statistik und Epidemiologie der Technischen Universität München entwickelt, welches verschiedene Methoden der Datenanonymisierung implementiert.
 
 Diese Notwendigkeit zur Wahrung der Privatsphäre der Patienten führt allerdings auch zu Informationsverlust und einer Verzerrung statistischer Eigenschaften. Die Anonymisierung eines Datensatzes kann somit dazu führen, dass dieser unter Umständen nicht mehr nutzbar ist. Deshalb müssen außerdem untersucht werden können, ob die Daten weiterhin für den geplanten Forschungszweck verwendbar sind.
 
@@ -155,366 +155,35 @@ Es existieren zwar bereits für \textit{Java} Pakete wie \textit{RServe}, \texti
 
 Aus diesem Grund wurde für das \textit{RTerminal} die Integration von \textit{R} als leichtgewichtiger Subprozess gewählt, bei welchem die Kommunikation zwischen dem \textit{RTerminal} und dem \textit{R}-Prozess über den Standardinput und Standardoutput des \textit{R}-Prozesses erfolgt.\\
 \\
-In dieser Dokumentation werden die Hintergründe von \textit{R} und \textit{ARX} erläutert, die Vorgaben und Features des \textit{RTerminals} in der Anwenderdokumentation aufgelistet und einige Funktionen von \textit{R} beschrieben, welche die Arbeit mit \textit{ARX} in \textit{R} erleichtern sollen. Anschließend werden in der Entwicklerdokumentation die technischen Hintergründe des \textit{RTerminals} erklärt und die Klassen dokumentiert.
-%------------------------------------------------
-
-\section*{R}\label{r}
-R ist eine Programmiersprache und Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein \textit{GNU}-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. \textit{R} weist große Ähnlichkeiten zu der Programmiersprache \textit{S} auf, einem weiteren \textit{GNU}-Projekt, welches weitgehend auch unter \textit{R} läuft. \cite{rproject}
-
-\textit{R} bietet standardmäßig alle Hauptfunktionen für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit \textit{R} einfach, statistische Funktionen auf große Datenmengen anzuwenden. \cite{rproject}
-
+In dieser Ausarbeitung werden in dem Kapitel "`Design und Implementierung"' die technischen Hintergründe des \textit{RTerminals} erläutert und die Klassen der Implementierung dokumentiert.
+Die Benutzung sowie die Features des \textit{RTerminals} werden unter "`Ergebnis"' vorgestellt.
+Im Kapitel "`Benutzung von R für ARX"' werden Möglichkeiten für den Import von Tabellen aus \textit{ARX} in \textit{R} vorgestellt, welche allerdings noch nicht implementiert wurden.
+Das letzte Kapitel beinhaltet die wichtigsten Funktionen, welche in zukünftigen Arbeiten implementiert werden sollen.
 
 %------------------------------------------------
 
-\section*{ARX}
-\textit{ARX} ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde. \cite{arx}
+%\section*{R}\label{r}
+%R ist eine Programmiersprache und Entwicklungsumgebung, die für statistische Berechnungen und Graphen unter John Chambers von Bell Laboratories entwickelt wurde. Sie ist ein \textit{GNU}-Projekt, bei dem die Entwicklung von freier Software im Mittelpunkt steht. \textit{R} weist große Ähnlichkeiten zu der Programmiersprache \textit{S} auf, einem weiteren \textit{GNU}-Projekt, welches weitgehend auch unter \textit{R} läuft. \cite{rproject}
 
+%\textit{R} bietet standardmäßig alle Hauptfunktionen für die statistische Analyse von Datensätzen an und ist einfach zu erweitern, weswegen es vor allem für wissenschaftliche Arbeiten verwendet wird. Es ist mit \textit{R} einfach, statistische Funktionen auf große Datenmengen anzuwenden. \cite{rproject}
 
-\section*{Vorgaben}
 
-Für die Implementierung der Software wurde \textit{Java} als Programmiersprache vorgegeben, außerdem sollte die graphische Benutzeroberfläche mit \textit{SWT} realisiert werden.
+%------------------------------------------------
 
-Die graphische Benutzeroberfläche sollte aus unterschiedlichen Tabs aufgebaut sein. Ein Tab beinhaltet folgende Informationen zum Setup: verwendetes Betriebssystem, aktuell integrierte Version von \textit{R} und Installationsort der \textit{R}-Version. In einem weiteren Tab wird der Std-Output von \textit{R} ausgegeben und \textit{R}-Befehle können in diesem Tab eingegeben werden. 
+%\section*{ARX}
+%\textit{ARX} ist eine freie Software zur Anonymisierung von medizinischen Datensätzen, die von Fabian Prasser und Florian Kohlmayer vom Institut für medizinische Statistik und Epidemiologie an der Technischen Universität München entwickelt wurde. \cite{arx}
 
-Beim Programmstart soll automatisch in den Standart-Installationsorten nach einer ausführbaren \textit{R}-Executive gesucht werden. Außerdem soll die Möglichkeit bestehen, manuell eine \textit{R}-Installation auszuwählen und diese mit der Software in \textit{Java} zu integrieren. 
 
+%\section*{Vorgaben}
 
-\chapter{Anwenderdokumentation}
-\section{Übersicht}
-Das \textit{R-Terminal} dient dazu, über eine externe Schnittstelle \textit{R} aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus \textit{ARX} einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die in der Einleitung beschriebenen Probleme zu umgehen. Das \textit{R-Terminal} ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
+%Für die Implementierung der Software wurde \textit{Java} als Programmiersprache vorgegeben, außerdem sollte die graphische Benutzeroberfläche mit \textit{SWT} realisiert werden.
 
-\begin{itemize}
-\item Windows 10 Education (Version 1511)
-\item OS X El Capitan (Version 10.11.1)
-\item macOS Sierra (Version 10.12.2)
-\item Ubuntu
-\end{itemize}
+%Die graphische Benutzeroberfläche sollte aus unterschiedlichen Tabs aufgebaut sein. Ein Tab beinhaltet folgende Informationen zum Setup: verwendetes Betriebssystem, aktuell integrierte Version von \textit{R} und Installationsort der \textit{R}-Version. In einem weiteren Tab wird der Std-Output von \textit{R} ausgegeben und \textit{R}-Befehle können in diesem Tab eingegeben werden. 
 
-%insert screenshot for linux and the correct ubuntu/opensuse version
+%Beim Programmstart soll automatisch in den Standart-Installationsorten nach einer ausführbaren \textit{R}-Executive gesucht werden. Außerdem soll die Möglichkeit bestehen, manuell eine \textit{R}-Installation auszuwählen und diese mit der Software in \textit{Java} zu integrieren. 
 
-In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Features des \textit{R-Terminals} beschrieben. 
 
-\section{Voraussetzungen}
-
-Um die Software \textit{R-Terminal} auszuführen, muss \textit{Java} sowie eine Standalone-Installation von \textit{R} installiert sein. Es wird empfohlen das \textit{R-Terminal} mit Eclipse auszuführen.
-Die Versionen, mit welchen die Software getestet wurde, sind unter \ref{Abhängigkeiten} aufgeführt. 
-
-\section{Vorbereitung} \label{swtanwender}
-
-Zunächst muss  das Projekt \textit{R-Terminal} in Eclipse importiert werden.
-
-Um das \textit{R-Terminal} ausführen zu können, müssen die betriebssystemspezifischen \textit{SWT}-Libraries auf den Build-Path gesetzt und die \textit{SWT}-Libraries anderer Betriebssysteme entfernt werden.
-Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt wird:
-\begin{enumerate}
-	\item Navigieren Sie im \textit{Eclipse} Package Explorer zu:
-	\begin{center}\textit{R-Terminal -> lib  -> swt} \end{center}
-	
-	\item Wählen Sie die betriebssystemspezifischen \textit{SWT}-Libraries aus und öffnen Sie mit der rechten Maustaste, bzw. dem OS-spezifischen Äquivalent, für jede dieser Libraries das Auswahlfenster. Klicken Sie auf "`Build-Path"'.
-		Sollte die Library bereits hinzugefügt sein, erscheint "`Configure Build Path..."'. Ist dies nicht der Fall, erscheint "`Add to Build Path"', klicken Sie dieses an. Die beiden Fälle werden  in Abbildung \ref{addToBuildPath} und \ref{onBuildPath} dargestellt.  \\
-
-\begin{figure}
-\centering	
-	\begin{minipage}{0.5\textwidth}
-	\centering	
-		\captionsetup{width=0.9\linewidth}
-		\includegraphics[width=0.9\linewidth]{Bilder/SWT-Add-to-Build-Path}
-    	\caption{\textit{Eclipse}: Hinzufügen der \textit{SWT}-Library zum Build Path}
-    	\label{addToBuildPath}
-	\end{minipage}%
-	\begin{minipage}{0.5\textwidth}
-	\centering
-		\captionsetup{width=0.9\linewidth}
-    	\includegraphics[width=0.9\linewidth]{Bilder/SWT-Configure-Build-Path}
-    	\caption{\textit{Eclipse}: Diese \textit{SWT}-Library ist bereits auf dem Build Path}
-    	\label{onBuildPath}
-	\end{minipage}
-\end{figure}
-		
-	Betriebssystemspezifische \textit{SWT}-Libraries:
-		
-	\begin{itemize}
-		\item Windows: \begin{itemize}
-							\item swt-4.2.1-win32-win32-x86\_64.jar
-							\item swt-4.2.1-win32-win32-x86.jar
-						\end{itemize}
-						
-		\item Mac: \begin{itemize}
-						\item swt-4.2.1-cocoa-macosx-x86\_64.jar
-						\item swt-4.2.1-cocoa-macosx.jar
-					\end{itemize}
-		\item Linux: \begin{itemize}
-						\item swt-4.2.1-gtk-linux-x86\_64.jar
-						\item swt-4.2.1-gtk-linux-x86.jar
-					 \end{itemize}
-	\end{itemize} 
-	
-	\item Überprüfen Sie nun, ob alle anderen Libraries des Ordners \textit{swt} nicht auf dem "`Build Path"' liegen. 
-		Gehen Sie hierfür zu:
-		\begin{center}
-			\textit{R-Terminal -> Referenced Libraries}
-		\end{center} 
-		
-		Überprüfen Sie, dass keine der genannten Libraries der oberen Aufzählung, die nicht Ihrem Betriebssystem zugehört, in diesem Ordner enthalten ist.
-		Sollte sich eine \textit{SWT}-Library für ein anderes Betriebssystems in diesem Ordner befinden, öffnen Sie mit einem Rechtsklick das Menü und wählen Sie aus: 
-		\begin{center}
-			\textit{Build Path -> Remove from Build Path}
-		\end{center}	
-		Dies wird auch in Abbildung \ref{removeFromBuildPath} dargestellt.
-		
-		Nun können Sie das \textit{Java}-Programm Sie die "`main"'-Methode in \textit{RMain} ausführen.
-\end{enumerate}
-\begin{figure}[t]
-	\centering
-		\includegraphics[width=\linewidth]{Bilder/SWT-Remove-from-Build-Path}
-    	\caption{\textit{Eclipse}: Entfernen der \textit{SWT}-Library vom Build Path}
-    	\label{removeFromBuildPath}
-\end{figure}
-
- 
-\section{Benutzung des R-Terminals}
-
-In diesem Kapitel wird die Benutzung des \textit{R-Terminals} beschrieben. Hierfür wird zunächst ein Überblick über die graphische Benutzeroberfläche in \ref{Setup} und \ref{Terminal} gegeben. Außerdem wird die Nutzung gemeinsam mit dem Programm \textit{ARX} in \ref{NutzungArx} erläutert.\\
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=0.8\textwidth]{Bilder/rterminalwindows}
-\caption{R-Terminal: \textit{Terminal} unter Windows 10 Education (Version 1511)}
-\label{rterminalwindows}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=0.8\textwidth]{Bilder/R-TerminalWindows}
-\caption{\textit{R-Terminal}: \textit{Setup} unter Windows 10 Education (Version 1511)}
-\label{rterminalwindows}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=0.8\textwidth]{Bilder/R-Terminal}
-\caption{\textit{R-Terminal}: \textit{Terminal} unter OS X (Version 10.11.1)}
-\label{rterminalmac}
-\end{figure}
-
-\begin{figure}[htpb]
-\centering
-\includegraphics[width=0.8\textwidth]{Bilder/rterminalsetup}
-\caption{\textit{R-Terminal}: \textit{Setup} unter OS X (Version 10.11.1)}
-\label{macsetup}
-\end{figure}
-Diese wird für das Betriebssystem \textit{OS X} in Abbildung \ref{rterminalmac} dargestellt. Das Terminal verfügt über die zwei Tabs \textit{Terminal} und \textit{Setup} (S. \pageref{macsetup}). In Folgenden werden die beiden Tabs sowie deren Bedienung ausführlich erklärt.
-
-\subsection{Setup} \label{Setup}
-Unter \textit{Setup} wird entweder eine \textit{R}-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten \textit{R}-Version angegeben. 
-
-Hierbei gibt das Feld unter \textit{Operating System} das Betriebssystem der benutzten Plattform an. Das Feld \textit{Location} gibt den Pfad an, unter dem die automatische Suche die ausführbare \textit{R}-Version gefunden hat. Konnte keine ausführbare R-Version gefunden werden, wird in dem Feld die Nachricht \textit{No valid R-exec found!} angezeigt. 
-
-Das mit \textit{Version} betitelte Feld gibt die Version an, die die gefundene \textit{R}-Version hat. Wurde keine ausführbare \textit{R}-Version gefunden oder eine ungültige \textit{R}-Version angegeben, zeigt das Feld die Ausgabe \textit{No valid R-Version selected}an. 
-
-Sind auf dem Rechner mehrere \textit{R}-Versionen vorhanden, von denen der Benutzer eine andere Version bevorzugt, als die durch die automatische Suche gefundene, gibt es die beiden unteren, im folgenden erläuterten Felder als Optionen. 
-
-\textit{Select the R-Exec manually} öffnet eine Ordnerübersicht, durch die dann die zu der gewünschten \textit{R}-Version navigiert werden kann. Hierbei sollte beachtet werden, dass nicht der Pfad zu der \textit{R-GUI} angegeben werden sollte, welche oft zusammen mit dem \textit{R}-Executable installiert wird, sondern zu der ausführbaren \textit{R}-Datei.
-  
-Das letzte Feld \textit{Manually select the R-exec by typing in its location} gibt dem Benutzer die Möglichkeit, den bereits bekannten Dateipfad zur ausführbaren \textit{R}-Datei anzugeben. Hierbei sollte ein absoluter Dateipfad angegeben werden, der die ausführbare \textit{R}-Datei enthält (im Gegensatz dazu, nur den Ordner anzugeben, in dem die Datei liegt). 
-
-Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige \textit{R} Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben. 
-
-\subsection{Terminal} \label{Terminal}
-Nachdem die gewünschte \textit{R}-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um \textit{R}-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. Rechts neben dem Eingabefeld gibt es den Button \textit{Select Script}. Dieser Button öffnet bei Aktivierung eine Ordnerübersicht, aus der ein \textit{R}-Skript ausgewählt werden kann, welches dann ausgeführt wird. 
-
-
-\section{Benutzung von R für ARX } \label{NutzungArx}
-Dieser Abschnitt wird sich mit der Benutzung von \textit{R} im Zusammenhang mit großen Datentabellen befassen, wie sie in \textit{ARX} üblich sind. Dies soll die Benutzung von dem \textit{R}-Terminal zur Verarbeitung von \textit{ARX}-Daten ermöglichen. 
-
-
-\subsection{Datentypen und Skalenniveau}\label{Skalen}
-In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus \textit{ARX} sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
-
-\begin{itemize}
-\item \texttt{Numeric}
-\item \texttt{Integer}
-\item \texttt{Complex}
-\item \texttt{Logic}
-\end{itemize}
-
-Wenn also eine Variable als Dezimalzahl ohne zusätzliche Bedingung deklariert wird, ist der Datentyp standardmäßig \texttt{numeric} (vgl. \ref{numericVar}).
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Deklarierung einer numerischen Variable x}]
-> x = 13.4
-\end{lstlisting}
-\label{numericVar}
-
-Will man explizit einen Integer als Variable initialisieren, sieht der Befehl aus wie in \ref{integerVar}. Es sollte zusätzlich beachtet werden, dass \texttt{TRUE} und \texttt{FALSE} in R jeweils die Ganzzahlwerte 1 und 0 besitzen. 
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Deklarierung einer ganzzahligen Variable y}]
-> y = as.integer(4.5)
-> y 	# gibt y als Wert aus 
-[1] 4
-\end{lstlisting}
-\label{integerVar}
-
-Um eine Variable mit dem Typ \texttt{complex} zu initialisieren, wird der imaginäre Teil der komplexen Zahl bei der Initialisierung angegeben. Ein Beispiel dazu ist in \ref{complexVar} zu sehen.
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Deklarierung einer komplexen Variable z}]
-> z = 2 + 5i
-\end{lstlisting}
-\label{complexVar}
-
-Die Datentypen können jeweils durch den Befehl \texttt{class()} abgefragt werden. Die Ausgaben sind in \ref{class} zu sehen. 
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Abfrage des Datentypen}]
-> class(x)
-"numeric"
-> class(y)
-"integer"
-> class(z)
-"complex"
-\end{lstlisting}
-\label{class}
-
-Nachdem nun die quantitativen Merkmale dargestellt werden können, stellt sich die Frage nach der Darstellung der qualitativen Merkmalen. 
-
-Die qualitativen Merkmale werden in nominalskalierte und ordinalskalierte Merkmale unterteilt. Ordinallskalierte Merkmale haben eine vorbestimmte Ordnung untereinander, die nicht zwangsläufig eine lineare Beziehung zueinander haben müssen. Nominalskalierte Merkmale sind hingegen eindeutige Kategorien, die untereinander keine Ordnung haben. 
-
-Die einfachste Möglichkeit, einer Variable ein qualitatives Merkmal zuzuordnen, ist es als \texttt{character} zu definieren. Dies geschieht durch eine einfache Zuweisung wie in \ref{characterVar}.
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Deklarierung einer qualitativen Variable a}]
-> a = "verheiratet"     #nominalskaliertes Merkmal
-> class(a)
-"character"
-> b = "befriedigend"	#ordinalskaliertes Merkmal
-> class(b)
-"character"
-\end{lstlisting}
-\label{characterVar}
-
-Dies ist allerdings keine optimale Lösung, da hierdurch keine eindeutige, abgegrenzte Kategorisierung der Variablen stattfindet. Im Falle der ordinalskalierten Variablen kann auch keine Ordnung unter den Variablen festgelegt werden. Möchte man ein Histogramm erstellen, was bei qualitativen Merkmalen sehr wahrscheinlich ist, werden die Strings nicht als Instanz eines Attributs gezählt, sondern einfach nur als Strings. Um also eine bessere Darstellung für qualitative Merkmale zu erreichen, gibt es sogenannte \texttt{factor variables}. Hierbei kann ein Vektor aus Integers erstellt werden, wo jedem Integer ein \texttt{label} zugewiesen wird. Ein Beispiel dazu ist in \ref{factorVar} zu sehen. 
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Erstellung einer \texttt{factor variable}}]
-> v=c(0, 1, 1, 0, 1) #Vektorinitialisierung
-> v
-[1] 0 1 1 0 1		#Ausgabe von v
-> einheiten=factor(v,labels=c("metrisch","imperial"))
-> einheiten 
-[1] metrisch imperial imperial metrisch imperial
-Levels: metrisch imperial
-\end{lstlisting}
-\label{factorVar}
-
-Nun konnte den verschiedenen Werten im Vektor \texttt{v} ein \texttt{label} zugeordnet werden. Zu beachten ist hierbei, dass der \texttt{labels}-Vektor entweder 1 oder genauso viele Elemente beinhaltet, wie verschiedene Werte im Basisvektor \texttt{v} enthalten sind. Die Zeile \textit{Levels} gibt die Ordnung der Merkmale an. Hierbei wurde \textit{metrisch} auf den ersten Wert gesetzt, der im Vektor \texttt{v} vorkommt, \textit{imperial} auf den ersten Wert, der von \textit{metrisch} verschieden ist. Dadurch konnte eine eindeutige Ordnung unter den Merkmalen festgelegt werden, nämlich \textit{imperial} $>$ \textit{metrisch}. Dies ist für dieses einfache Beispiel allerdings sinnlos, da keine Ordnung unter dem metrischen und imperialen System besteht.  Natürlich ist es ebenfalls möglich, eine \texttt{factor variable} direkt anhand von Strings zu erstellen, s. \ref{strFactorVar}.
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Erstellung einer \texttt{factor Variable} mit Strings}]
-> w=c("sehr gut", "gut", "gut", "ausreichend", 
-"mangelhaft", "sehr gut", "befriedigend", 
-"gut", "ausreichend", "gut", "befriedigend")
-> factor(w)
- [1] sehr gut gut          gut ausreichend mangelhaft  
- [6] sehr gut befriedigend gut ausreichend gut         
-[11] befriedigend
-Levels:ausreichend befriedigend gut mangelhaft sehr gut
-\end{lstlisting}
-\label{strFactorVar}
-
-Es wurden mit der \texttt{factor}-Funktion direkt \textit{Levels} erstellt, die allerdings nicht die gewünschte Ordnung haben, die wir von den Schulnoten im Beispiel erwartet hätten. Dies ist aufgrund der automatischen alphabetischen Sortierung der Levels. Für eine selbst erstellte Ordnung, siehe \textit{R}-Befehl \ref{factorVar}. 
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Ordnen einer selbsterstellten \texttt{factor Variable}}]
-> noten = ordered(w, levels=("sehr gut", "gut", 
-"befriedigend", "ausreichend", "mangelhaft"))
-> noten
- [1] sehr gut gut          gut ausreichend  mangelhaft  
- [6] sehr gut befriedigend gut ausreichend  gut         
-[11] befriedigend
-Levels: sehr gut < gut < befriedigend 
-< ausreichend < mangelhaft
-\end{lstlisting}
-\label{factorVar}
-
-Hier sieht man nun auch eine eindeutige Ordnung unter den Notenstufen \cite{factorVariables}. Die Bedeutung der \texttt{factor}-Funktion in Anwendung auf Vektoren wird im folgenden Abschnitt erklärt. 
-
-Zusätzlich gibt es das \textit{R}-Package \texttt{memisc}. Diese Erweiterung weist Objekten, die ein \texttt{item} sind, ein \texttt{level of measurement} (Skalenniveau) zu, das entweder ein \textit{ordinal, nominal, interval} oder \textit{ratio} ist. Je nach dem Skalenniveau wird das \texttt{item} in einen \texttt{factor} (\textit{nominal}), einen geordneten Vector (\textit{ordinal}) oder einen numerischen Vektor (\textit{interval und} \textit{ratio}) konvertiert. 
-
-\subsection{Tabellen} \label{tabellen}
-
-In \textit{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
-
-Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \texttt{data.frame()} erstellt werden kann (s. \ref{dataframe}) \cite{dataFrame}.
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={\texttt{data.frame} aus 3 Vektoren}]
-> v1 = c(1,2,3)
-> v2 = c("a","b","c")
-> v3 = c(FALSE, FALSE, TRUE)
-> frame = data.frame(v1, v2, v3)
-> frame
-  v1 v2    v3
-1  1  a FALSE
-2  2  b FALSE
-3  3  c  TRUE
-> names(frame) = c("Zahl", "Buchstabe", "Bool")
-> frame
-  Zahl Buchstabe  Bool
-1    1         a FALSE
-2    2         b FALSE
-3    3         c  TRUE
-
-\end{lstlisting}
-\label{dataframe}
-
-Mithilfe der in Abschnitt \ref{Skalen} beschriebenen Funktionen können die Spaltenvektoren in das gewünschte Skalenniveau konvertiert werden.
- 
-Für die Nutzung von \textit{ARX} mit dem \textit{R-Terminal} können die bereits vorhandenen Daten auch aus \textit{ARX} als CSVs eingeladen werden. 
-Diese werden in ein \texttt{data.frame} gelesen, wie in Beispiel \ref{readTable} gezeigt.
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={Einlesen einer Tabelle}]
-frame=read.csv(file="c:/test.csv",header=TRUE,sep=",")
-\end{lstlisting}
-\label{readTable}
-
-Die hier verwendeten Argumente sind einmal das \texttt{file}, der \texttt{header} und \texttt{sep}. \texttt{file} gibt den Dateipfad zu der CSV-Datei an. Hierbei kann auch ein Pfad angegeben werden, der relativ zum Arbeitsordner ist. \texttt{header} gibt an, ob in der Datei die erste Zeile ein Header ist, in dem die Namen der Spaltenattribute stehen, oder ob keine Namen für die Spalten vorhanden sind und in der ersten Zeile direkt der Inhalt der Tabelle beginnt. \texttt{sep} gibt den Character an, durch den die Spalten getrennt sind. 
-
-Möchte man ein \texttt{data.frame} erweitern, z.B. durch eine neue Zeile oder eine neue Spalte, gibt es dafür die Funktionen \texttt{rbind} und \texttt{cbind}. Die Funktionen sind anzuwenden wie in \ref{readTable} vorgestellt. 
-
-\lstset{language=R}
-\begin{lstlisting}[frame=single,caption={\texttt{rbind} und \texttt{cbind}}]
-#Hierbei auf die gleichen Spaltennamen achten
-> frame2 = data.frame(Zahl=4,Buchstabe="d",Bool=TRUE)
-#frame aus data.frame
-> newframe=rbind(frame, frame2)		
-> newframe
-  Zahl Buchstabe  Bool
-1    1         a FALSE
-2    2         b FALSE
-3    3         c  TRUE
-4    4         d  TRUE
-######################
-#Hier geht auch ein Vektor
-> Nummer = c(4, 3, 2, 1)
-> cbind(newframe, Nummer)
-  Zahl Buchstabe  Bool Nummer
-1    1         a FALSE  4
-2    2         b FALSE  3
-3    3         c  TRUE  2
-4    4         d  TRUE  1
-
-\end{lstlisting}
-\label{readTable}
-
-%Bei der Verwendung von \texttt{data.frame} sollte beachtet werden, dass zwar nützliche Funktionen verwendet werden können, sich das \texttt{data.frame} ausschließlich 
-%insert Erklärung zu data.table und data.matrix?
-
-
-\newpage
-
-\chapter{Entwicklerdokumentation}
+\chapter{Design und Implementierung}
 
 \section{Verwendete Technologien}
 
@@ -948,7 +617,7 @@ Diese Methode wird beim Starten eines neuen \textit{R}-Prozesses ausgelöst.
 Das Projekt beinhaltet bereits alle benötigten \textit{Java}-Libraries zur Ausführung der Software. 
 Da die graphische Benutzeroberfläche mit \textit{SWT} realisiert wurde, müssen die \textit{SWT}-Libraries je nach Betriebssystem ausgewählt werden. Dies wird genauer unter \ref{swt} erläutert.\\
 
-Für die Integration von \textit{R} in \textit{Java}, welche durch das \textit{R-Terminal} umgesetzt wurde, muss eine Standalone-Installation von \textit{R} vorliegen. Nähre Details hierzu in \ref{r}.
+Für die Integration von \textit{R} in \textit{Java}, welche durch das \textit{R-Terminal} umgesetzt wurde, muss eine Standalone-Installation von \textit{R} vorliegen. 
  
 \subsection{Java}
 
@@ -967,12 +636,353 @@ Für das Projekt \textit{R-Terminal} wurde die \textit{SWT}-Version 4.2.1 verwen
 
 Wie die betriebssystemspezifischen \textit{SWT}-Libraries auf den "`Build Path"' hinzugefügt werden, kann unter \ref{swtanwender} nachgeschlagen werden.
 
+%---------------------Ergebnis----------------------------
+
+
+\chapter{Ergebnis}
+\section{Übersicht}
+Das \textit{R-Terminal} dient dazu, über eine externe Schnittstelle \textit{R} aufzurufen und zu bedienen. Dies soll vor allem dazu genutzt werden, um Tabellen aus \textit{ARX} einzuladen, auf diesen Skripte auszuführen, und gleichzeitig die in der Einleitung beschriebenen Probleme zu umgehen. Das \textit{R-Terminal} ist kompatibel mit Windows, der Linux Distribution Ubuntu und OS X, von denen jeweils die folgenden Versionen im Rahmen der Entwicklung getestet wurden: 
+
+\begin{itemize}
+\item Windows 10 Education (Version 1511)
+\item OS X El Capitan (Version 10.11.1)
+\item macOS Sierra (Version 10.12.2)
+\item Ubuntu
+\end{itemize}
+
+%insert screenshot for linux and the correct ubuntu/opensuse version
+
+In den folgenden Abschnitten werden die Grundfunktionen und zusätzliche Features des \textit{R-Terminals} beschrieben. 
+
+\section{Voraussetzungen}
+
+Um die Software \textit{R-Terminal} auszuführen, muss \textit{Java} sowie eine Standalone-Installation von \textit{R} installiert sein. Es wird empfohlen das \textit{R-Terminal} mit Eclipse auszuführen.
+Die Versionen, mit welchen die Software getestet wurde, sind unter \ref{Abhängigkeiten} aufgeführt. 
+
+\section{Vorbereitung} \label{swtanwender}
+
+Zunächst muss  das Projekt \textit{R-Terminal} in Eclipse importiert werden.
+
+Um das \textit{R-Terminal} ausführen zu können, müssen die betriebssystemspezifischen \textit{SWT}-Libraries auf den Build-Path gesetzt und die \textit{SWT}-Libraries anderer Betriebssysteme entfernt werden.
+Im Folgenden wird genau beschrieben, wie dies unter \textit{Eclipse} umgesetzt wird:
+\begin{enumerate}
+	\item Navigieren Sie im \textit{Eclipse} Package Explorer zu:
+	\begin{center}\textit{R-Terminal -> lib  -> swt} \end{center}
+	
+	\item Wählen Sie die betriebssystemspezifischen \textit{SWT}-Libraries aus und öffnen Sie mit der rechten Maustaste, bzw. dem OS-spezifischen Äquivalent, für jede dieser Libraries das Auswahlfenster. Klicken Sie auf "`Build-Path"'.
+		Sollte die Library bereits hinzugefügt sein, erscheint "`Configure Build Path..."'. Ist dies nicht der Fall, erscheint "`Add to Build Path"', klicken Sie dieses an. Die beiden Fälle werden  in Abbildung \ref{addToBuildPath} und \ref{onBuildPath} dargestellt.  \\
+
+\begin{figure}
+\centering	
+	\begin{minipage}{0.5\textwidth}
+	\centering	
+		\captionsetup{width=0.9\linewidth}
+		\includegraphics[width=0.9\linewidth]{Bilder/SWT-Add-to-Build-Path}
+    	\caption{\textit{Eclipse}: Hinzufügen der \textit{SWT}-Library zum Build Path}
+    	\label{addToBuildPath}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+	\centering
+		\captionsetup{width=0.9\linewidth}
+    	\includegraphics[width=0.9\linewidth]{Bilder/SWT-Configure-Build-Path}
+    	\caption{\textit{Eclipse}: Diese \textit{SWT}-Library ist bereits auf dem Build Path}
+    	\label{onBuildPath}
+	\end{minipage}
+\end{figure}
+		
+	Betriebssystemspezifische \textit{SWT}-Libraries:
+		
+	\begin{itemize}
+		\item Windows: \begin{itemize}
+							\item swt-4.2.1-win32-win32-x86\_64.jar
+							\item swt-4.2.1-win32-win32-x86.jar
+						\end{itemize}
+						
+		\item Mac: \begin{itemize}
+						\item swt-4.2.1-cocoa-macosx-x86\_64.jar
+						\item swt-4.2.1-cocoa-macosx.jar
+					\end{itemize}
+		\item Linux: \begin{itemize}
+						\item swt-4.2.1-gtk-linux-x86\_64.jar
+						\item swt-4.2.1-gtk-linux-x86.jar
+					 \end{itemize}
+	\end{itemize} 
+	
+	\item Überprüfen Sie nun, ob alle anderen Libraries des Ordners \textit{swt} nicht auf dem "`Build Path"' liegen. 
+		Gehen Sie hierfür zu:
+		\begin{center}
+			\textit{R-Terminal -> Referenced Libraries}
+		\end{center} 
+		
+		Überprüfen Sie, dass keine der genannten Libraries der oberen Aufzählung, die nicht Ihrem Betriebssystem zugehört, in diesem Ordner enthalten ist.
+		Sollte sich eine \textit{SWT}-Library für ein anderes Betriebssystems in diesem Ordner befinden, öffnen Sie mit einem Rechtsklick das Menü und wählen Sie aus: 
+		\begin{center}
+			\textit{Build Path -> Remove from Build Path}
+		\end{center}	
+		Dies wird auch in Abbildung \ref{removeFromBuildPath} dargestellt.
+		
+		Nun können Sie das \textit{Java}-Programm Sie die "`main"'-Methode in \textit{RMain} ausführen.
+\end{enumerate}
+\begin{figure}[t]
+	\centering
+		\includegraphics[width=\linewidth]{Bilder/SWT-Remove-from-Build-Path}
+    	\caption{\textit{Eclipse}: Entfernen der \textit{SWT}-Library vom Build Path}
+    	\label{removeFromBuildPath}
+\end{figure}
+
+ 
+\section{Benutzung des R-Terminals}
+
+In diesem Kapitel wird die Benutzung des \textit{R-Terminals} beschrieben. Hierfür wird zunächst ein Überblick über die graphische Benutzeroberfläche in \ref{Setup} und \ref{Terminal} gegeben. Außerdem wird die Nutzung gemeinsam mit dem Programm \textit{ARX} in \ref{NutzungArx} erläutert.\\
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{Bilder/rterminalwindows}
+\caption{R-Terminal: \textit{Terminal} unter Windows 10 Education (Version 1511)}
+\label{rterminalwindows}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{Bilder/R-TerminalWindows}
+\caption{\textit{R-Terminal}: \textit{Setup} unter Windows 10 Education (Version 1511)}
+\label{rterminalwindows}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{Bilder/R-Terminal}
+\caption{\textit{R-Terminal}: \textit{Terminal} unter OS X (Version 10.11.1)}
+\label{rterminalmac}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=0.8\textwidth]{Bilder/rterminalsetup}
+\caption{\textit{R-Terminal}: \textit{Setup} unter OS X (Version 10.11.1)}
+\label{macsetup}
+\end{figure}
+Diese wird für das Betriebssystem \textit{OS X} in Abbildung \ref{rterminalmac} dargestellt. Das Terminal verfügt über die zwei Tabs \textit{Terminal} und \textit{Setup} (S. \pageref{macsetup}). In Folgenden werden die beiden Tabs sowie deren Bedienung ausführlich erklärt.
+
+\subsection{Setup} \label{Setup}
+Unter \textit{Setup} wird entweder eine \textit{R}-Version auf dem Rechner gesucht und automatisch ausgeführt oder es wird vom Benutzer selber der Pfad zu der gewünschten \textit{R}-Version angegeben. 
+
+Hierbei gibt das Feld unter \textit{Operating System} das Betriebssystem der benutzten Plattform an. Das Feld \textit{Location} gibt den Pfad an, unter dem die automatische Suche die ausführbare \textit{R}-Version gefunden hat. Konnte keine ausführbare R-Version gefunden werden, wird in dem Feld die Nachricht \textit{No valid R-exec found!} angezeigt. 
+
+Das mit \textit{Version} betitelte Feld gibt die Version an, die die gefundene \textit{R}-Version hat. Wurde keine ausführbare \textit{R}-Version gefunden oder eine ungültige \textit{R}-Version angegeben, zeigt das Feld die Ausgabe \textit{No valid R-Version selected}an. 
+
+Sind auf dem Rechner mehrere \textit{R}-Versionen vorhanden, von denen der Benutzer eine andere Version bevorzugt, als die durch die automatische Suche gefundene, gibt es die beiden unteren, im folgenden erläuterten Felder als Optionen. 
+
+\textit{Select the R-Exec manually} öffnet eine Ordnerübersicht, durch die dann die zu der gewünschten \textit{R}-Version navigiert werden kann. Hierbei sollte beachtet werden, dass nicht der Pfad zu der \textit{R-GUI} angegeben werden sollte, welche oft zusammen mit dem \textit{R}-Executable installiert wird, sondern zu der ausführbaren \textit{R}-Datei.
+  
+Das letzte Feld \textit{Manually select the R-exec by typing in its location} gibt dem Benutzer die Möglichkeit, den bereits bekannten Dateipfad zur ausführbaren \textit{R}-Datei anzugeben. Hierbei sollte ein absoluter Dateipfad angegeben werden, der die ausführbare \textit{R}-Datei enthält (im Gegensatz dazu, nur den Ordner anzugeben, in dem die Datei liegt). 
+
+Wird in \textit{Select the R-Exec manually} oder in \textit{Manually select the R-exec by typing in its location} eine ungültige \textit{R} Version oder ein ungültiger Dateipfad angegeben, wird unter \textit{Operating System} und \textit{Version} dieselbe Fehlermeldung angegeben, wie oben bei dem Fehlschlagen der automatischen Suche beschrieben. 
+
+\subsection{Terminal} \label{Terminal}
+Nachdem die gewünschte \textit{R}-Version gefunden wurde, kann diese nun unter dem Tab \textit{Terminal} bedient werden. Das Eingabefeld kann benutzt werden, um \textit{R}-kompatible Befehle auszuführen. Es werden bis zu 10 Befehle gespeichert. Diese können ausgewählt werden, indem auf den Pfeil auf der rechten Seite des Eingabefeldes geklickt wird. Dadurch öffnet sich ein Dropdown-Menü, aus dem der gewünschte Befehl ausgewählt werden kann. Dieser erscheint im Eingabefeld. Rechts neben dem Eingabefeld gibt es den Button \textit{Select Script}. Dieser Button öffnet bei Aktivierung eine Ordnerübersicht, aus der ein \textit{R}-Skript ausgewählt werden kann, welches dann ausgeführt wird. 
+
+
+\chapter{Datenübertragung von ARX nach R} \label{NutzungArx}
+Dieser Abschnitt beschreibt die wichtigsten \textit{R}-Befehle, die verwendet werden können um aus \textit{ARX} heraus mit dem vorgestellten Konzept Daten nach R zu transferieren.
+
+
+\section{Datentypen und Skalenniveau}\label{Skalen}
+In der medizinischen Statistik ist die Unterscheidung von den verschiedenen Stufen der Skalierbarkeit von großer Bedeutung. Für die Daten aus \textit{ARX} sind vor allem die Eigenschaften wichtig, die Patientenmerkmale besitzen. So können Merkmale in quantitative und qualitative Merkmale unterteilt werden \cite{skalenniveau}. Es ist kein Problem, quantitative Merkmale darzustellen, da diese einfach durch numerische Werte ausgedrückt werden können. Die Grunddatentypen sind wie folgt:
+
+\begin{itemize}
+\item \texttt{Numeric}
+\item \texttt{Integer}
+\item \texttt{Complex}
+\item \texttt{Logic}
+\end{itemize}
+
+Wenn also eine Variable als Dezimalzahl ohne zusätzliche Bedingung deklariert wird, ist der Datentyp standardmäßig \texttt{numeric} (vgl. \ref{numericVar}).
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Deklarierung einer numerischen Variable x}]
+> x = 13.4
+\end{lstlisting}
+\label{numericVar}
+
+Will man explizit einen Integer als Variable initialisieren, sieht der Befehl aus wie in \ref{integerVar}. Es sollte zusätzlich beachtet werden, dass \texttt{TRUE} und \texttt{FALSE} in R jeweils die Ganzzahlwerte 1 und 0 besitzen. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Deklarierung einer ganzzahligen Variable y}]
+> y = as.integer(4.5)
+> y 	# gibt y als Wert aus 
+[1] 4
+\end{lstlisting}
+\label{integerVar}
+
+Um eine Variable mit dem Typ \texttt{complex} zu initialisieren, wird der imaginäre Teil der komplexen Zahl bei der Initialisierung angegeben. Ein Beispiel dazu ist in \ref{complexVar} zu sehen.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Deklarierung einer komplexen Variable z}]
+> z = 2 + 5i
+\end{lstlisting}
+\label{complexVar}
+
+Die Datentypen können jeweils durch den Befehl \texttt{class()} abgefragt werden. Die Ausgaben sind in \ref{class} zu sehen. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Abfrage des Datentypen}]
+> class(x)
+"numeric"
+> class(y)
+"integer"
+> class(z)
+"complex"
+\end{lstlisting}
+\label{class}
+
+Nachdem nun die quantitativen Merkmale dargestellt werden können, stellt sich die Frage nach der Darstellung der qualitativen Merkmalen. 
+
+Die qualitativen Merkmale werden in nominalskalierte und ordinalskalierte Merkmale unterteilt. Ordinallskalierte Merkmale haben eine vorbestimmte Ordnung untereinander, die nicht zwangsläufig eine lineare Beziehung zueinander haben müssen. Nominalskalierte Merkmale sind hingegen eindeutige Kategorien, die untereinander keine Ordnung haben. 
+
+Die einfachste Möglichkeit, einer Variable ein qualitatives Merkmal zuzuordnen, ist es als \texttt{character} zu definieren. Dies geschieht durch eine einfache Zuweisung wie in \ref{characterVar}.
+
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Deklarierung einer qualitativen Variable a}, float=htb]
+> a = "verheiratet"     #nominalskaliertes Merkmal
+> class(a)
+"character"
+> b = "befriedigend"	#ordinalskaliertes Merkmal
+> class(b)
+"character"
+\end{lstlisting}
+\label{characterVar}
+
+Dies ist allerdings keine optimale Lösung, da hierdurch keine eindeutige, abgegrenzte Kategorisierung der Variablen stattfindet. Im Falle der ordinalskalierten Variablen kann auch keine Ordnung unter den Variablen festgelegt werden. Möchte man ein Histogramm erstellen, was bei qualitativen Merkmalen sehr wahrscheinlich ist, werden die Strings nicht als Instanz eines Attributs gezählt, sondern einfach nur als Strings. Um also eine bessere Darstellung für qualitative Merkmale zu erreichen, gibt es sogenannte \texttt{factor variables}. Hierbei kann ein Vektor aus Integers erstellt werden, wo jedem Integer ein \texttt{label} zugewiesen wird. Ein Beispiel dazu ist in \ref{factorVar} zu sehen. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Erstellung einer \texttt{factor variable}}, float=htb]
+> v=c(0, 1, 1, 0, 1) #Vektorinitialisierung
+> v
+[1] 0 1 1 0 1		#Ausgabe von v
+> einheiten=factor(v,labels=c("metrisch","imperial"))
+> einheiten 
+[1] metrisch imperial imperial metrisch imperial
+Levels: metrisch imperial
+\end{lstlisting}
+\label{factorVar}
+
+Nun konnte den verschiedenen Werten im Vektor \texttt{v} ein \texttt{label} zugeordnet werden. Zu beachten ist hierbei, dass der \texttt{labels}-Vektor entweder 1 oder genauso viele Elemente beinhaltet, wie verschiedene Werte im Basisvektor \texttt{v} enthalten sind. Die Zeile \textit{Levels} gibt die Ordnung der Merkmale an. Hierbei wurde \textit{metrisch} auf den ersten Wert gesetzt, der im Vektor \texttt{v} vorkommt, \textit{imperial} auf den ersten Wert, der von \textit{metrisch} verschieden ist. Dadurch konnte eine eindeutige Ordnung unter den Merkmalen festgelegt werden, nämlich \textit{imperial} $>$ \textit{metrisch}. Dies ist für dieses einfache Beispiel allerdings sinnlos, da keine Ordnung unter dem metrischen und imperialen System besteht.  Natürlich ist es ebenfalls möglich, eine \texttt{factor variable} direkt anhand von Strings zu erstellen, s. \ref{strFactorVar}.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Erstellung einer \texttt{factor Variable} mit Strings}]
+> w=c("sehr gut", "gut", "gut", "ausreichend", 
+"mangelhaft", "sehr gut", "befriedigend", 
+"gut", "ausreichend", "gut", "befriedigend")
+> factor(w)
+ [1] sehr gut gut          gut ausreichend mangelhaft  
+ [6] sehr gut befriedigend gut ausreichend gut         
+[11] befriedigend
+Levels:ausreichend befriedigend gut mangelhaft sehr gut
+\end{lstlisting}
+\label{strFactorVar}
+
+Es wurden mit der \texttt{factor}-Funktion direkt \textit{Levels} erstellt, die allerdings nicht die gewünschte Ordnung haben, die wir von den Schulnoten im Beispiel erwartet hätten. Dies ist aufgrund der automatischen alphabetischen Sortierung der Levels. Für eine selbst erstellte Ordnung, siehe \textit{R}-Befehl \ref{factorVar}. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Ordnen einer selbsterstellten \texttt{factor Variable}}]
+> noten = ordered(w, levels=("sehr gut", "gut", 
+"befriedigend", "ausreichend", "mangelhaft"))
+> noten
+ [1] sehr gut gut          gut ausreichend  mangelhaft  
+ [6] sehr gut befriedigend gut ausreichend  gut         
+[11] befriedigend
+Levels: sehr gut < gut < befriedigend 
+< ausreichend < mangelhaft
+\end{lstlisting}
+\label{factorVar}
+
+Hier sieht man nun auch eine eindeutige Ordnung unter den Notenstufen \cite{factorVariables}. Die Bedeutung der \texttt{factor}-Funktion in Anwendung auf Vektoren wird im folgenden Abschnitt erklärt. 
+
+Zusätzlich gibt es das \textit{R}-Package \texttt{memisc}. Diese Erweiterung weist Objekten, die ein \texttt{item} sind, ein \texttt{level of measurement} (Skalenniveau) zu, das entweder ein \textit{ordinal, nominal, interval} oder \textit{ratio} ist. Je nach dem Skalenniveau wird das \texttt{item} in einen \texttt{factor} (\textit{nominal}), einen geordneten Vector (\textit{ordinal}) oder einen numerischen Vektor (\textit{interval und} \textit{ratio}) konvertiert. 
+
+\section{Tabellen} \label{tabellen}
+
+In \textit{R} wird üblicherweise zur Darstellung von Tabellen ein \texttt{data.frame} verwendet. 
+
+Ein \texttt{data.frame} ist eine Liste von Vektoren, welches mit dem Befehl \texttt{data.frame()} erstellt werden kann (s. \ref{dataframe}) \cite{dataFrame}.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={\texttt{data.frame} aus 3 Vektoren}]
+> v1 = c(1,2,3)
+> v2 = c("a","b","c")
+> v3 = c(FALSE, FALSE, TRUE)
+> frame = data.frame(v1, v2, v3)
+> frame
+  v1 v2    v3
+1  1  a FALSE
+2  2  b FALSE
+3  3  c  TRUE
+> names(frame) = c("Zahl", "Buchstabe", "Bool")
+> frame
+  Zahl Buchstabe  Bool
+1    1         a FALSE
+2    2         b FALSE
+3    3         c  TRUE
+
+\end{lstlisting}
+\label{dataframe}
+
+Mithilfe der in Abschnitt \ref{Skalen} beschriebenen Funktionen können die Spaltenvektoren in das gewünschte Skalenniveau konvertiert werden.
+ 
+Für die Nutzung von \textit{ARX} mit dem \textit{R-Terminal} können die bereits vorhandenen Daten auch aus \textit{ARX} als CSVs eingeladen werden. 
+Diese werden in ein \texttt{data.frame} gelesen, wie in Beispiel \ref{readTable} gezeigt.
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={Einlesen einer Tabelle}]
+frame=read.csv(file="c:/test.csv",header=TRUE,sep=",")
+\end{lstlisting}
+\label{readTable}
+
+Die hier verwendeten Argumente sind einmal das \texttt{file}, der \texttt{header} und \texttt{sep}. \texttt{file} gibt den Dateipfad zu der CSV-Datei an. Hierbei kann auch ein Pfad angegeben werden, der relativ zum Arbeitsordner ist. \texttt{header} gibt an, ob in der Datei die erste Zeile ein Header ist, in dem die Namen der Spaltenattribute stehen, oder ob keine Namen für die Spalten vorhanden sind und in der ersten Zeile direkt der Inhalt der Tabelle beginnt. \texttt{sep} gibt den Character an, durch den die Spalten getrennt sind. 
+
+Möchte man ein \texttt{data.frame} erweitern, z.B. durch eine neue Zeile oder eine neue Spalte, gibt es dafür die Funktionen \texttt{rbind} und \texttt{cbind}. Die Funktionen sind anzuwenden wie in \ref{readTable} vorgestellt. 
+
+\lstset{language=R}
+\begin{lstlisting}[frame=single,caption={\texttt{rbind} und \texttt{cbind}}, float=htb]
+#Hierbei auf die gleichen Spaltennamen achten
+> frame2 = data.frame(Zahl=4,Buchstabe="d",Bool=TRUE)
+#frame aus data.frame
+> newframe=rbind(frame, frame2)		
+> newframe
+  Zahl Buchstabe  Bool
+1    1         a FALSE
+2    2         b FALSE
+3    3         c  TRUE
+4    4         d  TRUE
+######################
+#Hier geht auch ein Vektor
+> Nummer = c(4, 3, 2, 1)
+> cbind(newframe, Nummer)
+  Zahl Buchstabe  Bool Nummer
+1    1         a FALSE  4
+2    2         b FALSE  3
+3    3         c  TRUE  2
+4    4         d  TRUE  1
+
+\end{lstlisting}
+\label{readTable}
+
+%Bei der Verwendung von \texttt{data.frame} sollte beachtet werden, dass zwar nützliche Funktionen verwendet werden können, sich das \texttt{data.frame} ausschließlich 
+%insert Erklärung zu data.table und data.matrix?
+
+\section*{Implementierung in zukünftigen Arbeiten}
+
+Die in diesem Kapitel vorgestellten Befehle zur Übertragung von Tabellen aus \textit{ARX} nach \textit{R} wurden noch nicht im \textit{RTerminal} implementiert, sondern dienen als Vorarbeit für die Implementierung in zukünftigen Arbeiten.
+%Um Tabellen aus \textit{ARX} in \textit{R} mithilfe des \textit{RTerminal} zu bearbeiten, müssen diese aus \textit{ARX} als CSV-Datei exportiert und anschließend, wie in diesem Kapitel beschrieben, eingelesen werden.
+
 \chapter{Zukünftige Arbeiten}
 
 Das \textit{R-Terminal}, welches im Rahmen dieser Arbeit erstellt wurde, setzt die Integration von \textit{R} in \textit{Java} um. 
 Allerdings müssen anonymisierten Daten bisher noch manuell aus \textit{ARX} als Tabellen in CSV-Format exportiert werden und anschließend durch das \textit{RTerminal} an den \textit{R}-Prozess übergeben werden. Dieser manuelle Import sowie die Anpassung der Datenrepräsentation der Tabellen in \textit{R} wird in Kapitel \ref{tabellen} beschrieben.
 
-Der manuelle Import ist aber umständlich. In zukünftigen Arbeiten sollte deshalb der Implementierung eines automatischen Datenimports aus dem Anonymisierungstool \textit{ARX} eine hohe Priorität zukommen.
+Der bisherige Entwicklungsstand bietet aufgrund der nicht vorhandenen automatisierten Übertragung von Daten von \textit{ARX} nach \textit{R} noch keine vollständige Integration. Die im Rahmen dieses Projektes systematisch dokumentierten Befehle bieten aber eine solide Grundlage für zukünftige Projekte, in denen diese Funktionalität umgesetzt werden soll.
 
 
 %----------------------------------------------------------------------------------------
