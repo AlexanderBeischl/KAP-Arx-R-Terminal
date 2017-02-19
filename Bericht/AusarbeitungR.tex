@@ -96,19 +96,16 @@ Erstellung einer Schnittelle zwischen \\ einem Anonymiserungstool f{\"u}r \\ med
 \begin{abstract}
 
 \noindent
-Der Austausch von sensiblen personenbezogenen Daten spielt in der modernen medizinischen Forschung eine wichtige Rolle. Hierbei muss die Privatsphäre der betroffenen Patienten oder Probanden geschützt werden. Eine Möglichkeit dazu ist die Datenanonymisierung. Anonymisierung meint in diesem Zusammenhang die Veränderung personenbezogener Daten derart, dass die Beziehung zwischen den Daten und den Datensubjekten nur mit unverhältnismäßigem Aufwand wiederhergestellt werden kann.
+Zum Schutz von medizinischen Daten bietet sich die Möglichkeit der  Datenanonymisierung an. Hierbei soll eine Veränderung der Daten die Beziehung zwischen den Daten und den Datensubjekten verschleiern. 
 
-Das Datenanonymisierungstool \textit{ARX}, welches am Institut für Medizinische Statistik und Epidemiologie entwickelt wurde, implementiert verschiedene Methoden der Datenanonymisierung. Allerdings kommt es bei jeder Anonymisierung zu einem Informationsverlust und Verzerrungen der statistischen Eigenschaften. 
-Vor dem Austausch anonymisierter Daten müssen diese also geprüft werden, beispielsweise indem die Eingabedaten mit den anonymisierten Ausgabedaten verglichen werden. Um dabei die Auswirkungen der Anonymisierung auf eine Vielzahl statistischer Eigenschaften und Verfahren analysieren zu können, bietet sich die Nutzung eines Statistikprogramms an.
-Allerdings ist eine gemeinsame Nutzung von \textit{R} in Verbindung mit \textit{ARX} aufgrund von Lizenzrechten nicht möglich. Ebenso können bestehende Schnittstellenprogramme aus Lizenzrechten nicht genutzt werden.
+Bei der Verwendung des Datenanonymisierungstools \textit{ARX} kommt es bei jeder Anonymisierung zu einem Informationsverlust und Verzerrungen der statistischen Eigenschaften. 
+Um dabei die Auswirkungen der Anonymisierung auf eine Vielzahl statistischer Eigenschaften und Verfahren analysieren zu können, bietet sich die Nutzung eines Statistikprogramms wie \textit{R} an.
+Allerdings ist eine Integration von \textit{R} in \textit{ARX} aufgrund von Lizenzrechten nicht möglich. 
 
-Aus diesem Grund wurde im Rahmen des Klinisches Anwendungsprojektes die \textit{Java}-Software \textit{R-Terminal} implementiert. Dieses Programm integriert \textit{R} in \textit{Java}, sodass \textit{R}-Befehle und \textit{R}-Skripte in \textit{Java} ausgeführt werden können und bietet somit eine lizenzfreie Plattform an. Hierfür wird durch das \textit{R-Terminal} eine Standalone-Installation von \textit{R} durch \textit{ProcessBuilder} als Prozess gestartet und die Kommunikation mittels Input- und Output-Stream hergestellt.
+Aus diesem Grund wurde im Rahmen des Klinisches Anwendungsprojektes die \textit{Java}-Software \textit{R-Terminal} implementiert, welches im Rahmen dieser Ausarbeitung vorgestellt wird. Dieses Programm integriert \textit{R} in \textit{Java}, sodass \textit{R}-Befehle und \textit{R}-Skripte in \textit{Java} ausgeführt werden können und bietet somit eine lizenzfreie Plattform an. Hierfür wird durch das \textit{R-Terminal} eine Standalone-Installation von \textit{R} durch \textit{ProcessBuilder} als Prozess gestartet und die Kommunikation mittels Input- und Output-Stream hergestellt.
 
-Das \textit{R-Terminal} verfügt über eine graphische Benutzeroberfläche. Es kann aber auch ohne die GUI genutzt werden, sodass es in weitere Programme integriert werden kann.
+Das \textit{R-Terminal} verfügt über eine optionale graphische Benutzeroberfläche. 
 Mit dem \textit{R-Terminal} können außerdem auf Tabellen, welche aus dem  Anonymisierungs-Tool \textit{ARX} exportiert wurden, \textit{R}-Befehle ausgeführt werden. 
-
-Somit können die Ein- und Ausgabedaten von \textit{ARX} mit \textit{R} überprüft und analysiert werden, ohne dass Lizenzkollisionen auftreten.
-
 \end{abstract}
 
 
@@ -144,14 +141,19 @@ Eine direkte Analyse der Tabellen aus \textit{ARX} mit \textit{R} ist aufgrund d
 \textit{ARX} ist unter der Apache License lizensiert, während \textit{R} als GNU-Projekt unter GPL (GNU General Public License) lizensiert ist. 
 Obwohl beide Lizenzen für freie Software genutzt werden, welche den Nutzern kaum Restriktionen im Umgang mit der Software auferlegen, sind sie nicht miteinander kompatibel. Während Software unter Apache License in GPL Projekten integriert werden dürfen, lässt GPL umgekehrt dies nicht zu. 
 
-Diese Inkompatibilität kommt zustande, wenn Software unter Apache mit von GPL Software abgeleiteten Projekten geschrieben wird. Dadurch muss diese unter GPL gestellt werden. In diesem Falle müsste \textit{ARX} als Apache License Projekt unter GPL gestellt werden, um es gemeinsam mit \textit{R} zu verwenden. Dies wiederum lässt die Apache License nicht zu, da jede Apache Software unter Apache lizensiert werden muss. Es ist weitgehend von GPL-Autoren interpretationsbedingt, was ein von GPL Software abgeleitetes Projekt ist. Um hierbei Komplikationen zu vermeiden, sollte nicht mal von Apache Software zu GPL Software verlinkt werden \cite{license}. 
+Diese Inkompatibilität kommt zustande, wenn Software unter Apache mit von GPL Software abgeleiteten Projekten geschrieben wird. Dadurch muss diese unter GPL gestellt werden. In diesem Falle müsste \textit{ARX} als Apache License Projekt unter GPL gestellt werden, um es gemeinsam mit \textit{R} zu verwenden. Dies wiederum lässt die Apache License nicht zu, da jede Apache Software unter Apache lizensiert werden muss. Es ist weitgehend von GPL-Autoren interpretationsbedingt, was ein von GPL Software abgeleitetes Projekt ist. Um hierbei Komplikationen zu vermeiden, ist es nicht ratsam, von aus Apache Software GPL Software zu verlinken \cite{license}. 
 
-Deshalb kann die von \textit{R} angebotene Benutzeroberfläche nicht gemeinsam mit \textit{ARX} genutzt werden.
+Deshalb kann die von \textit{R} angebotene Benutzeroberfläche nicht genutzt werden, um \textit{ARX}-Datensätze auszuwerten.
 
 Das Ziel des in diesem Rahmen entwickelten \textit{RTerminals} ist es, eine lizenzfreie Plattform zur Verfügung zu stellen, welche es ermöglicht \textit{R} aufzurufen und innerhalb des \textit{RTerminals} \textit{ARX}-Daten einzulesen und diese zu bearbeiten.
 
 Das \textit{RTerminal} bietet hierfür eine Schnittstelle um \textit{R} in einer eigenen GUI auszuführen und \textit{ARX}-Daten einzulesen sowie zu bearbeiten. Zusätzlich soll es Funktionen bieten, die eine dynamische Arbeit mit \textit{R} erleichtern.
-Es existieren zwar bereits für \textit{Java} Pakete wie \textit{RServe}, \textit{JRI} und \textit{RCaller}, welche ebenfalls eine Integration realisieren, eine direkten Nutzung von JRI, RServe und RCaller mit \textit{ARX} ist aufgrund der jeweiligen Lizenzierung aber nicht möglich.
+Es existieren zwar bereits für \textit{Java} Pakete wie \textit{RServe}, \textit{JRI} und \textit{RCaller}, welche ebenfalls eine Integration realisieren, eine direkten Nutzung von JRI und RCaller mit \textit{ARX} ist aufgrund der jeweiligen Lizenzierung aber nicht möglich.
+
+Der TCP/IP-Server \textit{RServe} erlaubt es eine Verbindung zu \textit{R} aufzubauen, ohne \textit{R} initialisieren oder aufrufen zu müssen. Damit wäre es kein lizenzrechtliches Problem, \textit{RServe} zu verwenden. 
+
+Allerdings ist es umständlich, einen Webserver zu installieren, weswegen \textit{RServe} sich nicht als leichtgewichtige Option zur \textit{R}-GUI
+anbietet. 
 
 Aus diesem Grund wurde für das \textit{RTerminal} die Integration von \textit{R} als leichtgewichtiger Subprozess gewählt, bei welchem die Kommunikation zwischen dem \textit{RTerminal} und dem \textit{R}-Prozess über den Standardinput und Standardoutput des \textit{R}-Prozesses erfolgt.\\
 \\
